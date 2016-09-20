@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="com.deloitte.rmsapp.Home" name="Home">
+    <adfmf:content id="com.deloitte.rmsapp.Home.1">
+      <adfmf:amx file="com.deloitte.rmsapp.Home/HomeTF.xml#HomeTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

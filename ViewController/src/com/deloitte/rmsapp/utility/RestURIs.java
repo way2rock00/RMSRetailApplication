@@ -1,6 +1,6 @@
 package com.deloitte.rmsapp.utility;
 
-public class RestURIs {
+public class RestURIs { 
     public RestURIs() {
         super();
     }

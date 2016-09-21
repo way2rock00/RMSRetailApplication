@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="POHeadersListPageDef"
+                Package="pages.Supplier">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="Test" id="TestIterator"/>
+    <accessorIterator MasterBinding="TestIterator" Binds="listOfData" RangeSize="25" DataControl="Test"
+                      BeanClass="java.lang.String" id="listOfDataIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="POHeaderService" id="POHeaderServiceIterator"/>
+    <accessorIterator MasterBinding="POHeaderServiceIterator" Binds="POHeaderData" RangeSize="25"
+                      DataControl="POHeaderService" BeanClass="com.deloitte.rmsapp.Supplier.POHeaders"
+                      id="POHeaderDataIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="listOfDataIterator" id="listOfData">
+      <nodeDefinition Name="listOfData0">
+        <AttrNames>
+          <Item Value="element"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="POHeaderDataIterator" id="POHeaderData">
+      <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.POHeaders" Name="POHeaderData0">
+        <AttrNames>
+          <Item Value="poNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

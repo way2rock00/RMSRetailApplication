@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.1" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.deloitte.rmsapp.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/pages/Supplier/POHeadersList.amx" usageId="com_deloitte_rmsapp_mobile_POHeadersListPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_deloitte_rmsapp_mobile_POHeadersListPageDef" path="pages.Supplier.POHeadersListPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="POHeaderService" path="com.deloitte.rmsapp.mobile.POHeaderService"/>
+    <dc id="Test" path="com.deloitte.rmsapp.mobile.Test"/>
+  </dataControlUsages>
+</Application>

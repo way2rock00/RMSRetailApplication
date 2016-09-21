@@ -11,5 +11,16 @@
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
+    <amx:outputText id="as" value="#{pageFlowScope.arrayVal}"></amx:outputText>
+    <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
+                  fetchSize="#{bindings.POHeaderData.rangeSize}"
+                  selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
+                  initialScrollRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.POHeaderData.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:outputText value="#{row.poNumber}" id="ot2"/>
+      </amx:listItem>
+    </amx:listView>
   </amx:panelPage>
 </amx:view>

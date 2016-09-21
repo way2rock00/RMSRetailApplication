@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:commandButton text="commandButton1" id="cb3" action="move">
+      <amx:setPropertyListener id="spl1" from="-999" to="#{pageFlowScope.orderFromDate}"/>
+      <amx:setPropertyListener id="spl2" from="-999" to="#{pageFlowScope.orderToDate}"/>
+      <amx:setPropertyListener id="spl3" from="3030" to="#{pageFlowScope.supplier}"/>
+      <amx:setPropertyListener id="spl4" from="-999" to="#{pageFlowScope.buyer}"/>
+      <amx:setPropertyListener id="spl8" from="-999" to="#{pageFlowScope.fromDate}"/>
+      <amx:setPropertyListener id="spl5" from="-999" to="#{pageFlowScope.toDate}"/>
+      <amx:setPropertyListener id="spl7" from="-999" to="#{pageFlowScope.status}"/>
+      <amx:setPropertyListener id="spl6" from="-999" to="#{pageFlowScope.type}"/>
+    </amx:commandButton>
+  </amx:panelPage>
+</amx:view>

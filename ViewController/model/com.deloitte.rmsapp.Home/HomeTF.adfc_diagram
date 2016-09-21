@@ -9,9 +9,9 @@
       <property
          name="page">/pages/Supplier/POHeadersList.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>POHeadersList&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>POHeadersList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -19,4 +19,31 @@
       <property
          name="x">481.0</property>
    </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">temp</property>
+      <property
+         name="page">/pages/Supplier/temp.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>temp&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">137.29883</property>
+      <property
+         name="x">235.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">move</property>
+      <property
+         name="sdm:polyPoints">R50,278.76764,136.94824,437.23242,171.59766,L50</property>
+   </ControlFlowCase>
 </SDM>

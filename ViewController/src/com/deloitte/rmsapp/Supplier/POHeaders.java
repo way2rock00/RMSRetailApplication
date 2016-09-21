@@ -4,6 +4,7 @@ public class POHeaders {
     public POHeaders() {
         super();
     }
+    private String recordId;
     private String poNumber;
     private String orderType;
     private String poDate;
@@ -76,6 +77,37 @@ public class POHeaders {
 
     public String getPoTotal() {
         return poTotal;
+    }
+
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public POHeaders (String recordId
+                    ,String poNumber
+                    ,String orderType
+                    ,String poDate
+                    ,String buyer   
+                    ,String status
+                    ,String pickUpDate
+                    ,String notAfterDate
+                    ,String poTotal
+                      )
+    {
+        this.recordId = recordId;
+        this.poNumber = poNumber;
+        this.orderType = orderType;
+        this.poDate = poDate;
+        this.buyer = buyer;
+        this.status = status;
+        this.pickUpDate = pickUpDate;
+        this.notAfterDate = notAfterDate;
+        this.poTotal = poTotal;
     }
 
 }

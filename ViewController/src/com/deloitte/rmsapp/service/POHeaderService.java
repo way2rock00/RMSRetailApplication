@@ -23,78 +23,94 @@ public class POHeaderService {
     public POHeaderService() {
         super();
     }
-    private static List<POHeaders> invByCatData = new ArrayList<POHeaders>();
+    private static List<POHeaders> poHeaderList = new ArrayList<POHeaders>();
     
     public POHeaders[] getPOHeaderData() {
-        POHeaders[] invByCatArray = null;
-        invByCatData = new ArrayList<POHeaders>();
+        POHeaders[] poHeadersArray = null;
+        poHeaderList = new ArrayList<POHeaders>();
         ServiceManager serviceManager = new ServiceManager();
         String inventoryOrg = null;
         Connection conn = null;
         Statement stmt = null;
-        try {
-            conn = ConnectionFactory.getConnection();
-            stmt = conn.createStatement();
-            ResultSet result =
-                stmt.executeQuery("SELECT DASHBOARD_TYPE,PARAM_NAME,PARAM_VALUE FROM DASHBOARD_PARAMS WHERE DASHBOARD_TYPE='INVENTORY'");
-
-            while (result.next()) {
-                String paramName = result.getString("PARAM_NAME");
-                String paramValue = result.getString("PARAM_VALUE");
-                if ("INVENTORY_ORG".equals(paramName)) {
-                    inventoryOrg = paramValue;     
-                }
-            }
-        } catch (Exception e) {
-        }      
-        String strInvCat= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedInvCategory}");
-        String jsonArrayAsString =serviceManager.invokeREAD(RestURIs.getInvItemURI(inventoryOrg, strInvCat));
-
+     
+        String strOrderFromDate= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.orderFromDate}");
+        String strOrderToDate= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.orderToDate}");
+        String strSupplier= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.supplier}");
+        String strBuyer= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.buyer}");
+        String strFromDate= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.fromDate}");
+        String strToDate= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.toDate}");
+        String strStatus= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.status}");
+        String strType= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.type}");
+        String jsonArrayAsString =serviceManager.invokeREAD(RestURIs.getPOHeaderURI(strOrderFromDate, 
+                                                                                    strOrderToDate, 
+                                                                                    strSupplier, 
+                                                                                    strBuyer, 
+                                                                                    strFromDate, 
+                                                                                    strToDate, 
+                                                                                    strStatus, 
+                                                                                    strType)
+                                                            );
+        String strDebug=":"+strOrderFromDate+":"+strOrderToDate+":"+strSupplier+":"+strBuyer+":"+
+                        strFromDate+":"+strToDate+":"+strStatus+":"+strType;
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug+"::"+jsonArrayAsString);
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
-            JSONObject parent = jsonObject.getJSONObject("X_XXBIO_ITEM_DRILLDOWN_TAB");
-            JSONArray nodeArray = parent.getJSONArray("X_XXBIO_ITEM_DRILLDOWN_TAB_ITEM");
+            JSONObject parent = jsonObject.getJSONObject("P_PO_HDR_TAB");
+            JSONArray nodeArray = parent.getJSONArray("P_PO_HDR_TAB_ITEM");
 
             int size = nodeArray.length();
             for (int i = 0; i < size; i++) {
                 JSONObject temp = nodeArray.getJSONObject(i);
 
-                String organizationCode = null;
-                if (temp.getString("ORGANIZATION_CODE") != null)
-                    organizationCode = temp.getString("ORGANIZATION_CODE");
+                String poNumber = null;
+                if (temp.getString("PO_NUMBER") != null)
+                    poNumber = temp.getString("PO_NUMBER");
 
-                String category = null;
-                if (temp.getString("CATEGORY") != null)
-                    category = temp.getString("CATEGORY");
+                String poOrderType = null;
+                if (temp.getString("PO_ORDER_TYPE") != null)
+                    poOrderType = temp.getString("PO_ORDER_TYPE");
 
-                String item = null;
-                if (temp.getString("ITEM") != null)
-                    item = temp.getString("ITEM");
+                String poDate = null;
+                if (temp.getString("PO_DATE") != null)
+                    poDate = temp.getString("PO_DATE");
 
-                BigDecimal quantity = null;
-                if (temp.getString("QUANTITY") != null)
-                    quantity = new BigDecimal(temp.getString("QUANTITY"));
+                String buyer = null;
+                if (temp.getString("BUYER") != null)
+                    buyer = temp.getString("BUYER");
 
-                BigDecimal valueInUsd = null;
-                if (temp.getString("VALUE_IN_USD") != null)
-                    valueInUsd = new BigDecimal(temp.getString("VALUE_IN_USD"));
+                String status = null;
+                if (temp.getString("STATUS") != null)
+                    status = temp.getString("STATUS");
 
-                BigDecimal recordId = null;
+                String pickUpDate = null;
+                if (temp.getString("PICKUP_DATE") != null)
+                    pickUpDate = temp.getString("PICKUP_DATE");   
+                
+                String notAfterDate = null;
+                if (temp.getString("NOT_AFTER_DATE") != null)
+                    notAfterDate =temp.getString("NOT_AFTER_DATE");       
+  
+                String poTotal = null;
+                if (temp.getString("PO_TOTAL") != null)
+                    poTotal = temp.getString("PO_TOTAL");   
+                
+                String recordId = null;
                 if (temp.getString("RECORD_ID") != null)
-                    recordId = new BigDecimal(temp.getString("RECORD_ID"));            
+                    recordId = temp.getString("RECORD_ID");                   
+                
 
              
                 
-                    POHeaders invByCat =
-                        new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
-                    invByCatData.add(invByCat);
+                    POHeaders poHeader = new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate, poTotal);
+                        //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
+                    poHeaderList.add(poHeader);
                 
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        invByCatArray = invByCatData.toArray(new POHeaders[invByCatData.size()]);
-        return invByCatArray;
+        poHeadersArray = poHeaderList.toArray(new POHeaders[poHeaderList.size()]);
+        return poHeadersArray;
     }   
     
     

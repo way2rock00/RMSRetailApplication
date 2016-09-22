@@ -134,6 +134,7 @@
                         <amx:cellFormat id="cf21" width="4%"/>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:setPropertyListener id="spl1" from="#{row.poNumber}" to="#{pageFlowScope.selectedPONum}"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

@@ -122,7 +122,7 @@ public class PODetailsService {
                                                        pickUpDate, 
                                                        notAfterDate, 
                                                        poTotal,
-                                                       poLineList
+                                                       poLineList.toArray(new POLine[poLineList.size()])
                                                        );
                         //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                     poDetailsList.add(poDetails);

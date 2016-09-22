@@ -19,7 +19,12 @@
                   showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
       <amx:listItem id="li1">
         <amx:outputText value="#{row.poNumber}" id="ot2"/>
-        
+        <amx:listView var="lineRow" showMoreStrategy="autoScroll" 
+        bufferStrategy="viewport" id="lv2" value="#{row.poLines}">
+          <amx:listItem id="li2">
+            <amx:outputText value="#{lineRow.poLineNumber}" id="ot3"/>
+          </amx:listItem>
+        </amx:listView>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>

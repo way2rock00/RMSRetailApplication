@@ -23,6 +23,17 @@
           <Item Value="poTotal"/>
           <Item Value="status"/>
         </AttrNames>
+        <Accessors>
+          <Item Value="poLines"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.POLine" Name="PODetailsData1">
+        <AttrNames>
+          <Item Value="poLineNumber"/>
+          <Item Value="price"/>
+          <Item Value="quantity"/>
+          <Item Value="uom"/>
+        </AttrNames>
       </nodeDefinition>
     </tree>
   </bindings>

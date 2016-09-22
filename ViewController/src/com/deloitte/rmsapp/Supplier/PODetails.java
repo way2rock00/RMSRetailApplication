@@ -15,7 +15,7 @@ public class PODetails {
     private String pickUpDate;
     private String notAfterDate;
     private String poTotal;
-    private List poLines;
+    private POLine[] poLines;
 
     public void setRecordId(String recordId) {
         this.recordId = recordId;
@@ -89,14 +89,15 @@ public class PODetails {
         return poTotal;
     }
 
-    public void setPoLines(List poLines) {
+
+    public void setPoLines(POLine[] poLines) {
         this.poLines = poLines;
     }
 
-    public List getPoLines() {
+    public POLine[] getPoLines() {
         return poLines;
     }
-    
+
     public PODetails (String recordId
                     ,String poNumber
                     ,String orderType
@@ -106,7 +107,7 @@ public class PODetails {
                     ,String pickUpDate
                     ,String notAfterDate
                     ,String poTotal
-                    ,List poLines
+                    ,POLine[] poLines
                       )
     {
         this.recordId = recordId;

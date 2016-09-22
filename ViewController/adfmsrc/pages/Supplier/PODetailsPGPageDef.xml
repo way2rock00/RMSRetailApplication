@@ -21,7 +21,7 @@
           <Item Value="poDate"/>
           <Item Value="poNumber"/>
           <Item Value="poTotal"/>
-          <Item Value="status"/>
+          <Item Value="status"/> 
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>

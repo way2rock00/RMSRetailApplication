@@ -7,34 +7,34 @@
       <property
          name="activityId">POHeadersList</property>
       <property
-         name="x">481.0</property>
+         name="page">/pages/Supplier/POHeadersList.amx</property>
       <property
          name="start">false</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>POHeadersList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">171.94824</property>
       <property
-         name="page">/pages/Supplier/POHeadersList.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">481.0</property>
    </View>
    <View
       id="View3">
       <property
          name="activityId">temp</property>
       <property
-         name="x">235.0</property>
+         name="page">/pages/Supplier/temp.amx</property>
       <property
          name="start">false</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>temp&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">137.29883</property>
       <property
-         name="page">/pages/Supplier/temp.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">235.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -42,26 +42,26 @@
       from="View3"
       to="View2">
       <property
-         name="fromOutcome">move</property>
+         name="fromOutcome">openPO</property>
       <property
-         name="sdm:polyPoints">R50,278.76764,136.94824,437.23242,171.59766,L50</property>
+         name="sdm:polyPoints">R50,276.0,136.94824,440.0,171.59766,L50</property>
    </ControlFlowCase>
    <View
       id="View5">
       <property
          name="activityId">Login</property>
       <property
-         name="x">190.0</property>
+         name="page">/Login.amx</property>
       <property
          name="start">true</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">290.94824</property>
       <property
-         name="page">/Login.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">190.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -72,5 +72,30 @@
          name="fromOutcome">LandingPage</property>
       <property
          name="sdm:polyPoints">T50,190.0,236.59766,235.0,190.94824,B50</property>
+   </ControlFlowCase>
+   <View
+      id="View11">
+      <property
+         name="activityId">PODetailsPG</property>
+      <property
+         name="page">/pages/Supplier/PODetailsPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PODetailsPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">160.24707</property>
+      <property
+         name="x">684.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View2"
+      to="View11">
+      <property
+         name="fromOutcome">openPODetail</property>
+      <property
+         name="sdm:polyPoints">R50,522.0,171.59766,643.0,159.89648,L50</property>
    </ControlFlowCase>
 </SDM>

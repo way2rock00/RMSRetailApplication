@@ -42,7 +42,7 @@
                       initialScrollRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.POHeaderData.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-            <amx:listItem id="li1" action="lineDetails" showLinkIcon="true"
+            <amx:listItem id="li1" action="openPODetail" showLinkIcon="true"
                           inlineStyle="#{((row.rowKey)%2)==0?'background-color:#FFFFFF;':'background-color:#eaeaea;'};border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
                 <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
                     <amx:rowLayout id="r1l2">

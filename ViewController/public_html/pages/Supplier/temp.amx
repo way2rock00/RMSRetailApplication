@@ -10,7 +10,7 @@
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:commandButton text="commandButton1" id="cb3" action="move">
+        <amx:commandButton text="commandButton1" id="cb3" action="openPO">
             <amx:setPropertyListener id="spl1" from="-999" to="#{pageFlowScope.orderFromDate}"/>
             <amx:setPropertyListener id="spl2" from="-999" to="#{pageFlowScope.orderToDate}"/>
             <amx:setPropertyListener id="spl3" from="3030" to="#{pageFlowScope.supplier}"/>

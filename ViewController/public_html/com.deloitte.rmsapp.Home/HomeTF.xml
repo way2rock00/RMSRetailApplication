@@ -21,10 +21,13 @@
     <view id="Login">
       <page>/Login.amx</page>
     </view>
+    <view id="PODetailsPG">
+      <page>/pages/Supplier/PODetailsPG.amx</page>
+    </view>
     <control-flow-rule id="__2">
       <from-activity-id>temp</from-activity-id>
       <control-flow-case id="__3">
-        <from-outcome>move</from-outcome>
+        <from-outcome>openPO</from-outcome>
         <to-activity-id>POHeadersList</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
@@ -33,6 +36,13 @@
       <control-flow-case id="__5">
         <from-outcome>LandingPage</from-outcome>
         <to-activity-id>temp</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>POHeadersList</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>openPODetail</from-outcome>
+        <to-activity-id>PODetailsPG</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

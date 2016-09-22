@@ -12,7 +12,7 @@ public class ServiceManager {
 
     //GET
     public String invokeREAD(String requestURI) {
-        System.out.println("request");
+        System.out.println("request:"+requestURI);
         return this.invokeRestRequest(RestServiceAdapter.REQUEST_TYPE_GET, requestURI, "");
     }
 

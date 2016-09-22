@@ -41,15 +41,16 @@ public class POHeaderService {
         String strToDate= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.toDate}");
         String strStatus= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.status}");
         String strType= (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.type}");
-        String jsonArrayAsString =serviceManager.invokeREAD(RestURIs.getPOHeaderURI(strOrderFromDate, 
+        String url = RestURIs.getPOHeaderURI(strOrderFromDate, 
                                                                                     strOrderToDate, 
                                                                                     strSupplier, 
                                                                                     strBuyer, 
                                                                                     strFromDate, 
                                                                                     strToDate, 
                                                                                     strStatus, 
-                                                                                    strType)
-                                                            );
+                                                                                    strType);
+        System.out.println("url:"+url);
+        String jsonArrayAsString =serviceManager.invokeREAD(url);
         String strDebug=":"+strOrderFromDate+":"+strOrderToDate+":"+strSupplier+":"+strBuyer+":"+
                         strFromDate+":"+strToDate+":"+strStatus+":"+strType;
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug+"::"+jsonArrayAsString);

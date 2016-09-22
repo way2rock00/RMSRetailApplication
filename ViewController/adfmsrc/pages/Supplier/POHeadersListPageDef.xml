@@ -24,6 +24,14 @@
       <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.POHeaders" Name="POHeaderData0">
         <AttrNames>
           <Item Value="poNumber"/>
+          <Item Value="buyer"/>
+          <Item Value="notAfterDate"/>
+          <Item Value="orderType"/>
+          <Item Value="pickUpDate"/>
+          <Item Value="poDate"/>
+          <Item Value="poTotal"/>
+          <Item Value="recordId"/>
+          <Item Value="status"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

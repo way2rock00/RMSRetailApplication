@@ -3,11 +3,14 @@
              SeparateXMLFiles="false" Package="com.deloitte.rmsapp.mobile" ClientType="Generic">
   <pageMap>
     <page path="/pages/Supplier/POHeadersList.amx" usageId="com_deloitte_rmsapp_mobile_POHeadersListPageDef"/>
+    <page path="/pages/Supplier/PODetailsPG.amx" usageId="com_deloitte_rmsapp_mobile_PODetailsPGPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_deloitte_rmsapp_mobile_POHeadersListPageDef" path="pages.Supplier.POHeadersListPageDef"/>
+    <page id="com_deloitte_rmsapp_mobile_PODetailsPGPageDef" path="pages.Supplier.PODetailsPGPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="PODetailsService" path="com.deloitte.rmsapp.mobile.PODetailsService"/>
     <dc id="POHeaderService" path="com.deloitte.rmsapp.mobile.POHeaderService"/>
     <dc id="Test" path="com.deloitte.rmsapp.mobile.Test"/>
   </dataControlUsages>

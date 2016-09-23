@@ -1,40 +1,47 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
    <OverallProperties
-      id="OverallProperties1"/>
+      id="OverallProperties1">
+      <property
+         name="linkStyle">Orthogonal</property>
+      <property
+         name="x">88.01758</property>
+      <property
+         name="y">444.58484</property>
+   </OverallProperties>
    <View
       id="View2">
       <property
-         name="activityId">POHeadersList</property>
+         name="activityId">HeaderListPage</property>
       <property
-         name="page">/pages/Supplier/POHeadersList.amx</property>
+         name="x">14.417578</property>
       <property
          name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>POHeadersList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>HeaderListPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">199.38252</property>
+      <property
+         name="page">/pages/Supplier/POHeadersList.amx</property>
       <property
          name="exceptionHandler">false</property>
-      <property
-         name="y">171.94824</property>
-      <property
-         name="x">481.0</property>
    </View>
    <View
       id="View3">
       <property
-         name="activityId">temp</property>
+         name="activityId">SearchPage</property>
       <property
-         name="page">/pages/Supplier/temp.amx</property>
+         name="x">556.2238</property>
       <property
          name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>temp&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>SearchPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">318.86615</property>
+      <property
+         name="page">/pages/Supplier/POSearchPG.amx</property>
       <property
          name="exceptionHandler">false</property>
-      <property
-         name="y">137.29883</property>
-      <property
-         name="x">235.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -44,49 +51,49 @@
       <property
          name="fromOutcome">openPO</property>
       <property
-         name="sdm:polyPoints">R50,276.0,136.94824,440.0,171.59766,L50</property>
+         name="sdm:polyPoints">L62,14.417578,329.01556,B50</property>
    </ControlFlowCase>
    <View
       id="View5">
       <property
          name="activityId">Login</property>
       <property
-         name="page">/Login.amx</property>
+         name="x">267.53516</property>
       <property
          name="start">true</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="y">98.79883</property>
+      <property
+         name="page">/Login.amx</property>
+      <property
          name="exceptionHandler">false</property>
-      <property
-         name="y">290.94824</property>
-      <property
-         name="x">190.0</property>
    </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase6"
       from="View5"
-      to="View3">
+      to="View12">
       <property
          name="fromOutcome">LandingPage</property>
       <property
-         name="sdm:polyPoints">T50,190.0,236.59766,235.0,190.94824,B50</property>
+         name="sdm:polyPoints">R50,354.72647,98.44824,354.72647,143.7144,L46</property>
    </ControlFlowCase>
    <View
       id="View11">
       <property
-         name="activityId">PODetailsPG</property>
+         name="activityId">DetailsPage</property>
+      <property
+         name="x">267.53516</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DetailsPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">289.39886</property>
       <property
          name="page">/pages/Supplier/PODetailsPG.amx</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>PODetailsPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
          name="exceptionHandler">false</property>
-      <property
-         name="y">160.24707</property>
-      <property
-         name="x">684.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -96,6 +103,156 @@
       <property
          name="fromOutcome">openPODetail</property>
       <property
-         name="sdm:polyPoints">R50,522.0,171.59766,643.0,159.89648,L50</property>
+         name="sdm:polyPoints">R54,140.97636,202.53194,140.97636,289.04828,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase9"
+      from="View11"
+      to="View3">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="sdm:polyPoints">R54,411.8795,292.54828,411.8795,315.01556,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="sdm:polyPoints">B61,21.417578,322.01556,L54</property>
+   </ControlFlowCase>
+   <View
+      id="View12">
+      <property
+         name="activityId">SummaryPage</property>
+      <property
+         name="x">441.9178</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">147.56499</property>
+      <property
+         name="page">/pages/Supplier/SummaryPG.amx</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <View
+      id="View13">
+      <property
+         name="activityId">NotificationsPage</property>
+      <property
+         name="x">726.34064</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>NotificationsPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">428.16577</property>
+      <property
+         name="page">/pages/Supplier/NotificationsPG.amx</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View12"
+      to="View3">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="sdm:polyPoints">B56,445.4178,308.01556,L38</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View12"
+      to="View13">
+      <property
+         name="fromOutcome">notification</property>
+      <property
+         name="sdm:polyPoints">R42,733.34064,140.2144,T61</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View11"
+      to="View13">
+      <property
+         name="fromOutcome">notification</property>
+      <property
+         name="sdm:polyPoints">B50,267.53516,427.8152,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View2"
+      to="View13">
+      <property
+         name="fromOutcome">notification</property>
+      <property
+         name="sdm:polyPoints">B39,7.4175777,434.8152,L58</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View3"
+      to="View13">
+      <property
+         name="fromOutcome">notification</property>
+      <property
+         name="sdm:polyPoints">B50,556.2238,420.8152,L42</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="View13"
+      to="View12">
+      <property
+         name="fromOutcome">home</property>
+      <property
+         name="sdm:polyPoints">T50,726.34064,147.2144,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View13"
+      to="View3">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="sdm:polyPoints">T39,719.34064,318.51556,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="View2"
+      to="View12">
+      <property
+         name="fromOutcome">home</property>
+      <property
+         name="sdm:polyPoints">R46,228.16768,195.53194,228.16768,150.7144,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="View11"
+      to="View12">
+      <property
+         name="fromOutcome">home</property>
+      <property
+         name="sdm:polyPoints">R46,438.4178,285.54828,B44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase23"
+      from="View3"
+      to="View12">
+      <property
+         name="fromOutcome">home</property>
+      <property
+         name="sdm:polyPoints">T50,556.2238,154.2144,R58</property>
    </ControlFlowCase>
 </SDM>

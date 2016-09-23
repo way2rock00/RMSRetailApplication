@@ -8,6 +8,9 @@
     <accessorIterator MasterBinding="PODetailsServiceIterator" Binds="PODetailsData" RangeSize="25"
                       DataControl="PODetailsService" BeanClass="com.deloitte.rmsapp.Supplier.PODetails"
                       id="PODetailsDataIterator"/>
+    <accessorIterator MasterBinding="PODetailsDataIterator" Binds="poLines" RangeSize="25"
+                      DataControl="PODetailsService" BeanClass="com.deloitte.rmsapp.Supplier.POLine"
+                      id="poLinesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="PODetailsDataIterator" id="PODetailsData">
@@ -21,7 +24,7 @@
           <Item Value="poDate"/>
           <Item Value="poNumber"/>
           <Item Value="poTotal"/>
-          <Item Value="status"/> 
+          <Item Value="status"/>
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>
@@ -29,6 +32,18 @@
       </nodeDefinition>
       <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.POLine" Name="PODetailsData1">
         <AttrNames>
+          <Item Value="poLineNumber"/>
+          <Item Value="price"/>
+          <Item Value="quantity"/>
+          <Item Value="uom"/>
+          <Item Value="item"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="poLinesIterator" id="poLines">
+      <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.POLine" Name="poLines0">
+        <AttrNames>
+          <Item Value="item"/>
           <Item Value="poLineNumber"/>
           <Item Value="price"/>
           <Item Value="quantity"/>

@@ -5,9 +5,20 @@ public class POLine {
         super();
     }
     private String poLineNumber;
+    private String item;
+
+
     private String quantity;
     private String uom;
     private String price;
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getItem() {
+        return item;
+    }
 
     public void setPoLineNumber(String poLineNumber) {
         this.poLineNumber = poLineNumber;
@@ -40,17 +51,13 @@ public class POLine {
     public String getPrice() {
         return price;
     }
-    
-    public POLine(String poLineNumber
-                  ,String quantity
-                  ,String uom
-                  ,String price
-                  )
-    {
+
+    public POLine(String poLineNumber,String item, String quantity, String uom, String price) {
         this.poLineNumber = poLineNumber;
-        this.quantity =  quantity;
+        this.item = item;
+        this.quantity = quantity;
         this.uom = uom;
         this.price = price;
-            
+
     }
 }

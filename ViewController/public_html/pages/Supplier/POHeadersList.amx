@@ -19,7 +19,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf2" width="25%" halign="center" valign="middle">
-                        <amx:commandLink id="cl3" action="home">
+                        <amx:commandLink id="cl3" action="search">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-1x" inlineStyle="color:#000000;"/>
                         </amx:commandLink>
                     </amx:cellFormat>
@@ -36,6 +36,14 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
+        <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+            <amx:rowLayout id="r1l2">
+                <amx:cellFormat id="cf15" width="100%" halign="center">
+                    <amx:outputText value="No Data Found" rendered="#{bindings.POHeaderData.rangeSize &lt; 1}" id="ot36"
+                                    styleClass="xxRobotoFieldTitle"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
                       fetchSize="#{bindings.POHeaderData.rangeSize}"
                       selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
@@ -44,11 +52,11 @@
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1" action="openPODetail" showLinkIcon="true"
                           inlineStyle="#{((row.rowKey)%2)==0?'background-color:#FFFFFF;':'background-color:#eaeaea;'};border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
-                <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
-                    <amx:rowLayout id="r1l2">
-                        <amx:cellFormat id="cf15" width="3%"/>
+                <amx:tableLayout id="tl3" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat id="cf6" width="3%"/>
                         <amx:cellFormat id="cf012" width="60%">
-                            <amx:outputText value="PO# #{row.poNumber}" id="ot36" styleClass="xxRobotoGroupHeader"/>
+                            <amx:outputText value="PO ##{row.poNumber}" id="ot13" styleClass="xxRobotoGroupHeader"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf013" width="37%" halign="end">
                             <amx:outputText value="USD #{row.poTotal}" id="ot3" styleClass="xxRobotoGroupValue"/>

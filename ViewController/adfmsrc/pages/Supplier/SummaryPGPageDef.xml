@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.1.20" id="SummaryPGPageDef"
+                Package="pages.Supplier">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SummaryInfoService" id="SummaryInfoServiceIterator"/>
+    <accessorIterator MasterBinding="SummaryInfoServiceIterator" Binds="POHeaderData" RangeSize="-1"
+                      DataControl="SummaryInfoService" BeanClass="com.deloitte.rmsapp.Supplier.SummaryInfo"
+                      id="POHeaderDataIterator"/>
+    <accessorIterator MasterBinding="SummaryInfoServiceIterator" Binds="summaryData" RangeSize="-1"
+                      DataControl="SummaryInfoService" BeanClass="com.deloitte.rmsapp.Supplier.SummaryInfo"
+                      id="summaryDataIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="summaryDataIterator" id="summaryData">
+      <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.SummaryInfo" Name="summaryData0">
+        <AttrNames>
+          <Item Value="status"/>
+          <Item Value="recordId"/>
+          <Item Value="status_count"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

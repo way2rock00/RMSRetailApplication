@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+            <amx:outputText value="Notifications" id="ot1" styleClass="headertextwhite"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
+            <amx:tableLayout id="tl1" width="100%">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf1" width="33%" halign="center" valign="middle">
+                        <amx:commandLink id="cl2" action="home">
+                            <amx:outputHtml id="oh2" styleClass="fa fa-home fa-1x" inlineStyle="color:#000000;"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf2" width="33%" halign="center" valign="middle">
+                        <amx:commandLink id="cl3" action="search">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-1x" inlineStyle="color:#000000;"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf4" width="33%" halign="center" valign="middle">
+                        <amx:commandLink id="cl5" >
+                            <amx:outputHtml id="oh5" styleClass="fa fa-bell-o fa-1x" inlineStyle="color:#000000;"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+  </amx:panelPage>
+</amx:view>

@@ -55,7 +55,7 @@
                             <amx:spacer id="s2" width="15"/>
                             <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1x"
                                             inlineStyle="color:#000000; "/>
-                                            <amx:spacer id="s2" width="5"/>
+                                            <amx:spacer id="s1" width="5"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf7" halign="start" width="auto" valign="middle">
                             <amx:outputText value="#{row.status}" id="ot3" inlineStyle="vertical-align:middle;"/>

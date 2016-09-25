@@ -36,6 +36,7 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
+        <amx:fragment src="/pages/Supplier/SupplierSearchFragement.amxf" id="f1"/>
         <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
             <amx:rowLayout id="r1l2">
                 <amx:cellFormat id="cf15" width="100%" halign="center">
@@ -44,6 +45,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
+        <amx:outputText value="#{pageFlowScope.arrayVal}" id="ot14"/>
         <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
                       fetchSize="#{bindings.POHeaderData.rangeSize}"
                       selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"

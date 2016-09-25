@@ -45,10 +45,10 @@ public class POHeaderService {
 
         strOrderFromDate = strOrderFromDate == null ? "-999" : strOrderFromDate;
         strOrderToDate = strOrderToDate == null ? "-999" : strOrderToDate;
-        strSupplier = strSupplier == null ? "-999" : strSupplier;
+        strSupplier = strSupplier == null ? "3030" : strSupplier;
         strBuyer = strBuyer == null ? "-999" : strBuyer;
-        strFromDate = strFromDate == null ? "-999" : strFromDate;
-        strToDate = strToDate == null ? "-999" : strToDate;
+        strFromDate = strFromDate == null ? "-999" : strFromDate.substring(0, strFromDate.indexOf("T"));
+        strToDate = strToDate == null ? "-999" : strToDate.substring(0,strToDate.indexOf("T"));
         strStatus = strStatus == null ? "-999" : strStatus;
         strType = strType == null ? "-999" : strType;
 
@@ -58,10 +58,8 @@ public class POHeaderService {
                                     strStatus, strType);
         System.out.println("url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
-        String strDebug =
-            ":" + strOrderFromDate + ":" + strOrderToDate + ":" + strSupplier + ":" + strBuyer + ":" + strFromDate +
-            ":" + strToDate + ":" + strStatus + ":" + strType;
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + jsonArrayAsString);
+        String strDebug = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + "New");
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
             JSONObject parent = jsonObject.getJSONObject("P_PO_HDR_TAB");

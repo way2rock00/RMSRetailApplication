@@ -107,7 +107,9 @@ public class TestMB {
             BasicIterator basicIterator = it.getIterator();
             if(basicIterator!=null){
                 strDebug=strDebug+":iter:"+basicIterator.getTotalRowCount();
-            }
+                    Object currentRow = basicIterator.getCurrentRow();
+                    strDebug=strDebug+":rowCur:"+currentRow.getClass();
+                }
             
             }
             

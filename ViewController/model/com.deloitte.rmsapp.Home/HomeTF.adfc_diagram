@@ -14,13 +14,13 @@
       <property
          name="activityId">HeaderListPage</property>
       <property
-         name="x">14.417578</property>
+         name="x">14.417572</property>
       <property
          name="start">false</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>HeaderListPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">199.38252</property>
+         name="y">197.279</property>
       <property
          name="page">/pages/Supplier/POHeadersList.amx</property>
       <property
@@ -51,7 +51,7 @@
       <property
          name="fromOutcome">openPO</property>
       <property
-         name="sdm:polyPoints">L62,14.417578,329.01556,B50</property>
+         name="sdm:polyPoints">L62,14.417572,329.01556,B50</property>
    </ControlFlowCase>
    <View
       id="View5">
@@ -78,7 +78,7 @@
       <property
          name="fromOutcome">LandingPage</property>
       <property
-         name="sdm:polyPoints">R50,354.72647,98.44824,354.72647,143.7144,L46</property>
+         name="sdm:polyPoints">R50,354.72647,98.44824,354.72647,139.16264,L42</property>
    </ControlFlowCase>
    <View
       id="View11">
@@ -103,7 +103,7 @@
       <property
          name="fromOutcome">openPODetail</property>
       <property
-         name="sdm:polyPoints">R54,140.97636,202.53194,140.97636,289.04828,L50</property>
+         name="sdm:polyPoints">R58,140.97636,203.92842,140.97636,289.04828,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -123,7 +123,7 @@
       <property
          name="fromOutcome">search</property>
       <property
-         name="sdm:polyPoints">B61,21.417578,322.01556,L54</property>
+         name="sdm:polyPoints">B61,21.417572,322.01556,L54</property>
    </ControlFlowCase>
    <View
       id="View12">
@@ -132,9 +132,11 @@
       <property
          name="x">441.9178</property>
       <property
+         name="start">false</property>
+      <property
          name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">147.56499</property>
+         name="y">146.51323</property>
       <property
          name="page">/pages/Supplier/SummaryPG.amx</property>
       <property
@@ -173,7 +175,7 @@
       <property
          name="fromOutcome">notification</property>
       <property
-         name="sdm:polyPoints">R42,733.34064,140.2144,T61</property>
+         name="sdm:polyPoints">R42,733.34064,139.16264,T61</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -193,7 +195,7 @@
       <property
          name="fromOutcome">notification</property>
       <property
-         name="sdm:polyPoints">B39,7.4175777,434.8152,L58</property>
+         name="sdm:polyPoints">B39,7.417572,434.8152,L58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -213,7 +215,7 @@
       <property
          name="fromOutcome">home</property>
       <property
-         name="sdm:polyPoints">T50,726.34064,147.2144,R50</property>
+         name="sdm:polyPoints">T50,726.34064,146.16264,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -233,7 +235,7 @@
       <property
          name="fromOutcome">home</property>
       <property
-         name="sdm:polyPoints">R46,228.16768,195.53194,228.16768,150.7144,L54</property>
+         name="sdm:polyPoints">R42,228.16768,189.92842,228.16768,146.16264,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -253,6 +255,16 @@
       <property
          name="fromOutcome">home</property>
       <property
-         name="sdm:polyPoints">T50,556.2238,154.2144,R58</property>
+         name="sdm:polyPoints">T50,556.2238,153.16264,R58</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase24"
+      from="View12"
+      to="View2">
+      <property
+         name="fromOutcome">toOpenPO</property>
+      <property
+         name="sdm:polyPoints">L58,235.16768,153.16264,235.16768,196.92842,R50</property>
    </ControlFlowCase>
 </SDM>

@@ -23,11 +23,13 @@ public class pageControl {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "SUPPLIER");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}", "3030");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
         } else if (userName.equals("Buy01") && password.equals("Buy123")) {
             System.out.println("valid:");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "BUYER");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginBuyer}", "305");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "Invalid Credentials Provided.");
         }

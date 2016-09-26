@@ -96,6 +96,10 @@
         <from-outcome>notification</from-outcome>
         <to-activity-id>NotificationsPage</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>toOpenPO</from-outcome>
+        <to-activity-id>HeaderListPage</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__18">
       <from-activity-id>NotificationsPage</from-activity-id>

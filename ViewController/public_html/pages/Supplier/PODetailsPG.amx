@@ -10,7 +10,7 @@
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
+        <!--<amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
             <amx:tableLayout id="tl1" width="100%">
                 <amx:rowLayout id="rl1">
                     <amx:cellFormat id="cf1" width="33%" halign="center" valign="middle">
@@ -24,13 +24,13 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf4" width="33%" halign="center" valign="middle">
-                        <amx:commandLink id="cl5" action="notification">
+                        <amx:commandLink id="cl5">
                             <amx:outputHtml id="oh5" styleClass="fa fa-bell-o fa-1x" inlineStyle="color:#000000;"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-        </amx:panelGroupLayout>
+        </amx:panelGroupLayout>-->
         <amx:listView var="row" value="#{bindings.PODetailsData.collectionModel}"
                       fetchSize="#{bindings.PODetailsData.rangeSize}"
                       selectedRowKeys="#{bindings.PODetailsData.collectionModel.selectedRow}"

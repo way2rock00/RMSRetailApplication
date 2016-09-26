@@ -208,7 +208,50 @@
     color: #ffffff;
     font-size: 16px;
 }
-
+.amx-commandButton.buttonsLarge1 {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #00b500;
+    background-image: url("../images/DownArrow.png") !important;
+    background-repeat: no-repeat;
+    font-family: xxRobotoLight;
+    color: #ffffff;
+    font-size: 16px;
+    width:96%;
+    background-position: 50% 50%; 
+}
+.amx-commandButton.buttonsLarge2 {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #00b500;
+    background-image: url("../images/UpArrow.png") !important;
+    background-repeat: no-repeat;
+    font-family: xxRobotoLight;
+    color: #ffffff;
+    font-size: 16px;
+    width:96%;
+    background-position: 50% 50%; 
+}
+.gauge{
+    
+    
+    /*width: 160px;*/
+    
+    border-radius: 10px !important;
+    padding-top: 0% !important;
+    padding-bottom: 0% !important;
+    line-height: 20px !important;
+    text-align: center;
+    /*position: fixed;*/
+}
 .amx-commandButton.tabButtons {
     margin: 6px 0px 0px 0px;
     border: 0;

@@ -10,7 +10,7 @@
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
+        <!--<amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
             <amx:tableLayout id="tl1" width="100%">
                 <amx:rowLayout id="rl1">
                     <amx:cellFormat id="cf1" width="33%" halign="center" valign="middle">
@@ -30,6 +30,6 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-        </amx:panelGroupLayout>
+        </amx:panelGroupLayout>-->
   </amx:panelPage>
 </amx:view>

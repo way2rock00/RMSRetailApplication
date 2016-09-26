@@ -59,7 +59,7 @@
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
         <amx:panelGroupLayout layout="vertical" id="pgl2" halign="center">
-            <amx:commandButton text="Login In" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
+            <amx:commandButton text="Login" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
                                actionListener="#{pageControl.LoginIn_buttonClick}"
                                action="#{pageControl.landingNavigation}"/>     
         </amx:panelGroupLayout>

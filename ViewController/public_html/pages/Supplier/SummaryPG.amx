@@ -141,7 +141,7 @@
         <amx:panelGroupLayout layout="vertical" id="pgl1" halign="center"
                               rendered="#{pageFlowScope.showExpand == 'false'}">
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
-                               action="toOpenPO"/>
+                               action="toPOList"/>
         </amx:panelGroupLayout>
         <amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
             <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
@@ -170,10 +170,10 @@
                       initialScrollRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}"
                       showMoreStrategy="off" bufferStrategy="viewport" id="lv2">
-            <amx:listItem id="li2" action="toOpenPO" inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
+            <amx:listItem id="li2" action="toPOList" inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
-                        <amx:cellFormat id="cf1" width="15%" valign="top" halign="middle">
+                        <amx:cellFormat id="cf1" width="15%" valign="top" halign="center">
                             <amx:spacer id="s2" width="15"/>
                             <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1x"
                                             inlineStyle="color:#000000; "/>

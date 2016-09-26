@@ -6,7 +6,7 @@
             <amx:outputText value="Order ##{pageFlowScope.selectedPONum}" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="backToPOList">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
@@ -31,6 +31,8 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>-->
+        <amx:commandButton text="Temp" id="cb1" actionListener="#{pageFlowScope.TestMB.clicked}"/>
+        <amx:outputText value="#{pageFlowScope.debugVal}" id="ot19"/>
         <amx:listView var="row" value="#{bindings.PODetailsData.collectionModel}"
                       fetchSize="#{bindings.PODetailsData.rangeSize}"
                       selectedRowKeys="#{bindings.PODetailsData.collectionModel.selectedRow}"

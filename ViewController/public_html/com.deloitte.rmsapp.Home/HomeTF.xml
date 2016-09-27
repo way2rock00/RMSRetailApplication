@@ -43,6 +43,10 @@
         <from-outcome>openPODetail</from-outcome>
         <to-activity-id>DetailsPage</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>backToSummary</from-outcome>
+        <to-activity-id>SummaryPage</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>SummaryPage</from-activity-id>

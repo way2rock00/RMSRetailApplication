@@ -23,13 +23,19 @@ public class pageControl {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "SUPPLIER");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}", "3030");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchSupplier}", "3030");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
+            System.out.println("loginType:" + "SUPPLIER");
+            System.out.println("loginSuppier:" + "3030");
         } else if (userName.equals("Buy01") && password.equals("Buy123")) {
             System.out.println("valid:");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "BUYER");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginBuyer}", "305");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchBuyer}", "305");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
+            System.out.println("loginType:" + "BUYER");
+            System.out.println("loginSuppier:" + "305");
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "Invalid Credentials Provided.");
         }

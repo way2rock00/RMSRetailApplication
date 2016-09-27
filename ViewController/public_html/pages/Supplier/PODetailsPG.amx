@@ -165,16 +165,14 @@
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat id="cf24" width="33%" styleClass="cell-border">
-                            <amx:inputText id="it1" value="#{lineRow.quantity}" readOnly="true" simple="true"
-                                           inputType="number"/>
+                            <amx:inputText id="it1" value="#{lineRow.quantity}" simple="true" inputType="number"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf26" width="33%" styleClass="cell-border">
                             <amx:inputText id="it3" value="#{lineRow.uom}" readOnly="true" simple="true"
                                            inputType="text"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf28" width="33%" styleClass="cell-border">
-                            <amx:inputText id="it4" value="#{lineRow.price}" readOnly="true" simple="true"
-                                           inputType="number"/>
+                            <amx:inputText id="it4" value="#{lineRow.price}" simple="true" inputType="number"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -186,11 +184,21 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf32" width="3%"/>
                         <amx:cellFormat id="cf33" width="auto" halign="end" inlineStyle="padding-top:5px;">
-                            <amx:inputText simple="true" inputType="text" id="it2" readOnly="true"/>
+                            <amx:inputText simple="true" inputType="text" id="it2"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:listItem>
         </amx:listView>
+        <amx:facet name="footer">
+            <amx:panelGroupLayout layout="horizontal" id="pgl2" halign="center">
+                <amx:commandButton text="Submit" id="cb111"  rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge" />
+                <amx:commandButton text="Cancel" id="cb2" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge"
+                                   inlineStyle="background-color:Red;"/>
+                <amx:commandButton text="Accept" id="cb3" rendered="#{pageFlowScope.loginType == 'BUYER'}" styleClass="buttonsLarge" />
+                <amx:commandButton text="Reject" id="cb4" rendered="#{pageFlowScope.loginType == 'BUYER'}" styleClass="buttonsLarge"
+                                   inlineStyle="background-color:Red;"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
     </amx:panelPage>
 </amx:view>

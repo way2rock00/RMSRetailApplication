@@ -42,7 +42,6 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
-        
         <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
@@ -70,7 +69,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam2" label="Buyer" styleClass="label" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam2" label="Buyer" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}"
+                                      styleClass="label" showRequired="false">
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
@@ -82,7 +82,7 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label" showRequired="false"
-                                      rendered="true">
+                                      rendered="#{pageFlowScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
@@ -159,29 +159,28 @@
         </amx:panelGroupLayout>
         <!--<amx:commandButton text="Set" id="cb3">
         <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.showExpand}"/>
-        </amx:commandButton>--> 
-        
-        
-        
-        
+        </amx:commandButton>-->
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       initialScrollRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}"
-                      showMoreStrategy="off" bufferStrategy="viewport" id="lv2">
-            <amx:listItem id="li2" action="toPOList" inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
+                      selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}" showMoreStrategy="off"
+                      bufferStrategy="viewport" id="lv2">
+            <amx:listItem id="li2" action="toPOList"
+                          inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
-                        <amx:cellFormat id="cf1" width="15%" valign="top" halign="center">
-                            <amx:spacer id="s2" width="15"/>
+                        <amx:cellFormat id="cf1" width="15%" valign="middle" halign="center">
                             <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1x"
                                             inlineStyle="color:#000000; "/>
-                                            <amx:spacer id="s1" width="5"/>
+                            <amx:spacer id="s1" width="5"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf2" halign="start" width="auto" valign="middle">
+                        <amx:cellFormat id="cf2" halign="start" width="70%" valign="middle">
                             <amx:outputText value="#{row.status}" id="ot3" inlineStyle="vertical-align:middle;"/>
-                            
+                            <!--<amx:inputText simple="true" readOnly="true" value="#{row.status}" id="it7"/>
+                            <amx:inputText simple="true" readOnly="true" value="#{row.status_count}" id="it8"
+                                           inlineStyle="border-radius:30px 30px 30px 30px / 30px 30px 30px 30px ; border-color:#52ff52;"/>
+                                -->
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" halign="start" width="auto">
                             <!--<dvtm:ledGauge id="ledGauge1" type="circle" value="#{row.status_count}" size="2.0"
@@ -190,8 +189,9 @@
                                 <dvtm:threshold id="threshold2" text="Medium" maxValue="10"/>
                                 <dvtm:threshold id="threshold3" text="High" maxValue="100"/>
                             </dvtm:ledGauge>-->
-                            <amx:commandButton text="#{row.status_count}" id="cb3"
-                                               inlineStyle="border-radius:30px 30px 30px 30px / 30px 30px 30px 30px ; border-color:#52ff52;"/>
+                             <amx:commandButton text="#{row.status_count}" id="cb3"
+                                               styleClass="round-button"/>
+                                               
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

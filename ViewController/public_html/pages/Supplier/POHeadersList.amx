@@ -6,7 +6,7 @@
             <amx:outputText value="Purchase Orders" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="backToSummary">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
@@ -66,7 +66,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam2" label="Buyer" styleClass="label" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam2" label="Buyer" styleClass="label" showRequired="false" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" >
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
@@ -78,7 +78,7 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label" showRequired="false"
-                                      rendered="true">
+                                      rendered="#{pageFlowScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">

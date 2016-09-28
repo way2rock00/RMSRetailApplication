@@ -17,9 +17,11 @@ import oracle.adfmf.bindings.dbf.AmxIteratorBinding;
 import oracle.adfmf.bindings.dbf.AmxBindingContainer;
 import oracle.adfmf.bindings.dbf.AmxBindingContext;
 import oracle.adfmf.bindings.dbf.AmxCollectionModel;
+import oracle.adfmf.bindings.dbf.AmxTreeBinding.AmxTreeNodeDefinitionAccessor;
 import oracle.adfmf.bindings.iterator.BasicIterator;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfInvocationException;
+import oracle.adfmf.util.GenericType;
 
 public class TestMB {
     public TestMB() {
@@ -27,73 +29,73 @@ public class TestMB {
 
     public void clicked(ActionEvent actionEvent) {
         String strDebug="S";
-        try{
-            AmxBindingContainer amxBindingContainer = AdfmfJavaUtilities.getBindingContainer();
-            if(amxBindingContainer!=null)
-            {
-                strDebug=strDebug+":1";
-                try{
-                Map bindings = amxBindingContainer.getControlBindings();
-                    strDebug=strDebug+":SizeBin:"+bindings.size();
-                    if(bindings.size()>0 ){
-                    Set keys = bindings.keySet();
-                    Iterator itr = keys.iterator();
-                    
-                    String key;
-                    //                String value;
-                    while(itr.hasNext())
-                    {
-                        key = (String)itr.next();
-                        Object value = bindings.get(key);
-                        strDebug =strDebug+":("+key + " - "+ value+")"+"::"+value.getClass();
-                    }
-                    }
-                }
-                catch(Exception e1){
-                    strDebug=strDebug+"Except:"+e1.getMessage();
-                }
-                Map definitions = amxBindingContainer.getTreeDefinitions("PODetailsData");
-                strDebug=strDebug+":Size:"+definitions.size();
-                if(definitions.size()>0 ){
-                Set keys = definitions.keySet();
-                Iterator itr = keys.iterator();
-                
-                String key;
-//                String value;
-                while(itr.hasNext())
-                {
-                    key = (String)itr.next();
-                    if("poLines".equalsIgnoreCase(key))
-                    {
-                    try{
-                        strDebug=strDebug+"TreBind";
-                      AmxTreeBinding a = (AmxTreeBinding)definitions.get("poLines");
-                        strDebug =  strDebug + "::" + a.getRangeSize() + "::" + a.getLabel() + "::" + a.getName();
-                        }
-                    catch(Exception e2){
-                        strDebug=strDebug+"ETre:"+e2.getMessage(); 
-                    }
-                    }
-                    if("PODetailsData".equalsIgnoreCase(key))
-                    {
-                    try{
-                        strDebug=strDebug+"LineBind";
-                      AmxIteratorBinding a = (AmxIteratorBinding)definitions.get("PODetailsData");
-                       strDebug = strDebug + "::" + a.getRangeSize() + "::"+a.getName();
-                        }
-                    catch(Exception e2){
-                        strDebug=strDebug+"ETre:"+e2.getMessage(); 
-                    }
-                    }
-                    Object value = definitions.get(key);
-                    strDebug =strDebug+":("+key + " - "+ value+")"+"::"+value.getClass();
-                }
-            }
-        }
-        }
-            catch(Exception e){
-                strDebug=strDebug+":Error:"+e.getMessage();
-            }
+//        try{
+//            AmxBindingContainer amxBindingContainer = AdfmfJavaUtilities.getBindingContainer();
+//            if(amxBindingContainer!=null)
+//            {
+//                strDebug=strDebug+":1";
+//                try{
+//                Map bindings = amxBindingContainer.getControlBindings();
+//                    strDebug=strDebug+":SizeBin:"+bindings.size();
+//                    if(bindings.size()>0 ){
+//                    Set keys = bindings.keySet();
+//                    Iterator itr = keys.iterator();
+//                    
+//                    String key;
+//                    //                String value;
+//                    while(itr.hasNext())
+//                    {
+//                        key = (String)itr.next();
+//                        Object value = bindings.get(key);
+//                        strDebug =strDebug+":("+key + " - "+ value+")"+"::"+value.getClass();
+//                    }
+//                    }
+//                }
+//                catch(Exception e1){
+//                    strDebug=strDebug+"Except:"+e1.getMessage();
+//                }
+//                Map definitions = amxBindingContainer.getTreeDefinitions("PODetailsData");
+//                strDebug=strDebug+":Size:"+definitions.size();
+//                if(definitions.size()>0 ){
+//                Set keys = definitions.keySet();
+//                Iterator itr = keys.iterator();
+//                
+//                String key;
+////                String value;
+//                while(itr.hasNext())
+//                {
+//                    key = (String)itr.next();
+//                    if("poLines".equalsIgnoreCase(key))
+//                    {
+//                    try{
+//                        strDebug=strDebug+"TreBind";
+//                      AmxTreeBinding a = (AmxTreeBinding)definitions.get("poLines");
+//                        strDebug =  strDebug + "::" + a.getRangeSize() + "::" + a.getLabel() + "::" + a.getName();
+//                        }
+//                    catch(Exception e2){
+//                        strDebug=strDebug+"ETre:"+e2.getMessage(); 
+//                    }
+//                    }
+//                    if("PODetailsData".equalsIgnoreCase(key))
+//                    {
+//                    try{
+//                        strDebug=strDebug+"LineBind";
+//                      AmxIteratorBinding a = (AmxIteratorBinding)definitions.get("PODetailsData");
+//                       strDebug = strDebug + "::" + a.getRangeSize() + "::"+a.getName();
+//                        }
+//                    catch(Exception e2){
+//                        strDebug=strDebug+"ETre:"+e2.getMessage(); 
+//                    }
+//                    }
+//                    Object value = definitions.get(key);
+//                    strDebug =strDebug+":("+key + " - "+ value+")"+"::"+value.getClass();
+//                }
+//            }
+//        }
+//        }
+//            catch(Exception e){
+//                strDebug=strDebug+":Error:"+e.getMessage();
+//            }
         try{
             Object o = AdfmfJavaUtilities.getELValue("#{bindings.PODetailsData.collectionModel}");
             strDebug =strDebug+"::::"+o+":::::"+o.getClass();
@@ -101,21 +103,61 @@ public class TestMB {
             strDebug =strDebug+"::::"+o+":::::"+o.getClass();
             AmxCollectionModel a = (AmxCollectionModel)AdfmfJavaUtilities.getELValue("#{bindings.PODetailsData.collectionModel}");
             if(a!=null)
-            strDebug=strDebug+":col:"+a.toJSON()+":"+a.getRangeSize()+":"+a.getTotalSize();
+            {
+//            strDebug=strDebug+":col:"+a.toJSON()+":"+a.getRangeSize()+":"+a.getTotalSize();
+                Map binding = a.getTreeBinding();
+                AmxTreeNodeDefinitionAccessor accessor = a.getColumnAttributes();
+                if(accessor!=null)
+                    strDebug=strDebug+":ACCESSOR:"+accessor.toJSON();   
+                AmxTreeNodeDefinitionAccessor amxTreeNodeDefinitionAccessor = a.getColumnAttributes();
+                if(amxTreeNodeDefinitionAccessor!=null)
+                    strDebug=strDebug+":AMXACCESSOR:"+amxTreeNodeDefinitionAccessor.toJSON(); 
+                Object[] keys1 = a.getKeys();
+                for(int i=0;i<keys1.length;i++)
+                {
+                    strDebug=strDebug+":KEY:"+keys1[i];   
+                }
+//                strDebug=strDebug+":TreeSize:"+binding.size();
+                if(binding!=null)
+                {
+                if(binding.size()>0 ){
+                Set keys = binding.keySet();
+                Iterator itr = keys.iterator();
+                
+                String key;
+                //                String value;
+                while(itr.hasNext())
+                {
+                    key = (String)itr.next();
+                    Object value = binding.get(key);
+                    strDebug =strDebug+":("+key + " - "+ value+")"+"::"+value.getClass();                    
+                }
+                }
+                }
+                
+                Object bindings = a.getTreeNodeBindings();
+                if(bindings!=null)
+                strDebug =strDebug+":bindings:"+bindings.getClass();      
+            }
             AmxAccessorIteratorBinding it = (AmxAccessorIteratorBinding)AdfmfJavaUtilities.getELValue("#{bindings.PODetailsData.iteratorBinding}");
             if(it!=null){
             BasicIterator basicIterator = it.getIterator();
             if(basicIterator!=null){
                 strDebug=strDebug+":iter:"+basicIterator.getTotalRowCount();
-                    Object currentRow = basicIterator.getCurrentRow();
-                    strDebug=strDebug+":rowCur:"+currentRow.getClass();
+                        Object currentRow = basicIterator.getCurrentRow();
+                        strDebug=strDebug+":rowCur:"+currentRow.getClass();
+                    GenericType genType = (GenericType)basicIterator.getCurrentRow();
+                    if(genType!=null)
+                    {
+                        strDebug=strDebug+":GenType:"+genType.getName();
+                    }
                 }
             
             }
             
         }
         catch(Exception e) {
-            
+            strDebug=strDebug+":MaiExp:" +e.getMessage();
         }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
         
@@ -130,4 +172,6 @@ public class TestMB {
 //        } catch (AdfInvocationException e) {
 //        }
     }
+    
+
 }

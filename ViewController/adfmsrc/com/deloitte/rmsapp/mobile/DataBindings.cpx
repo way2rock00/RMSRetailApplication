@@ -9,13 +9,17 @@
     <page path="/pages/Supplier/POHeadersList.amx" usageId="com_deloitte_rmsapp_mobile_POHeadersListPageDef"/>
     <page path="/pages/Supplier/PODetailsPG.amx" usageId="com_deloitte_rmsapp_mobile_PODetailsPGPageDef"/>
     <page path="/pages/Supplier/SummaryPG.amx" usageId="com_deloitte_rmsapp_mobile_SummaryPGPageDef"/>
+    <page path="/pages/setup/Springboard.amx" usageId="com_deloitte_rmsapp_mobile_SpringboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_deloitte_rmsapp_mobile_POHeadersListPageDef" path="pages.Supplier.POHeadersListPageDef"/>
     <page id="com_deloitte_rmsapp_mobile_PODetailsPGPageDef" path="pages.Supplier.PODetailsPGPageDef"/>
     <page id="com_deloitte_rmsapp_mobile_SummaryPGPageDef" path="pages.Supplier.SummaryPGPageDef"/>
+    <page id="com_deloitte_rmsapp_mobile_SpringboardPageDef" path="pages.setup.SpringboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ApplicationFeatures" path="com.deloitte.rmsapp.application.ApplicationFeatures"/>
+    <dc id="SpringboardDC" path="com.deloitte.rmsapp.mobile.SpringboardDC"/>
     <dc id="SummaryInfoService" path="com.deloitte.rmsapp.mobile.SummaryInfoService"/>
     <dc id="PODetailsService" path="com.deloitte.rmsapp.mobile.PODetailsService"/>
     <dc id="POHeaderService" path="com.deloitte.rmsapp.mobile.POHeaderService"/>

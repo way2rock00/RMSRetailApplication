@@ -3,6 +3,15 @@
                    version="1.0" name="RMSRetailApplication" id="com.company.RMSRetailApplication"
                    appControllerFolder="ApplicationController"
                    listener-class="com.deloitte.rmsapp.application.LifeCycleListenerImpl">
-  <adfmf:featureReference refId="com.deloitte.rmsapp.Home" id="fr1" showOnNavigationBar="false"
+  <adfmf:featureReference refId="com.deloitte.rmsapp.Home" id="fr1"/>
+  <adfmf:featureReference refId="com.deloitte.rmsapp.Notification" id="fr2"/>
+  <adfmf:featureReference refId="com.deloitte.rmsapp.Springboard" id="fr3" showOnNavigationBar="false"
                           showOnSpringboard="false"/>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="true" showSpringboardAtStartup="false" displayGotoSpringboardControl="false"
+                       width="300">
+      <adfmf:springboardFeatureReference refId="com.deloitte.rmsapp.Springboard" id="sfr1"/>
+    </adfmf:springboard>
+    <adfmf:navigationBar enabled="false"/>
+  </adfmf:navigation>
 </adfmf:application>

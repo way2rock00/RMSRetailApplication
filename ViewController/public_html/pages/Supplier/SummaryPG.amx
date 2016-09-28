@@ -6,9 +6,12 @@
             <amx:outputText value="Welcome #{pageFlowScope.userName}" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <!--<amx:commandLink id="cl1" action="__back">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
-            </amx:commandLink>
+            </amx:commandLink>-->
+            <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-2x" inlineStyle="color:#1C75BC;"/>
+            </amx:commandLink>            
         </amx:facet>
         <!--
         <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">

@@ -5,4 +5,14 @@
       <adfmf:amx file="com.deloitte.rmsapp.Home/HomeTF.xml#HomeTF"/>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="com.deloitte.rmsapp.Notification" name="Notification">
+    <adfmf:content id="com.deloitte.rmsapp.Notification.1">
+      <adfmf:amx file="pages/Supplier/Notification.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="com.deloitte.rmsapp.Springboard" name="Springboard">
+    <adfmf:content id="com.deloitte.rmsapp.Springboard.1">
+      <adfmf:amx file="pages/setup/Springboard.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>

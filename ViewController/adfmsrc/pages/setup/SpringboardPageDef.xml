@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SpringboardPageDef"
+                Package="pages.setup">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SpringboardDC" id="SpringboardDCIterator"/>
+    <accessorIterator MasterBinding="SpringboardDCIterator" Binds="springboardItems" RangeSize="25"
+                      DataControl="SpringboardDC" BeanClass="com.deloitte.rmsapp.setup.SpringboardItem"
+                      id="springboardItemsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="springboardItemsIterator" id="springboardItems">
+      <nodeDefinition DefName="com.deloitte.rmsapp.setup.SpringboardItem" Name="springboardItems0">
+        <AttrNames>
+          <Item Value="key"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="resetFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="fid" NDValue="#{pageFlowScope.featureId" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="featureId" NDValue="Home" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

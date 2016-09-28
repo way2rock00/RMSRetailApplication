@@ -2,6 +2,7 @@ package com.deloitte.rmsapp.mobile;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfException;
 
@@ -108,4 +109,14 @@ public class pageControl {
     }
 
 
+    public void navClick(ActionEvent actionEvent) {
+        String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
+        try {
+           System.out.println("inside try " +currentFeature);
+            AdfmfContainerUtilities.gotoFeature(currentFeature);
+        } catch (Exception e) {
+            System.out.println("inside exception " +currentFeature);
+            e.printStackTrace();
+        }
+    }
 }

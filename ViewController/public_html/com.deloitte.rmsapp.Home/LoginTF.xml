@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="LoginTF">
+    <default-activity>Login</default-activity>
+    <managed-bean id="__6">
+      <managed-bean-name>pageControl</managed-bean-name>
+      <managed-bean-class>com.deloitte.rmsapp.mobile.pageControl</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__3">
+      <managed-bean-name>SpringBoardNavBean</managed-bean-name>
+      <managed-bean-class>com.deloitte.rmsapp.mobile.SpringBoard1</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <view id="Login">
+      <page>/Login.amx</page>
+    </view>
+    <task-flow-call id="HomeTF">
+      <task-flow-reference>
+        <document>/com.deloitte.rmsapp.Home/HomeTF.xml</document>
+        <id>HomeTF</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="Springboard">
+      <page>/pages/setup/Springboard.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Login</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>LandingPage</from-outcome>
+        <to-activity-id>HomeTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

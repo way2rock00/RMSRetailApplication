@@ -14,18 +14,15 @@
       <nodeDefinition DefName="com.deloitte.rmsapp.setup.SpringboardItem" Name="springboardItems0">
         <AttrNames>
           <Item Value="key"/>
+          <Item Value="featureId"/>
+          <Item Value="value"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <methodAction id="resetFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetFeature"
-                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
-                  InstanceName="data.ApplicationFeatures.dataProvider">
-      <NamedData NDName="fid" NDValue="#{pageFlowScope.featureId" NDType="java.lang.String"/>
-    </methodAction>
     <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider">
-      <NamedData NDName="featureId" NDValue="Home" NDType="java.lang.String"/>
+      <NamedData NDName="featureId" NDValue="#{pageFlowScope.Nav}" NDType="java.lang.String"/>
     </methodAction>
   </bindings>
 </pageDefinition>

@@ -37,39 +37,12 @@
       <property
          name="description">&lt;html>&lt;p>&lt;b>SearchPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">91.149414</property>
+         name="y">89.74707</property>
       <property
          name="page">/pages/Supplier/POSearchPG.amx</property>
       <property
          name="exceptionHandler">false</property>
    </View>
-   <View
-      id="View5">
-      <property
-         name="activityId">Login</property>
-      <property
-         name="x">267.53513</property>
-      <property
-         name="start">true</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="y">98.79883</property>
-      <property
-         name="page">/Login.amx</property>
-      <property
-         name="exceptionHandler">false</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase6"
-      from="View5"
-      to="View12">
-      <property
-         name="fromOutcome">LandingPage</property>
-      <property
-         name="sdm:polyPoints">B50,267.53513,182.29883,267.5352,182.29883,T50</property>
-   </ControlFlowCase>
    <View
       id="View11">
       <property
@@ -102,7 +75,9 @@
       <property
          name="x">267.5352</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="y">266.5</property>
       <property

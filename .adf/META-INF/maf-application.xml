@@ -3,6 +3,7 @@
                    version="1.0" name="RMSRetailApplication" id="com.company.RMSRetailApplication"
                    appControllerFolder="ApplicationController"
                    listener-class="com.deloitte.rmsapp.application.LifeCycleListenerImpl">
+  <adfmf:featureReference refId="com.deloitte.rmsapp.Login" id="fr4"/>
   <adfmf:featureReference refId="com.deloitte.rmsapp.Home" id="fr1"/>
   <adfmf:featureReference refId="com.deloitte.rmsapp.Notification" id="fr2"/>
   <adfmf:featureReference refId="com.deloitte.rmsapp.Springboard" id="fr3" showOnNavigationBar="false"

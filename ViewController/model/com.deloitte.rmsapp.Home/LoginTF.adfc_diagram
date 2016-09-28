@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">Login</property>
+      <property
+         name="x">591.5</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">390.5918</property>
+      <property
+         name="page">/Login.amx</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>HomeTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="activityId">HomeTF</property>
+      <property
+         name="x">903.5</property>
+      <property
+         name="y">418.1494</property>
+      <property
+         name="documentReference">/com.deloitte.rmsapp.Home/HomeTF.xml</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="taskFlowId">HomeTF</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">LandingPage</property>
+      <property
+         name="sdm:polyPoints">R50,632.5,390.2412,862.5,417.79883,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">Springboard</property>
+      <property
+         name="x">735.68945</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Springboard&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">140.09766</property>
+      <property
+         name="page">/pages/setup/Springboard.amx</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

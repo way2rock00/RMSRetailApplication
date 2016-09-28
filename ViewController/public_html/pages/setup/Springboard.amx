@@ -25,7 +25,7 @@
                       initialScrollRowKeys="#{bindings.springboardItems.collectionModel.selectedRow}"
                       selectionListener="#{bindings.springboardItems.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" styleClass="springboardList">
-            <amx:listItem id="li1" action="#{bindings.resetFeature.execute}" styleClass="sprigboardListItem"
+            <amx:listItem id="li1" styleClass="sprigboardListItem"
                           showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
@@ -35,7 +35,13 @@
                         </amx:cellFormat>
                         <amx:cellFormat width="10px" id="cf3"/>
                         <amx:cellFormat width="80%" height="43px" id="cf2">
-                            <amx:outputText value="#{row.key}" id="ot3" inlineStyle="color:#888888;"/>
+                            <amx:commandLink text="commandLink1" id="cl1">
+                                <amx:outputText value="#{row.key}" id="ot3" inlineStyle="color:#888888;"/>
+                                
+                                <amx:setPropertyListener id="spl2" from="#{row.featureId}" to="#{SBBean.currentFeature2}"/>
+                                <!--<amx:setPropertyListener id="spl1"/>-->
+                                <amx:actionListener id="al1" binding="#{SBBean.springBoardNavi}"/>
+                            </amx:commandLink>
                         </amx:cellFormat>
                         <amx:cellFormat width="10px" id="cf1"/>
                         <amx:cellFormat width="14px" halign="end" id="cf4">

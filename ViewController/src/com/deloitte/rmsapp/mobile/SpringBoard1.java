@@ -5,6 +5,8 @@ import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.exception.AdfException;
 
 public class SpringBoard1 {
     //String currentFeature;
@@ -16,27 +18,42 @@ public class SpringBoard1 {
     }
 
     public void springBoardNavi(ActionEvent actionEvent) {
-        System.out.println("tatata");
-        //String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
+        System.out.println("Test1");
         try {
-           System.out.println("inside try " +currentFeature2);
-            AdfmfContainerUtilities.gotoFeature(currentFeature2);
-       } catch (Exception e) {
-            System.out.println("inside exception " +currentFeature2);
+            String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
+            System.out.println("Current Feature1 :"+currentFeature);
+            if(currentFeature.equals("com.deloitte.rmsapp.Notification"))
+            {
+                AdfmfContainerUtilities.gotoFeature(currentFeature);
+            }
+            else if(currentFeature.equals("Logout"))
+            {
+                AdfmfJavaUtilities.logout();
+            }
+            //AdfmfContainerUtilities.gotoFeature(currentFeature);
+            System.out.println("Current Feature :"+currentFeature);
+        }catch (Exception e) {
+            System.out.println("inside exception " );
+            System.out.println(e);
             e.printStackTrace();
+            
         }
+//        try {
+//           System.out.println("inside try " +currentFeature);
+//            AdfmfContainerUtilities.gotoFeature(currentFeature);
+//       } 
     }
 
-    public void gotoItem(ActionEvent actionEvent) {
-        String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
-        try {
-           System.out.println("inside try " +currentFeature);
-            AdfmfContainerUtilities.gotoFeature(currentFeature);
-       } catch (Exception e) {
-            System.out.println("inside exception " +currentFeature);
-            e.printStackTrace();
-        }
-    }
+//    public void gotoItem(ActionEvent actionEvent) {
+//        String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
+//        try {
+//           System.out.println("inside try " +currentFeature);
+//            AdfmfContainerUtilities.gotoFeature(currentFeature);
+//       } catch (Exception e) {
+//            System.out.println("inside exception " +currentFeature);
+//            e.printStackTrace();
+//        }
+//    }
 
     public void setCurrentFeature1(String currentFeature1) {
         String oldCurrentFeature1 = this.currentFeature1;

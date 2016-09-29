@@ -8,11 +8,15 @@ public class SpringboardItem {
     public SpringboardItem() {
         super();
     }
-
-    SpringboardItem(String key, String value, String featureId) {
-        setKey(key);
-        setValue(value);
-        setValue(featureId);
+    
+    public SpringboardItem(String key
+                          ,String value
+                          ,String featureId
+                           )
+    {
+        this.key=key;
+        this.value=value;
+        this.featureId=featureId;
     }
 
 
@@ -39,4 +43,6 @@ public class SpringboardItem {
     public String getFeatureId() {
         return featureId;
     }
+
+
 }

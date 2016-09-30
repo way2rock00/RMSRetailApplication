@@ -68,7 +68,7 @@ public class NotificationDetailsService {
 
                 String poRevision = null;
                 if (temp.getString("PO_REVISION") != null)
-                    supBuyer = temp.getString("PO_REVISION");
+                    poRevision = temp.getString("PO_REVISION");
 
                 String recordId = null;
                 if (temp.getString("RECORD_ID") != null)

@@ -37,6 +37,10 @@
         <from-outcome>backToSummary</from-outcome>
         <to-activity-id>SummaryPage</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>toPOList</from-outcome>
+        <to-activity-id>HeaderListPage</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>SummaryPage</from-activity-id>

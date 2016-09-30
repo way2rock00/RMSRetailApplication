@@ -6,13 +6,14 @@
             <amx:tableLayout id="tl4" inlineStyle="width:100%;" width="100%">
                 <amx:rowLayout id="rl4">
                     <amx:cellFormat id="cf16" width="20px">
-                        <amx:image source="/resources/images/Profile.png" shortDesc="profile" id="i2"/>
+                    <amx:outputHtml id="oh1" styleClass="fa fa-user fa-lg" inlineStyle="color:White; flex-wrap:wrap;"
+                                    value=" #{applicationScope.userName}"/>    
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
             <amx:panelGroupLayout id="pgl1">
                 <amx:commandLink id="cb2" shortDesc="Home" actionListener="#{bindings.gotoFeature.execute}">
-                    <amx:outputHtml id="oh1" styleClass="fa fa-home fa-lg" inlineStyle="color:White;"/>
+                    <amx:outputHtml id="oh3" styleClass="fa fa-home fa-lg" inlineStyle="color:White;"/>
                 </amx:commandLink>
             </amx:panelGroupLayout>
         </amx:facet>

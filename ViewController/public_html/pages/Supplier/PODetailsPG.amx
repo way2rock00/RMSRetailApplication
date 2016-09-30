@@ -30,9 +30,8 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-        </amx:panelGroupLayout>-->
-        <amx:commandButton text="Temp" id="cb1" actionListener="#{pageFlowScope.TestMB.clicked}"/>
-        <amx:outputText value="#{pageFlowScope.debugVal}" id="ot19"/>
+        </amx:panelGroupLayout>-->        
+        
         <amx:listView var="row" value="#{bindings.PODetailsData.collectionModel}"
                       fetchSize="#{bindings.PODetailsData.rangeSize}"
                       selectedRowKeys="#{bindings.PODetailsData.collectionModel.selectedRow}"
@@ -192,11 +191,12 @@
         </amx:listView>
         <amx:facet name="footer">
             <amx:panelGroupLayout layout="horizontal" id="pgl2" halign="center">
-                <amx:commandButton text="Submit" id="cb111"  rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge" />
-                <amx:commandButton text="Cancel" id="cb2" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge"
-                                   inlineStyle="background-color:Red;"/>
-                <amx:commandButton text="Accept" id="cb3" rendered="#{pageFlowScope.loginType == 'BUYER'}" styleClass="buttonsLarge" />
-                <amx:commandButton text="Reject" id="cb4" rendered="#{pageFlowScope.loginType == 'BUYER'}" styleClass="buttonsLarge"
+                <amx:commandButton text="Submit" id="cb111"  rendered="#{applicationScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge"
+                                   actionListener="#{pageFlowScope.TestMB.clicked}"/>
+                <amx:commandButton text="Cancel" id="cb2" rendered="#{applicationScope.loginType == 'SUPPLIER'}" styleClass="buttonsLarge"
+                                   inlineStyle="background-color:Red;" action="__back"/>
+                <amx:commandButton text="Accept" id="cb3" rendered="#{applicationScope.loginType == 'BUYER'}" styleClass="buttonsLarge" />
+                <amx:commandButton text="Reject" id="cb4" rendered="#{applicationScope.loginType == 'BUYER'}" styleClass="buttonsLarge"
                                    inlineStyle="background-color:Red;"/>
             </amx:panelGroupLayout>
         </amx:facet>

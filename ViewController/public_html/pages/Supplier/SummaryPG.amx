@@ -146,20 +146,37 @@
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
                                action="toPOList"/>
         </amx:panelGroupLayout>
-        <amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
+         <amx:tableLayout id="tl11" width="100%"  >
+            <amx:rowLayout id="r1l2">
+                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle" inlineStyle="background-color:#86BC25;">
+                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "  inlineStyle="color:#ffffff;" shortDesc="Expand"
+                                       rendered="#{pageFlowScope.showExpand == 'true'}"
+                                       >
+                        <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
+                    </amx:commandButton>
+                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x"  shortDesc="Collapse" inlineStyle="color:#ffffff;"
+                                       rendered="#{pageFlowScope.showExpand == 'false'}">
+                        <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
+                    </amx:commandButton>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+        <!--<amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
             <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
                                rendered="#{pageFlowScope.showExpand == 'true' || pageFlowScope.showExpand == null }">
                 <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
             </amx:commandButton>
-            <!--<amx:commandLink text="Expand" id="cl2" styleClass="buttonsLarge1"
+            <amx:commandLink text="Expand" id="cl2" styleClass="buttonsLarge1"
                              rendered="#{pageFlowScope.showExpand == 'true'}" shortDesc="Expand">
                 <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandLink>-->
+            </amx:commandLink>
             <amx:commandButton id="cb2" styleClass="buttonsLarge2" shortDesc="Collapse"
                                rendered="#{pageFlowScope.showExpand == 'false'}">
                 <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
             </amx:commandButton>
         </amx:panelGroupLayout>
+        -->
         <!--<amx:commandButton text="Set" id="cb3">
         <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.showExpand}"/>
         </amx:commandButton>-->

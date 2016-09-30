@@ -14,7 +14,10 @@ import com.deloitte.rmsapp.utility.ServiceManager;
 
 import java.math.BigDecimal;
 
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -32,9 +35,9 @@ public class POHeaderService {
         poHeaderList = new ArrayList<POHeaders>();
         ServiceManager serviceManager = new ServiceManager();
 
-        
-        String strOrderFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
-        String strOrderToDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
+
+        String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
+        String strOrderTo = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
         String strSupplier = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchSupplier}");
         String strBuyer = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchBuyer}");
         String strFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchFromDate}");
@@ -42,18 +45,60 @@ public class POHeaderService {
         String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
         String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
 
-        strOrderFromDate = strOrderFromDate == null ? "-999" : strOrderFromDate;
-        strOrderToDate = strOrderToDate == null ? "-999" : strOrderToDate;
-        strSupplier = strSupplier == null ? "3030" : strSupplier;
+        strOrderFrom = strOrderFrom == null ? "-999" : strOrderFrom;
+        strOrderFrom = strOrderFrom == "" ? "-999" : strOrderFrom;
+        strOrderTo = strOrderTo == null ? "-999" : strOrderTo;
+        strOrderTo = strOrderTo == "" ? "-999" : strOrderTo;
+        strSupplier = strSupplier == null ? "-999" : strSupplier;
         strBuyer = strBuyer == null ? "-999" : strBuyer;
-        strFromDate = strFromDate == null ? "-999" : strFromDate.substring(0, strFromDate.indexOf("T"));
-        strToDate = strToDate == null ? "-999" : strToDate.substring(0, strToDate.indexOf("T"));
         strStatus = strStatus == null ? "-999" : strStatus;
         strType = strType == null ? "-999" : strType;
 
+        if (strFromDate == null) {
+            System.out.println("strFromDate Date : is null");
+
+        } else {
+            SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
+            Date date = null;
+            try {
+                date = sourceFormat.parse(strFromDate);
+                System.out.println(date);
+                System.out.println(destinationFormat.format(date));
+
+                strFromDate = destinationFormat.format(date);
+                System.out.println("Date : " + strFromDate);
+            } catch (Exception ex) {
+                System.out.println("Error " + ex.getLocalizedMessage());
+            }
+        }
+
+        if (strToDate == null) {
+            System.out.println("strToDate Date : is null");
+
+        } else {
+            SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
+            Date date = null;
+            try {
+                date = sourceFormat.parse(strToDate);
+                System.out.println(date);
+                System.out.println(destinationFormat.format(date));
+
+                strToDate = destinationFormat.format(date);
+                System.out.println("Date : " + strToDate);
+            } catch (Exception ex) {
+                System.out.println("Error " + ex.getLocalizedMessage());
+            }
+        }
+
+        strFromDate = strFromDate == null ? "-999" : strFromDate.substring(0, strFromDate.indexOf("T"));
+        strToDate = strToDate == null ? "-999" : strToDate.substring(0, strToDate.indexOf("T"));
+
+
         String url =
-            RestURIs.getPOHeaderURI(strOrderFromDate, strOrderToDate, strSupplier, strBuyer, strFromDate, strToDate,
-                                    strStatus, strType);
+            RestURIs.getPOHeaderURI(strOrderFrom, strOrderTo, strSupplier, strBuyer, strFromDate, strToDate, strStatus,
+                                    strType);
         System.out.println("po header url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         String strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");

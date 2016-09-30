@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.1.20" id="NotificationsPGPageDef"
+                Package="pages.Supplier">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="NotificationDetailsService"
+              id="NotificationDetailsServiceIterator"/>
+    <accessorIterator MasterBinding="NotificationDetailsServiceIterator" Binds="notifications" RangeSize="25"
+                      DataControl="NotificationDetailsService"
+                      BeanClass="com.deloitte.rmsapp.Supplier.NotificationDetails" id="notificationsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="notificationsIterator" id="notifications">
+      <nodeDefinition DefName="com.deloitte.rmsapp.Supplier.NotificationDetails" Name="notifications0">
+        <AttrNames>
+          <Item Value="poBuySupName"/>
+          <Item Value="poNumber"/>
+          <Item Value="poDate"/>
+          <Item Value="poOrderType"/>
+          <Item Value="poRevision"/>
+          <Item Value="recordId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+  </bindings>
+</pageDefinition>

@@ -101,8 +101,12 @@
 .amx-inputText-content {
     border: none !important;
     outline: 0 !important;
+    font-family: xxRobotoLight;
 }
 
+input[type="password"]{
+    letter-spacing:0px;
+}
 .username_field, .password_field {
     background: #ffffff none repeat scroll 0 0;
     border: 1px solid #c0b4aa;
@@ -488,10 +492,12 @@ html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     -webkit-border-image: none;
     border-image: none;
     position: static;
-    height: 40px;
+    height: 30px;
     background-image: url("../images/DownArrow.png");
     background-repeat: no-repeat;
     background-position: 98%;
+    padding-left: 2px;
+    padding-right: 2px;    
 }
 
 HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
@@ -502,14 +508,15 @@ HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
     -webkit-border-image: none;
     border-image: none;
     position: static;
-    height: 40px;
+    height: 30px;
     background-image: url("../images/Date.png");
     background-repeat: no-repeat;
     background-position: 98%;
+    padding-left: 6px;
 }
 
 HTML[dir="ltr"] .amx-inputDate-text {
-    padding-left: 6px;
+    
     padding-right: 20px;
     padding-top: 8px;
     position: relative;

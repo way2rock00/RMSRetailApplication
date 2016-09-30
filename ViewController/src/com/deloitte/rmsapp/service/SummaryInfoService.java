@@ -24,9 +24,20 @@ public class SummaryInfoService {
         SummaryInfo[] summaryArray = null;
         summaryList = new ArrayList<SummaryInfo>();
         ServiceManager serviceManager = new ServiceManager();
+        String supplier = "-999";
+        String buyer = "-999";
 
-        String url = RestURIs.getPoSummaryURI();
-        System.out.println("url:" + url);
+        if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
+
+            supplier = AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString();
+
+        } else {
+            buyer = AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString();
+
+        }
+
+        String url = RestURIs.getPoSummaryURI(supplier, buyer);
+        System.out.println("summary url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
 
         try {
@@ -53,14 +64,38 @@ public class SummaryInfoService {
                 SummaryInfo summaryRec = new SummaryInfo(recordId, status, status_count);
 
                 summaryList.add(summaryRec);
-                
-                System.out.println("summary servie:"+status);
+
+                System.out.println("summary servie:" + status);
 
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         summaryArray = summaryList.toArray(new SummaryInfo[summaryList.size()]);
+
+        /*AdfmfJavaUtilities.setELValue("#{pageFlowScope.userName}",
+                                      AdfmfJavaUtilities.getELValue("#{applicationScope.userName}").toString());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}",
+                                      AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
+
+        if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
+
+            supplier = AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString();
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}",
+                                          AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString());
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchSupplier}",
+                                          AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString());
+
+        } else {
+            buyer = AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString();
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginBuyer}",
+                                          AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString());
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchBuyer}",
+                                          AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString());
+        }
+*/
+
         return summaryArray;
 
     }

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
             <amx:outputText value="Notifications" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
+            <!--
             <amx:commandLink id="cl1" action="__back">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
+            -->
+             <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>     
         </amx:facet>
         <!--<amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
             <amx:tableLayout id="tl1" width="100%">
@@ -31,5 +36,90 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>-->
-  </amx:panelPage>
+        <amx:panelGroupLayout>
+            <amx:tableLayout id="tl4" width="100%" halign="center">
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat id="cf013" width="2%"/>
+                    <amx:cellFormat id="cf14" width="13%" halign="center">
+                        <amx:outputText value="View " id="ot13" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf1" width="60%">
+                        <amx:selectOneChoice value="#{pageFlowScope.notificationType}" id="soc3" simple="true">
+                            <amx:selectItem label="All Notifications" value="All" id="si3"/>
+                        </amx:selectOneChoice>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf24" width="20%">
+                        <amx:commandButton text="Go" id="cb1" styleClass="buttonsLarge"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf2" width="2%"/>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:tableLayout id="tl1" width="100%" halign="center"
+                             inlineStyle="padding-top:10px; border-bottom-color:#86BC25; border-bottom-width:thin; border-bottom-style:solid; border-top-color:#86BC25; border-top-width:thin; border-top-style:solid; padding-bottom:10px;">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf14" width="50%" halign="center" valign="middle">
+                        <amx:outputText value="From" id="ot13" styleClass="xxRobotoFieldValue"/>
+                        <amx:spacer width="15"/>
+                        <amx:commandLink id="cl3" styleClass="fa fa-angle-up"/>
+                        <amx:spacer width="15"/>
+                        <amx:commandLink id="cl3" styleClass="fa fa-angle-down"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf14" width="50%" halign="center">
+                        <amx:outputText value="Date" id="ot13" styleClass="xxRobotoFieldValue"/>
+                        <amx:spacer width="15"/>
+                        <amx:commandLink id="cl3" styleClass="fa fa-angle-up"/>
+                        <amx:spacer width="15"/>
+                        <amx:commandLink id="cl3" styleClass="fa fa-angle-down"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+            <amx:rowLayout id="r1l2">
+                <amx:cellFormat id="cf15" width="100%" halign="center">
+                    <amx:outputText value="No Data Found" rendered="#{bindings.notifications.rangeSize &lt; 1}"
+                                    id="ot36" styleClass="xxRobotoFieldTitle"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:listView var="row" value="#{bindings.notifications.collectionModel}"
+                      fetchSize="#{bindings.notifications.rangeSize}"
+                      selectedRowKeys="#{bindings.notifications.collectionModel.selectedRow}"
+                      initialScrollRowKeys="#{bindings.notifications.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.notifications.collectionModel.makeCurrent}" showMoreStrategy="off"
+                      bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1" action="openPODetail" showLinkIcon="true"
+                          rendered="#{bindings.notifications.rangeSize > 0}"
+                          inlineStyle="#{((row.rowKey)%2)==0?'background-color:#FFFFFF;':'background-color:#eaeaea;'};border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
+                <amx:tableLayout id="tl11" width="100%" 
+                                 inlineStyle="padding-bottom:10px; padding-top:10px;">
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat id="cf19" width="3%"/>
+                        <amx:cellFormat id="cf012" width="60%" >
+                            <amx:outputText value="#{row.poBuySupName}" id="ot13" styleClass="xxRobotoGroupValue"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf013" width="37%" halign="end">
+                            <amx:outputText value="#{row.poDate}" id="ot3" styleClass="xxRobotoGroupValue">
+                                <amx:convertDateTime id="cdt3" dateStyle="medium" timeStyle="short" type="date"
+                                                     pattern="dd-MMM-yyyy"/>
+                            </amx:outputText>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat id="cf19" width="3%"/>
+                        <amx:cellFormat id="cf012" width="94%" columnSpan="2" layout="wrap">
+                            <amx:outputText value="Response to your change request for#{row.poOrderType} #{row.poNumber},#{row.poRevision}"
+                                            id="ot13" styleClass="xxRobotoFieldValue"
+                                            rendered="#{applicationScope.loginType == 'SUPPLIER'}"/>
+                            <amx:outputText value="Purchase Order #{row.poNumber},#{row.poRevision} requires your acceptance"
+                                            id="ot13" styleClass="xxRobotoFieldValue"
+                                            rendered="#{applicationScope.loginType == 'BUYER'}"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf19" width="3%"/>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl4" from="#{row.poNumber}" to="#{pageFlowScope.selectedPONum}"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>

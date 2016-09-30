@@ -32,7 +32,7 @@ public class POHeaderService {
         poHeaderList = new ArrayList<POHeaders>();
         ServiceManager serviceManager = new ServiceManager();
 
-
+        
         String strOrderFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
         String strOrderToDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
         String strSupplier = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchSupplier}");
@@ -42,23 +42,21 @@ public class POHeaderService {
         String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
         String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
 
-
         strOrderFromDate = strOrderFromDate == null ? "-999" : strOrderFromDate;
         strOrderToDate = strOrderToDate == null ? "-999" : strOrderToDate;
         strSupplier = strSupplier == null ? "3030" : strSupplier;
         strBuyer = strBuyer == null ? "-999" : strBuyer;
         strFromDate = strFromDate == null ? "-999" : strFromDate.substring(0, strFromDate.indexOf("T"));
-        strToDate = strToDate == null ? "-999" : strToDate.substring(0,strToDate.indexOf("T"));
+        strToDate = strToDate == null ? "-999" : strToDate.substring(0, strToDate.indexOf("T"));
         strStatus = strStatus == null ? "-999" : strStatus;
         strType = strType == null ? "-999" : strType;
-
 
         String url =
             RestURIs.getPOHeaderURI(strOrderFromDate, strOrderToDate, strSupplier, strBuyer, strFromDate, strToDate,
                                     strStatus, strType);
-        System.out.println("url:" + url);
+        System.out.println("po header url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
-        String strDebug = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
+        String strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + "New");
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);

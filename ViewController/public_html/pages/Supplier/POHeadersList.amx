@@ -6,12 +6,13 @@
             <amx:outputText value="Purchase Orders" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
-            <!--<amx:commandLink id="cl1" action="backToSummary">
+            <amx:commandLink id="cl1" action="backToSummary">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
-            </amx:commandLink>-->
-            <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-2x" inlineStyle="color:#1C75BC;"/>
+            </amx:commandLink>
+            <!--<amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-2x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>                
+            -->
         </amx:facet>
         <!--<amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
             <amx:tableLayout id="tl1" width="100%">
@@ -40,8 +41,6 @@
             </amx:tableLayout>
         </amx:panelGroupLayout>-->
         <!--<amx:fragment src="/pages/Supplier/SupplierSearchFragement.amxf" id="f1"/>-->
-        
-        
         <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
@@ -69,7 +68,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam2" label="Buyer" styleClass="label" showRequired="false" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}" >
+            <amx:panelLabelAndMessage id="plam2" label="Buyer" styleClass="label" showRequired="false"
+                                      rendered="#{applicationScope.loginType == 'SUPPLIER'}">
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
@@ -81,7 +81,7 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label" showRequired="false"
-                                      rendered="#{pageFlowScope.loginType == 'BUYER'}">
+                                      rendered="#{applicationScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
@@ -143,7 +143,7 @@
         </amx:panelGroupLayout>
         <amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
             <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
-                               rendered="#{pageFlowScope.showExpand == 'true'}">
+                               rendered="#{pageFlowScope.showExpand == 'true' || pageFlowScope.showExpand == null }">
                 <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
             </amx:commandButton>
             <amx:commandButton id="cb2" styleClass="buttonsLarge2" shortDesc="Collapse"
@@ -153,10 +153,7 @@
         </amx:panelGroupLayout>
         <!--<amx:commandButton text="Set" id="cb3">
         <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.showExpand}"/>
-        </amx:commandButton>--> 
-        
-        
-        
+        </amx:commandButton>-->
         <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
             <amx:rowLayout id="r1l2">
                 <amx:cellFormat id="cf15" width="100%" halign="center">

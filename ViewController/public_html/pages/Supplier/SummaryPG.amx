@@ -3,14 +3,14 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
-            <amx:outputText value="Welcome #{pageFlowScope.userName}" id="ot1" styleClass="headertextwhite"/>
+            <amx:outputText value="Welcome #{applicationScope.userName}" id="ot1" styleClass="headertextwhite"/>
         </amx:facet>
         <amx:facet name="primary">
             <!--<amx:commandLink id="cl1" action="__back">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>-->
             <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-2x" inlineStyle="color:#1C75BC;"/>
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>            
         </amx:facet>
         <!--
@@ -72,7 +72,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam2" label="Buyer" rendered="#{pageFlowScope.loginType == 'SUPPLIER'}"
+            <amx:panelLabelAndMessage id="plam2" label="Buyer" rendered="#{applicationScope.loginType == 'SUPPLIER'}"
                                       styleClass="label" showRequired="false">
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
@@ -85,7 +85,7 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label" showRequired="false"
-                                      rendered="#{pageFlowScope.loginType == 'BUYER'}">
+                                      rendered="#{applicationScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
@@ -148,7 +148,7 @@
         </amx:panelGroupLayout>
         <amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
             <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
-                               rendered="#{pageFlowScope.showExpand == 'true'}">
+                               rendered="#{pageFlowScope.showExpand == 'true' || pageFlowScope.showExpand == null }">
                 <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
             </amx:commandButton>
             <!--<amx:commandLink text="Expand" id="cl2" styleClass="buttonsLarge1"
@@ -199,6 +199,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:listItem>
+            <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
         </amx:listView>
     </amx:panelPage>
 </amx:view>

@@ -6,7 +6,7 @@
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" height="30%" valign="middle" halign="center"
                                 inlineStyle="padding:50px 20px 20px 20px;">
-                    <amx:image id="i1"  source="/resources/images/Login_Page_Image.png"/>
+                    <amx:image id="i1"  source="/resources/images/Login_Page_Image.png" inlineStyle="width:50%"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
@@ -19,12 +19,12 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelLabelAndMessage>
-        <amx:panelFormLayout id="pfl2" labelWidth="5%" fieldWidth="95%" labelPosition="end" fieldHalign="start"
+        <amx:panelFormLayout id="pfl2" labelWidth="1%" fieldWidth="99%" labelPosition="end" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1">
             <amx:panelLabelAndMessage label="" id="plam4" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
-                        <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
+                        <amx:cellFormat styleClass="cell-border" id="cf5" >
                             <amx:inputText hintText="Username" styleClass="icon icon-2-customer-id inputTextValue username_field" id="it6"
                                            inputType="text" maximumLength="16"
                                            valueChangeListener="#{pageControl.usernameChanged}"
@@ -36,7 +36,7 @@
             <amx:panelLabelAndMessage label="" id="plam1" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl2" width="100%">
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat styleClass="cell-border" id="cf2" width="95%">
+                        <amx:cellFormat styleClass="cell-border" id="cf2" >
                             <amx:inputText  hintText="Password" styleClass="icon icon-1-password inputTextValue password_field" id="it1"
                                            inputType="text" secret="true"
                                            valueChangeListener="#{pageControl.passwordChanged}" maximumLength="16"

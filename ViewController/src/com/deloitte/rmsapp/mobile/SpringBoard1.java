@@ -8,7 +8,7 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.exception.AdfException;
 
-public class SpringBoard1 {
+public class SpringBoard1 { 
     //String currentFeature;
     private String currentFeature1;
     private String currentFeature2;

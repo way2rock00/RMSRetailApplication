@@ -5,58 +5,60 @@
       <property
          name="linkStyle">Orthogonal</property>
       <property
-         name="x">88.01758</property>
-      <property
          name="y">91.149414</property>
+      <property
+         name="x">88.01758</property>
    </OverallProperties>
    <View
       id="View2">
       <property
          name="activityId">HeaderListPage</property>
       <property
-         name="x">267.5352</property>
+         name="page">/pages/Supplier/POHeadersList.amx</property>
       <property
          name="start">false</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>HeaderListPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">434.20117</property>
       <property
-         name="page">/pages/Supplier/POHeadersList.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">267.5352</property>
    </View>
    <View
       id="View3">
       <property
          name="activityId">SearchPage</property>
       <property
-         name="x">432.05856</property>
+         name="page">/pages/Supplier/POSearchPG.amx</property>
       <property
          name="start">false</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>SearchPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">89.74707</property>
       <property
-         name="page">/pages/Supplier/POSearchPG.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">432.05856</property>
    </View>
    <View
       id="View11">
       <property
          name="activityId">DetailsPage</property>
       <property
-         name="x">267.53513</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>DetailsPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="y">601.90234</property>
-      <property
          name="page">/pages/Supplier/PODetailsPG.amx</property>
       <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DetailsPage&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
          name="exceptionHandler">false</property>
+      <property
+         name="y">601.55176</property>
+      <property
+         name="x">267.53513</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -73,32 +75,32 @@
       <property
          name="activityId">SummaryPage</property>
       <property
-         name="x">267.5352</property>
+         name="page">/pages/Supplier/SummaryPG.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>SummaryPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
       <property
          name="y">266.5</property>
       <property
-         name="page">/pages/Supplier/SummaryPG.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">267.5352</property>
    </View>
    <View
       id="View13">
       <property
          name="activityId">NotificationsPage</property>
       <property
-         name="x">591.7754</property>
+         name="page">/pages/Supplier/NotificationsPG.amx</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>NotificationsPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="exceptionHandler">false</property>
+      <property
          name="y">91.149414</property>
       <property
-         name="page">/pages/Supplier/NotificationsPG.amx</property>
-      <property
-         name="exceptionHandler">false</property>
+         name="x">591.7754</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -108,7 +110,7 @@
       <property
          name="fromOutcome">toPOList</property>
       <property
-         name="sdm:polyPoints">B44,264.0352,350.0,264.0352,350.0,T44</property>
+         name="sdm:polyPoints">B44,264.0352,350.0,271.0352,350.0,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -118,7 +120,7 @@
       <property
          name="fromOutcome">backToPOList</property>
       <property
-         name="sdm:polyPoints">T56,271.03513,517.7012,271.0352,517.7012,B56</property>
+         name="sdm:polyPoints">T56,271.03513,517.5259,271.0352,517.5259,B56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -128,7 +130,7 @@
       <property
          name="fromOutcome">backToSummary</property>
       <property
-         name="sdm:polyPoints">T56,271.0352,350.0,271.0352,350.0,B56</property>
+         name="sdm:polyPoints">T67,278.0352,343.0,271.0352,343.0,B56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

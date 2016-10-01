@@ -4,7 +4,7 @@
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:panelGroupLayout id="pgl2" layout="vertical">
-                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite" inlineStyle="text-align:center;font-size:12px;"/>
+                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite" inlineStyle="text-align:center;font-size:14px;"/>
                 <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite" inlineStyle="text-align:center;"/>
             </amx:panelGroupLayout>
         </amx:facet>

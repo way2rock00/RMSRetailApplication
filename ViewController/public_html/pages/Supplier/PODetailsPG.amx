@@ -163,19 +163,22 @@
                 </amx:tableLayout>
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
-                        <amx:cellFormat id="cf24" width="33%" styleClass="cell-border">
-                            <amx:inputText id="it1" value="#{lineRow.quantity}" simple="true" inputType="number"/>
+                     <amx:cellFormat id="cf1" width="2%" />
+                        <amx:cellFormat id="cf24" width="32%" styleClass="cell-border">
+                            <amx:inputText id="it1" value="#{lineRow.quantity}" simple="true" inputType="number" inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf26" width="33%" styleClass="cell-border">
+                        <amx:cellFormat id="cf2" width="2%" />
+                        <amx:cellFormat id="cf26" width="32%" styleClass="cell-border">
                             <amx:inputText id="it3" value="#{lineRow.uom}" readOnly="true" simple="true"
-                                           inputType="text"/>
+                                           inputType="text" />
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf28" width="33%" styleClass="cell-border">
-                            <amx:inputText id="it4" value="#{lineRow.price}" simple="true" inputType="number"/>
+                        <amx:cellFormat id="cf4" width="2%" />
+                        <amx:cellFormat id="cf28" width="32%" styleClass="cell-border">
+                            <amx:inputText id="it4" value="#{lineRow.price}" simple="true" inputType="number" inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:tableLayout id="tl5" width="100%">
+                <amx:tableLayout id="tl5" width="100%" inlineStyle="padding-top:5px;">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat id="cf30" width="2%"/>
                         <amx:cellFormat id="cf31" width="20%" halign="start">
@@ -183,7 +186,8 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf32" width="3%"/>
                         <amx:cellFormat id="cf33" width="auto" halign="end" inlineStyle="padding-top:5px;">
-                            <amx:inputText simple="true" inputType="text" id="it2"/>
+                            <amx:inputText simple="true" inputType="text" id="it2" rows="2"
+                                           inlineStyle=" border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

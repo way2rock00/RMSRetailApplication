@@ -43,6 +43,15 @@
     font-family: xxRobotoMedium !important;
     font-size: 25px !important;
     color: #000000 !important;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
 }
 
 .xxRobotoGroupValue {
@@ -55,6 +64,15 @@
     font-family: xxRobotoLight !important;
     font-size: 15px !important;
     color: #000000 !important;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
 }
 
 .amx-panelPage-facet-header {
@@ -165,6 +183,15 @@ input[type="password"] {
     color: #ffffff !important;
     font-size: x-large;
     font-family: xxRobotoLight;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
 }
 
 .amx-commandLink.dashboardIcons {
@@ -181,11 +208,9 @@ input[type="password"] {
     color: #f5f5f5;
     text-align: center;
     text-decoration: none;
-    background: #464646;        
+    background: #464646;
     font-family: xxRobotoLight;
 }
-
-
 
 .amx-commandButton.homeButtonSel {
     margin: 10px 5px 10px 5px;
@@ -478,16 +503,20 @@ html[dir=ltr] .field-label {
     padding-bottom: 10px;
     vertical-align: middle;
 }
+
 html[dir=ltr] .field-value {
     padding-right: 15px;
     /* padding-left: 8px; */
 }
+
 .field.amx-simple > .field-value {
     padding: 2px 2px;
 }
+
 html[dir=ltr] .amx-inputText .field-value {
     padding-left: 2px;
 }
+
 .amx-panelFormLayout .field > .field-label {
     color: #000000;
     font-size: 14px;

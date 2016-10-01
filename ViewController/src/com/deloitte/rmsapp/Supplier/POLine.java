@@ -11,6 +11,7 @@ public class POLine {
     private String quantity;
     private String uom;
     private String price;
+    private String lineReason;
 
     public void setItem(String item) {
         this.item = item;
@@ -52,12 +53,22 @@ public class POLine {
         return price;
     }
 
-    public POLine(String poLineNumber,String item, String quantity, String uom, String price) {
+
+    public void setLineReason(String lineReason) {
+        this.lineReason = lineReason;
+    }
+
+    public String getLineReason() {
+        return lineReason;
+    }
+
+    public POLine(String poLineNumber,String item, String quantity, String uom, String price,String lineReason) {
         this.poLineNumber = poLineNumber;
         this.item = item;
         this.quantity = quantity;
         this.uom = uom;
         this.price = price;
+        this.lineReason = lineReason;
 
     }
 }

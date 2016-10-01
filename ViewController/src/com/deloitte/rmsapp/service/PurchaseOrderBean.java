@@ -23,8 +23,8 @@ import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfInvocationException;
 import oracle.adfmf.util.GenericType;
 
-public class TestMB {
-    public TestMB() {
+public class PurchaseOrderBean {
+    public PurchaseOrderBean() {
     }
 
     public void clicked(ActionEvent actionEvent) {

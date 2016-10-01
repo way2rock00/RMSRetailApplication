@@ -14,6 +14,8 @@
             <amx:panelGroupLayout id="pgl1">
                 <amx:commandLink id="cb2" shortDesc="Home" actionListener="#{bindings.gotoFeature.execute}">
                     <amx:outputHtml id="oh3" styleClass="fa fa-home fa-lg" inlineStyle="color:White;"/>
+                     <amx:setPropertyListener id="spl2" from="com.deloitte.rmsapp.Home"
+                                                         to="#{pageFlowScope.Nav}"/>
                 </amx:commandLink>
             </amx:panelGroupLayout>
         </amx:facet>
@@ -39,7 +41,7 @@
                             <amx:commandLink id="cl1">
                                 <amx:outputText value="#{row.key}" id="ot3" inlineStyle="color:#888888;"/>
                                 
-                                <amx:setPropertyListener id="spl2" from="#{row.featureId}"
+                                <amx:setPropertyListener id="spl1" from="#{row.featureId}"
                                                          to="#{pageFlowScope.Nav}"/>
                                 <!--<amx:setPropertyListener id="spl1"/>-->
                                 <amx:actionListener id="al1" binding="#{SBBean.springBoardNavi}"/>

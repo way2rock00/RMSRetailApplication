@@ -25,6 +25,7 @@
           <Item Value="poNumber"/>
           <Item Value="poTotal"/>
           <Item Value="status"/>
+          <Item Value="headerReason"/>
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>
@@ -48,6 +49,7 @@
           <Item Value="price"/>
           <Item Value="quantity"/>
           <Item Value="uom"/>
+          <Item Value="lineReason"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -85,6 +85,9 @@ public class PODetailsService {
                 String recordId = null;
                 if (temp.getString("RECORD_ID") != null)
                     recordId = temp.getString("RECORD_ID");
+                
+                // Place holder for Reason mapping
+                String headerReason = "Test Reason";
 
                 List<POLine> poLineList = new ArrayList<POLine>();
                 JSONObject poLineParentObject = temp.getJSONObject("PO_LINE");
@@ -111,15 +114,18 @@ public class PODetailsService {
                     String lineUOM = null;
                     if (lineTemp.getString("UOM") != null)
                         lineUOM = lineTemp.getString("UOM");
+                    
+                    //Placeholder for line reason
+                    String lineReason = null;
 
-                    POLine poLine = new POLine(lineNumber, item,lineQuantity, lineUOM, linePrice);
+                    POLine poLine = new POLine(lineNumber, item,lineQuantity, lineUOM, lineReason, linePrice);
                     poLineList.add(poLine);
 
                 }
 
                 PODetails poDetails =
                     new PODetails(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal, poLineList.toArray(new POLine[poLineList.size()]));
+                                  poTotal, headerReason , poLineList.toArray(new POLine[poLineList.size()]));
                 //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                 poDetailsList.add(poDetails);
 

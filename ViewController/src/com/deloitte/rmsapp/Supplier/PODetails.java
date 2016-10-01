@@ -15,6 +15,7 @@ public class PODetails {
     private String pickUpDate;
     private String notAfterDate;
     private String poTotal;
+    private String headerReason;
     private POLine[] poLines;
 
     public void setRecordId(String recordId) {
@@ -98,6 +99,15 @@ public class PODetails {
         return poLines;
     }
 
+    public void setHeaderReason(String headerReason) {
+        this.headerReason = headerReason;
+    }
+
+    public String getHeaderReason() {
+        return headerReason;
+    }
+
+
     public PODetails (String recordId
                     ,String poNumber
                     ,String orderType
@@ -107,6 +117,7 @@ public class PODetails {
                     ,String pickUpDate
                     ,String notAfterDate
                     ,String poTotal
+                    ,String headerReason
                     ,POLine[] poLines
                       )
     {
@@ -119,6 +130,7 @@ public class PODetails {
         this.pickUpDate = pickUpDate;
         this.notAfterDate = notAfterDate;
         this.poTotal = poTotal;
+        this.headerReason = headerReason;
         this.poLines = poLines;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="HomeTF">
-    <default-activity>DetailsPage</default-activity>
+    <default-activity>SummaryPage</default-activity>
     <managed-bean id="__1">
       <managed-bean-name>PurchaseOrderBean</managed-bean-name>
       <managed-bean-class>com.deloitte.rmsapp.service.PurchaseOrderBean</managed-bean-class>

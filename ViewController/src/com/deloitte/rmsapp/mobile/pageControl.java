@@ -12,6 +12,7 @@ public class pageControl {
 
     public void LoginIn_buttonClick(ActionEvent actionEvent) {
         //Supplier Check
+        System.out.println("LoginIn_buttonClick start");
         String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
         String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
         System.out.println("user:" + userName);
@@ -53,6 +54,7 @@ public class pageControl {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "Invalid Credentials Provided.");
         }
+        System.out.println("LoginIn_buttonClick end");
     }
 
     public void passwordChanged(ValueChangeEvent valueChangeEvent) {
@@ -73,18 +75,17 @@ public class pageControl {
 
     public String landingNavigation() {
         // Add event code here...
+        System.out.println("landingNavigation start");
         String pageNav;
         String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
         String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
         if (userName == null || password == null) {
             pageNav = null;
         }
-        if (userName.equals("Sup01") && password.equals("Sup123")) {
+        else {
             pageNav = "LandingPage";
-        } else {
-            pageNav = null;
         }
-
+        System.out.println("landingNavigation end");
         return pageNav;
     }
 

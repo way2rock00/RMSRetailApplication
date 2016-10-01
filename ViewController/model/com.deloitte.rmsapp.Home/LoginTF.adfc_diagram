@@ -1,19 +1,24 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
    <OverallProperties
-      id="OverallProperties1"/>
+      id="OverallProperties1">
+      <property
+         name="x">88.01758</property>
+      <property
+         name="y">91.149414</property>
+   </OverallProperties>
    <View
       id="View2">
       <property
          name="activityId">Login</property>
       <property
-         name="x">591.5</property>
+         name="x">267.53516</property>
       <property
          name="start">true</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>Login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">390.5918</property>
+         name="y">98.44824</property>
       <property
          name="page">/Login.amx</property>
       <property
@@ -26,9 +31,9 @@
       <property
          name="activityId">HomeTF</property>
       <property
-         name="x">903.5</property>
+         name="x">267.53516</property>
       <property
-         name="y">418.1494</property>
+         name="y">266.5</property>
       <property
          name="documentReference">/com.deloitte.rmsapp.Home/HomeTF.xml</property>
       <property
@@ -44,18 +49,18 @@
       <property
          name="fromOutcome">LandingPage</property>
       <property
-         name="sdm:polyPoints">R50,632.5,390.2412,862.5,417.79883,L50</property>
+         name="sdm:polyPoints">B50,T50</property>
    </ControlFlowCase>
    <View
       id="View5">
       <property
          name="activityId">Springboard</property>
       <property
-         name="x">735.68945</property>
+         name="x">431.7246</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>Springboard&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
-         name="y">140.09766</property>
+         name="y">91.149414</property>
       <property
          name="page">/pages/setup/Springboard.amx</property>
       <property

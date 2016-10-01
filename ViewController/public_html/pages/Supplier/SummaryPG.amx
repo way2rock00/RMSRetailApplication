@@ -3,40 +3,17 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
-            <amx:outputText value="Welcome #{applicationScope.userName}" id="ot1" styleClass="headertextwhite"/>
+            <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="Welcome" id="ot1" styleClass="xxRobotoLight12" inlineStyle="color:#ffffff; text-align:center;"/>
+                <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite"/>
+            </amx:panelGroupLayout>
         </amx:facet>
         <amx:facet name="primary">
-            <!--<amx:commandLink id="cl1" action="__back">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
-            </amx:commandLink>-->
             <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
-            </amx:commandLink>            
+            </amx:commandLink>
         </amx:facet>
-        <!--
-        <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
-            <amx:tableLayout id="tl1" width="100%">
-                <amx:rowLayout id="rl1">
-                    <amx:cellFormat id="cf1" width="33%" halign="center" valign="middle">
-                        <amx:commandLink id="cl2">
-                            <amx:outputHtml id="oh2" styleClass="fa fa-home fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf2" width="33%" halign="center" valign="middle">
-                        <amx:commandLink id="cl3" action="search">
-                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf4" width="33%" halign="center" valign="middle">
-                        <amx:commandLink id="cl5" action="notification">
-                            <amx:outputHtml id="oh5" styleClass="fa fa-bell-o fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-            </amx:tableLayout>
-        </amx:panelGroupLayout>
-        -->
-        <amx:panelGroupLayout id="pgl2" layout="vertical" styleClass="xxRobotoSubHeader">
+        <amx:panelGroupLayout id="pgl3" layout="vertical" styleClass="xxRobotoSubHeader">
             <amx:tableLayout id="tl2" width="100%">
                 <amx:rowLayout id="rl2">
                     <amx:cellFormat id="cf3" width="100%" halign="center" valign="middle">
@@ -146,40 +123,23 @@
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
                                action="toPOList"/>
         </amx:panelGroupLayout>
-         <amx:tableLayout id="tl11" width="100%"  >
+        <amx:tableLayout id="tl11" width="100%">
             <amx:rowLayout id="r1l2">
-                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle" inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "  inlineStyle="color:#ffffff;" shortDesc="Expand"
-                                       rendered="#{pageFlowScope.showExpand == 'true'}"
-                                       >
+                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
+                                inlineStyle="background-color:#86BC25;">
+                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "
+                                       inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
+                                       rendered="#{pageFlowScope.showExpand == 'true'}">
                         <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
-                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x"  shortDesc="Collapse" inlineStyle="color:#ffffff;"
+                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x" shortDesc="Collapse"
+                                       inlineStyle="min-height:5pt;color:#ffffff;"
                                        rendered="#{pageFlowScope.showExpand == 'false'}">
                         <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        
-        <!--<amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
-            <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
-                               rendered="#{pageFlowScope.showExpand == 'true' || pageFlowScope.showExpand == null }">
-                <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandButton>
-            <amx:commandLink text="Expand" id="cl2" styleClass="buttonsLarge1"
-                             rendered="#{pageFlowScope.showExpand == 'true'}" shortDesc="Expand">
-                <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandLink>
-            <amx:commandButton id="cb2" styleClass="buttonsLarge2" shortDesc="Collapse"
-                               rendered="#{pageFlowScope.showExpand == 'false'}">
-                <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandButton>
-        </amx:panelGroupLayout>
-        -->
-        <!--<amx:commandButton text="Set" id="cb3">
-        <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.showExpand}"/>
-        </amx:commandButton>-->
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
@@ -191,32 +151,21 @@
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
                         <amx:cellFormat id="cf1" width="15%" valign="middle" halign="center">
-                            <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1x"
+                            <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1.5x"
                                             inlineStyle="color:#000000; "/>
                             <amx:spacer id="s1" width="5"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf2" halign="start" width="70%" valign="middle">
-                            <amx:outputText value="#{row.status}" id="ot3" inlineStyle="vertical-align:middle;"/>
-                            <!--<amx:inputText simple="true" readOnly="true" value="#{row.status}" id="it7"/>
-                            <amx:inputText simple="true" readOnly="true" value="#{row.status_count}" id="it8"
-                                           inlineStyle="border-radius:30px 30px 30px 30px / 30px 30px 30px 30px ; border-color:#52ff52;"/>
-                                -->
+                            <amx:outputText value="#{row.status}" id="ot3" styleClass="xxRobotoFieldValue"
+                                            inlineStyle="vertical-align:middle;"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" halign="start" width="auto">
-                            <!--<dvtm:ledGauge id="ledGauge1" type="circle" value="#{row.status_count}" size="2.0"
-                                           animationOnDisplay="auto" visualEffects="auto" styleClass="gauge">
-                                <dvtm:threshold id="threshold1" text="Low" maxValue="5"/>
-                                <dvtm:threshold id="threshold2" text="Medium" maxValue="10"/>
-                                <dvtm:threshold id="threshold3" text="High" maxValue="100"/>
-                            </dvtm:ledGauge>-->
-                             <amx:commandButton text="#{row.status_count}" id="cb3"
-                                               styleClass="round-button"/>
-                                               
+                            <amx:commandButton text="#{row.status_count}" id="cb3" styleClass="round-button"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
             </amx:listItem>
-            <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
         </amx:listView>
     </amx:panelPage>
 </amx:view>

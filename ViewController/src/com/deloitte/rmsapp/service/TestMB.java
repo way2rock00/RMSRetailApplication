@@ -40,8 +40,9 @@ public class TestMB {
         }
 
         ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
-        ib.getIterator().first();
+        //ib.getIterator().first();
         for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {
+            ib.getIterator().next();
             GenericType row = (GenericType) ib.getIterator().getCurrentRow();
             System.out.println(row.getAttribute("item").toString());
             System.out.println(row.getAttribute("quantity").toString());

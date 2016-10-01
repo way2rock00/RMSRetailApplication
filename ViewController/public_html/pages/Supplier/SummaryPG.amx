@@ -4,8 +4,8 @@
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:panelGroupLayout id="pgl2" layout="vertical">
-                <amx:outputText value="Welcome" id="ot1" styleClass="xxRobotoLight12" inlineStyle="color:#ffffff; text-align:center;"/>
-                <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite"/>
+                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite" inlineStyle="text-align:center;font-size:12px;"/>
+                <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite" inlineStyle="text-align:center;"/>
             </amx:panelGroupLayout>
         </amx:facet>
         <amx:facet name="primary">
@@ -139,7 +139,7 @@
                     </amx:commandButton>
                 </amx:cellFormat>
             </amx:rowLayout>
-        </amx:tableLayout>
+        </amx:tableLayout>       
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
@@ -150,7 +150,7 @@
                           inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
-                        <amx:cellFormat id="cf1" width="15%" valign="middle" halign="center">
+                        <amx:cellFormat id="cf13" width="15%" valign="middle" halign="center">
                             <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1.5x"
                                             inlineStyle="color:#000000; "/>
                             <amx:spacer id="s1" width="5"/>

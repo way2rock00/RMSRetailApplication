@@ -2,44 +2,15 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
-        <amx:facet name="header">
-            <amx:outputText value="Purchase Orders" id="ot1" styleClass="headertextwhite"/>
+        <amx:facet name="header" >
+            <amx:outputText value="#{pageFlowScope.selectedStatus} Purchase Orders" id="ot1" styleClass="headertextwhite"
+                            inlineStyle="flex-wrap:wrap; overflow-wrap:break-word; text-align:center;" />
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToSummary">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
-            <!--<amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-2x" inlineStyle="color:#ffffff;"/>
-            </amx:commandLink>                
-            -->
         </amx:facet>
-        <!--<amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="xxRobotoSubHeader">
-            <amx:tableLayout id="tl1" width="100%">
-                <amx:rowLayout id="rl1">
-                    <amx:cellFormat id="cf1" width="25%" halign="center" valign="middle">
-                        <amx:commandLink id="cl2" action="home">
-                            <amx:outputHtml id="oh2" styleClass="fa fa-home fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf2" width="25%" halign="center" valign="middle">
-                        <amx:commandLink id="cl3" action="search">
-                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf3" width="25%" halign="center" valign="middle">
-                        <amx:commandLink id="cl4" action="settings">
-                            <amx:outputHtml id="oh4" styleClass="fa fa-cog fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf4" width="25%" halign="center" valign="middle">
-                        <amx:commandLink id="cl5">
-                            <amx:outputHtml id="oh5" styleClass="fa fa-bell-o fa-1x" inlineStyle="color:#000000;"/>
-                        </amx:commandLink>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-            </amx:tableLayout>
-        </amx:panelGroupLayout>-->
         <!--<amx:fragment src="/pages/Supplier/SupplierSearchFragement.amxf" id="f1"/>-->
         <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
@@ -142,35 +113,23 @@
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
                                action="toPOList"/>
         </amx:panelGroupLayout>
-        <amx:tableLayout id="tl2" width="100%" >
+        <amx:tableLayout id="tl11" width="100%">
             <amx:rowLayout id="r1l2">
-                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle" inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1x "  inlineStyle="color:#ffffff;" shortDesc="Expand"
-                                       rendered="#{pageFlowScope.showExpand == 'true'}"
-                                       >
+                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
+                                inlineStyle="background-color:#86BC25;">
+                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "
+                                       inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
+                                       rendered="#{pageFlowScope.showExpand == 'true'}">
                         <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
-                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1x"  shortDesc="Collapse" inlineStyle="color:#ffffff;"
+                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x" shortDesc="Collapse"
+                                       inlineStyle="min-height:5pt;color:#ffffff;"
                                        rendered="#{pageFlowScope.showExpand == 'false'}">
                         <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <!-- <amx:panelGroupLayout layout="vertical" id="pgl3" halign="center">
-            <amx:commandButton id="cb1" styleClass="buttonsLarge1" shortDesc="Expand"
-                               rendered="#{pageFlowScope.showExpand == 'true' || pageFlowScope.showExpand == null }">
-                <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandButton>
-            <amx:commandButton id="cb2" styleClass="buttonsLarge2" shortDesc="Collapse"
-                               rendered="#{pageFlowScope.showExpand == 'false'}">
-                <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
-            </amx:commandButton>
-        </amx:panelGroupLayout>
-        -->
-        <!--<amx:commandButton text="Set" id="cb3">
-        <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.showExpand}"/>
-        </amx:commandButton>-->
         <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="100%" halign="center">
@@ -179,7 +138,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <!--<amx:outputText value="#{pageFlowScope.arrayVal}" id="ot14"/>-->
+        
         <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
                       fetchSize="#{bindings.POHeaderData.rangeSize}"
                       selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
@@ -188,7 +147,7 @@
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1" action="openPODetail" showLinkIcon="true"
                           inlineStyle="#{((row.rowKey)%2)==0?'background-color:#FFFFFF;':'background-color:#eaeaea;'};border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
-                <amx:tableLayout id="tl11" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+                <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat id="cf19" width="3%"/>
                         <amx:cellFormat id="cf012" width="60%">

@@ -37,22 +37,34 @@ public class POHeaderService {
 
 
         String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
+        System.out.println("strOrderFrom" + strOrderFrom);
         String strOrderTo = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
+        System.out.println("strOrderTo" + strOrderTo);
         String strSupplier = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchSupplier}");
         String strBuyer = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchBuyer}");
+
         String strFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchFromDate}");
+        System.out.println("strOrderTo" + strFromDate);
         String strToDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchToDate}");
+        System.out.println("strOrderTo" + strToDate);
         String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
         String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
 
         strOrderFrom = strOrderFrom == null ? "-999" : strOrderFrom;
-        strOrderFrom = strOrderFrom == "" ? "-999" : strOrderFrom;
+        strOrderFrom = strOrderFrom.length() == 0 ? "-999" : strOrderFrom;
+        
         strOrderTo = strOrderTo == null ? "-999" : strOrderTo;
-        strOrderTo = strOrderTo == "" ? "-999" : strOrderTo;
+        strOrderTo = strOrderTo.length() == 0 ? "-999" : strOrderTo;
+        
         strSupplier = strSupplier == null ? "-999" : strSupplier;
         strBuyer = strBuyer == null ? "-999" : strBuyer;
         strStatus = strStatus == null ? "-999" : strStatus;
         strType = strType == null ? "-999" : strType;
+
+        System.out.println("strOrderFrom" + strOrderFrom);
+        System.out.println("strOrderTo" + strOrderTo);
+        System.out.println("strFromDate" + strFromDate);
+        System.out.println("strToDate" + strToDate);
 
         if (strFromDate == null) {
             System.out.println("strFromDate Date : is null");
@@ -92,8 +104,8 @@ public class POHeaderService {
             }
         }
 
-        strFromDate = strFromDate == null ? "-999" : strFromDate.substring(0, strFromDate.indexOf("T"));
-        strToDate = strToDate == null ? "-999" : strToDate.substring(0, strToDate.indexOf("T"));
+        strFromDate = strFromDate == null ? "-999" : strFromDate;
+        strToDate = strToDate == null ? "-999" : strToDate;
 
 
         String url =

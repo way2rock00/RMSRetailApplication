@@ -14,7 +14,7 @@
         <!--<amx:fragment src="/pages/Supplier/SupplierSearchFragement.amxf" id="f1"/>-->
         <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
-                             rendered="#{pageFlowScope.showExpand == 'false'}">
+                             rendered="#{pageFlowScope.showExpand2 == 'false'}">
             <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label" showRequired="false"
                                       rendered="true">
                 <amx:tableLayout id="tl6" width="100%">
@@ -109,7 +109,7 @@
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
         <amx:panelGroupLayout layout="vertical" id="pgl2" halign="center"
-                              rendered="#{pageFlowScope.showExpand == 'false'}">
+                              rendered="#{pageFlowScope.showExpand2 == 'false'}">
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
                                action="toPOList"/>
         </amx:panelGroupLayout>
@@ -119,13 +119,13 @@
                                 inlineStyle="background-color:#86BC25;">
                     <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "
                                        inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
-                                       rendered="#{pageFlowScope.showExpand == 'true'}">
-                        <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
+                                       rendered="#{pageFlowScope.showExpand2 == 'true'}">
+                        <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand2}"/>
                     </amx:commandButton>
                     <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x" shortDesc="Collapse"
                                        inlineStyle="min-height:5pt;color:#ffffff;"
-                                       rendered="#{pageFlowScope.showExpand == 'false'}">
-                        <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
+                                       rendered="#{pageFlowScope.showExpand2 == 'false'}">
+                        <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand2}"/>
                     </amx:commandButton>
                 </amx:cellFormat>
             </amx:rowLayout>

@@ -80,13 +80,15 @@ public class pageControl {
         // Add event code here...
         System.out.println("landingNavigation start");
         String pageNav;
-        String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
-        String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
-        if (this.validated) {
-            pageNav = null;
+       
+       if (this.validated) {
+            
+            pageNav = "LandingPage";
+            System.out.println("validated true");
         }
         else {
             pageNav = "LandingPage";
+            pageNav = null;
         }
         System.out.println("landingNavigation end");
         return pageNav;

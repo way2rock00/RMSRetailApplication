@@ -10,7 +10,7 @@
     <managed-bean id="__6">
       <managed-bean-name>SpringBoardNavBean</managed-bean-name>
       <managed-bean-class>com.deloitte.rmsapp.mobile.SpringBoard1</managed-bean-class>
-      <managed-bean-scope>pageFlow</managed-bean-scope>
+      <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <view id="HeaderListPage">
       <page>/pages/Supplier/POHeadersList.amx</page>

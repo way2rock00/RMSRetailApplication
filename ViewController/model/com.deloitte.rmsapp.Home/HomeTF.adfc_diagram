@@ -68,7 +68,7 @@
       <property
          name="fromOutcome">openPODetail</property>
       <property
-         name="sdm:polyPoints"></property>
+         name="sdm:polyPoints">T56,251.8877,193.1461,244.8877,137.58684,B44</property>
    </ControlFlowCase>
    <View
       id="View12">
@@ -110,7 +110,7 @@
       <property
          name="fromOutcome">toPOList</property>
       <property
-         name="sdm:polyPoints"></property>
+         name="sdm:polyPoints">T44,284.3877,379.8506,244.8877,306.58124,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -130,7 +130,7 @@
       <property
          name="fromOutcome">backToSummary</property>
       <property
-         name="sdm:polyPoints"></property>
+         name="sdm:polyPoints">B56,251.8877,304.8506,291.3877,378.10193,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -140,6 +140,6 @@
       <property
          name="fromOutcome">toPOList</property>
       <property
-         name="sdm:polyPoints"></property>
+         name="sdm:polyPoints">T33,237.8877,196.85059,244.8877,196.85059,T44</property>
    </ControlFlowCase>
 </SDM>

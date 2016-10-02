@@ -123,7 +123,9 @@
         <amx:panelGroupLayout layout="vertical" id="pgl1" halign="center"
                               rendered="#{pageFlowScope.showExpand == 'false'}">
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
-                               action="toPOList"/>
+                               action="toPOList">
+                <amx:setPropertyListener id="spl3" from="" to="#{pageFlowScope.selectedStatus}"/>
+            </amx:commandButton>
         </amx:panelGroupLayout>
         <amx:tableLayout id="tl11" width="100%">
             <amx:rowLayout id="r1l2">
@@ -142,20 +144,12 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:tableLayout id="tl12" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;"
-                         rendered="#{bindings.summaryData.rangeSize &lt; 1}">
-            <amx:rowLayout id="rl11">
-                <amx:cellFormat id="cf1" width="100%" halign="center">
-                    <amx:outputText value="No Data Found" id="ot36" styleClass="xxRobotoFieldTitle"/>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       initialScrollRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}" showMoreStrategy="off"
-                      bufferStrategy="viewport" id="lv2" rendered="#{bindings.summaryData.rangeSize > 0}">
+                      bufferStrategy="viewport" id="lv2">
             <amx:listItem id="li2" action="toPOList"
                           inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">

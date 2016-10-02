@@ -36,9 +36,9 @@ public class POHeaderService {
         ServiceManager serviceManager = new ServiceManager();
 
         String selectedStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStatus}");
-        System.out.println("selectedStatus is " + selectedStatus);
+        System.out.println("selectedStatus is " + selectedStatus);        
 
-        if (selectedStatus == null) {
+        if (selectedStatus == null || selectedStatus.length()==0) {
             /*this is the part of individual search parameters based headers list*/
             String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
             System.out.println("strOrderFrom" + strOrderFrom);

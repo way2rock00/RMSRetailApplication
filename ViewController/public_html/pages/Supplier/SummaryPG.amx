@@ -4,8 +4,10 @@
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:panelGroupLayout id="pgl2" layout="vertical">
-                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite" inlineStyle="text-align:center;font-size:14px;"/>
-                <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite" inlineStyle="text-align:center;"/>
+                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;font-size:16px;"/>
+                <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;"/>
             </amx:panelGroupLayout>
         </amx:facet>
         <amx:facet name="primary">
@@ -22,7 +24,7 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
-        <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
+        <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
             <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label" showRequired="false"
@@ -139,13 +141,21 @@
                     </amx:commandButton>
                 </amx:cellFormat>
             </amx:rowLayout>
-        </amx:tableLayout>       
+        </amx:tableLayout>
+        <amx:tableLayout id="tl12" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;"
+                         rendered="#{bindings.summaryData.rangeSize &lt; 1}">
+            <amx:rowLayout id="rl11">
+                <amx:cellFormat id="cf1" width="100%" halign="center">
+                    <amx:outputText value="No Data Found" id="ot36" styleClass="xxRobotoFieldTitle"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       initialScrollRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}" showMoreStrategy="off"
-                      bufferStrategy="viewport" id="lv2">
+                      bufferStrategy="viewport" id="lv2" rendered="#{bindings.summaryData.rangeSize > 0}">
             <amx:listItem id="li2" action="toPOList"
                           inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">

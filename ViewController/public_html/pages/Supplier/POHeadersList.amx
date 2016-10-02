@@ -2,9 +2,10 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
-        <amx:facet name="header" >
-            <amx:outputText value="#{pageFlowScope.selectedStatus} Purchase Orders" id="ot1" styleClass="headertextwhite"
-                            inlineStyle="flex-wrap:wrap; overflow-wrap:break-word; text-align:center;" />
+        <amx:facet name="header">
+            <amx:outputText value="#{pageFlowScope.selectedStatus} Purchase Orders" id="ot1"
+                            styleClass="headertextwhite"
+                            inlineStyle="flex-wrap:wrap; overflow-wrap:break-word; text-align:center;"/>
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToSummary">
@@ -12,7 +13,7 @@
             </amx:commandLink>
         </amx:facet>
         <!--<amx:fragment src="/pages/Supplier/SupplierSearchFragement.amxf" id="f1"/>-->
-        <amx:panelFormLayout id="pfl2" labelWidth="45%" fieldWidth="55%" labelPosition="start" fieldHalign="start"
+        <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand2 == 'false'}">
             <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label" showRequired="false"
@@ -111,7 +112,9 @@
         <amx:panelGroupLayout layout="vertical" id="pgl2" halign="center"
                               rendered="#{pageFlowScope.showExpand2 == 'false'}">
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
-                               action="toPOList"/>
+                               action="toPOList">
+                <amx:setPropertyListener id="spl3" from="" to="#{pageFlowScope.selectedStatus}"/>
+            </amx:commandButton>
         </amx:panelGroupLayout>
         <amx:tableLayout id="tl11" width="100%">
             <amx:rowLayout id="r1l2">
@@ -130,21 +133,20 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+        <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;" rendered="#{bindings.POHeaderData.rangeSize &lt; 1}">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="100%" halign="center">
-                    <amx:outputText value="No Data Found" rendered="#{bindings.POHeaderData.rangeSize &lt; 1}" id="ot36"
+                    <amx:outputText value="No Data Found"  id="ot36"
                                     styleClass="xxRobotoFieldTitle"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        
         <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
                       fetchSize="#{bindings.POHeaderData.rangeSize}"
                       selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
                       initialScrollRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.POHeaderData.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" rendered="#{bindings.POHeaderData.rangeSize &gt; 0}">
             <amx:listItem id="li1" action="openPODetail" showLinkIcon="true"
                           inlineStyle="#{((row.rowKey)%2)==0?'background-color:#FFFFFF;':'background-color:#eaeaea;'};border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
                 <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">

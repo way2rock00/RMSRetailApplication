@@ -1,5 +1,7 @@
 package com.deloitte.rmsapp.utility;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+
 public class RestURIs {
     public RestURIs() {
         super();
@@ -9,9 +11,14 @@ public class RestURIs {
     private static String PO_HEADERS = "/XxRpmPoHeaderDetails/GetPOHeaderRS";
     private static String PO_DETAILS = "/XxRpmGetPODetailsPrj/GetPODetailsService";
     private static String NotifcationsList = "/XxRpmPONotification/PONotificationRS";
+    private static String PO_BY_STATUS = "/XxRpmPosByStatus/PoByStatusPS";
 
-    public static String getPoSummaryURI(String Supplier,String Buyer) {
-        return PO_SUMMARY+"/"+Supplier+"/"+Buyer;
+    public static String getPoSummaryURI(String Supplier, String Buyer) {
+        return PO_SUMMARY + "/" + Supplier + "/" + Buyer;
+    }
+
+    public static String getPObyStatus(String loginType, String loginNumber, String status) {
+        return convertString2URLFormat(PO_BY_STATUS + "/" + loginType + "/" + loginNumber + "/" + status);
     }
 
     public static String getNotificationURI(String strType, String strNumber) {
@@ -21,8 +28,8 @@ public class RestURIs {
     public static String getPOHeaderURI(String strOrderFromDate, String strOrderToDate, String strSupplier,
                                         String strBuyer, String strFromDate, String strToDate, String strStatus,
                                         String strType) {
-        return PO_HEADERS + "/" + strOrderFromDate + "/" + strOrderToDate + "/" + strSupplier + "/" + strBuyer + "/" +
-               strFromDate + "/" + strToDate + "/" + strStatus + "/" + strType;
+        return convertString2URLFormat(PO_HEADERS + "/" + strOrderFromDate + "/" + strOrderToDate + "/" + strSupplier + "/" + strBuyer + "/" +
+               strFromDate + "/" + strToDate + "/" + strStatus + "/" + strType);
     }
 
     public static String getPoLineURI(String strPONubmer) {

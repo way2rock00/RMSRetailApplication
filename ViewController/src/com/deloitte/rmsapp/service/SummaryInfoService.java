@@ -74,6 +74,7 @@ public class SummaryInfoService {
         summaryArray = summaryList.toArray(new SummaryInfo[summaryList.size()]);
 
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand2}", "true");
         if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
 
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchSupplier}",

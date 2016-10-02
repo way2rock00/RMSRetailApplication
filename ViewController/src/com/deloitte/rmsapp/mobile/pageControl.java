@@ -7,6 +7,7 @@ import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfException;
 
 public class pageControl {
+    private boolean validated = false;
     public pageControl() {
     }
 
@@ -22,6 +23,7 @@ public class pageControl {
         }
         if (userName.equals("Sup01") && password.equals("Sup123")) {
             System.out.println("valid:");
+            this.validated = true;
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "SUPPLIER");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}", "3030");
@@ -38,6 +40,7 @@ public class pageControl {
             
             
         } else if (userName.equals("Buy01") && password.equals("Buy123")) {
+            this.validated = true;
             System.out.println("valid:");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "BUYER");
@@ -79,7 +82,7 @@ public class pageControl {
         String pageNav;
         String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
         String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
-        if (userName == null || password == null) {
+        if (this.validated) {
             pageNav = null;
         }
         else {

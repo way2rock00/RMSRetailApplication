@@ -35,142 +35,232 @@ public class POHeaderService {
         poHeaderList = new ArrayList<POHeaders>();
         ServiceManager serviceManager = new ServiceManager();
 
+        String selectedStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStatus}");
+        System.out.println("selectedStatus is " + selectedStatus);
 
-        String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
-        System.out.println("strOrderFrom" + strOrderFrom);
-        String strOrderTo = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
-        System.out.println("strOrderTo" + strOrderTo);
-        String strSupplier = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchSupplier}");
-        String strBuyer = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchBuyer}");
+        if (selectedStatus == null) {
+            /*this is the part of individual search parameters based headers list*/
+            String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
+            System.out.println("strOrderFrom" + strOrderFrom);
+            String strOrderTo = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderTo}");
+            System.out.println("strOrderTo" + strOrderTo);
+            String strSupplier = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchSupplier}");
+            String strBuyer = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchBuyer}");
 
-        String strFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchFromDate}");
-        System.out.println("strOrderTo" + strFromDate);
-        String strToDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchToDate}");
-        System.out.println("strOrderTo" + strToDate);
-        String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
-        String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
+            String strFromDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchFromDate}");
+            System.out.println("strOrderTo" + strFromDate);
+            String strToDate = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchToDate}");
+            System.out.println("strOrderTo" + strToDate);
+            String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
+            String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
 
-        strOrderFrom = strOrderFrom == null ? "-999" : strOrderFrom;
-        strOrderFrom = strOrderFrom.length() == 0 ? "-999" : strOrderFrom;
-        
-        strOrderTo = strOrderTo == null ? "-999" : strOrderTo;
-        strOrderTo = strOrderTo.length() == 0 ? "-999" : strOrderTo;
-        
-        strSupplier = strSupplier == null ? "-999" : strSupplier;
-        strBuyer = strBuyer == null ? "-999" : strBuyer;
-        strStatus = strStatus == null ? "-999" : strStatus;
-        strType = strType == null ? "-999" : strType;
+            strOrderFrom = strOrderFrom == null ? "-999" : strOrderFrom;
+            strOrderFrom = strOrderFrom.length() == 0 ? "-999" : strOrderFrom;
 
-        System.out.println("strOrderFrom" + strOrderFrom);
-        System.out.println("strOrderTo" + strOrderTo);
-        System.out.println("strFromDate" + strFromDate);
-        System.out.println("strToDate" + strToDate);
+            strOrderTo = strOrderTo == null ? "-999" : strOrderTo;
+            strOrderTo = strOrderTo.length() == 0 ? "-999" : strOrderTo;
 
-        if (strFromDate == null) {
-            System.out.println("strFromDate Date : is null");
+            strSupplier = strSupplier == null ? "-999" : strSupplier;
+            strBuyer = strBuyer == null ? "-999" : strBuyer;
+            strStatus = strStatus == null ? "-999" : strStatus;
+            strType = strType == null ? "-999" : strType;
 
-        } else {
-            SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
-            Date date = null;
+            System.out.println("strOrderFrom" + strOrderFrom);
+            System.out.println("strOrderTo" + strOrderTo);
+            System.out.println("strFromDate" + strFromDate);
+            System.out.println("strToDate" + strToDate);
+
+            if (strFromDate == null) {
+                System.out.println("strFromDate Date : is null");
+
+            } else {
+                SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+                SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                Date date = null;
+                try {
+                    date = sourceFormat.parse(strFromDate);
+                    System.out.println(date);
+                    System.out.println(destinationFormat.format(date));
+
+                    strFromDate = destinationFormat.format(date);
+                    System.out.println("Date : " + strFromDate);
+                } catch (Exception ex) {
+                    System.out.println("Error " + ex.getLocalizedMessage());
+                }
+            }
+
+            if (strToDate == null) {
+                System.out.println("strToDate Date : is null");
+
+            } else {
+                SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+                SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                Date date = null;
+                try {
+                    date = sourceFormat.parse(strToDate);
+                    System.out.println(date);
+                    System.out.println(destinationFormat.format(date));
+
+                    strToDate = destinationFormat.format(date);
+                    System.out.println("Date : " + strToDate);
+                } catch (Exception ex) {
+                    System.out.println("Error " + ex.getLocalizedMessage());
+                }
+            }
+
+            strFromDate = strFromDate == null ? "-999" : strFromDate;
+            strToDate = strToDate == null ? "-999" : strToDate;
+
+
+            String url =
+                RestURIs.getPOHeaderURI(strOrderFrom, strOrderTo, strSupplier, strBuyer, strFromDate, strToDate,
+                                        strStatus, strType);
+            System.out.println("po header url:" + url);
+            String jsonArrayAsString = serviceManager.invokeREAD(url);
+            String strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + "New");
             try {
-                date = sourceFormat.parse(strFromDate);
-                System.out.println(date);
-                System.out.println(destinationFormat.format(date));
+                JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+                JSONObject parent = jsonObject.getJSONObject("P_PO_HDR_TAB");
+                JSONArray nodeArray = parent.getJSONArray("P_PO_HDR_TAB_ITEM");
 
-                strFromDate = destinationFormat.format(date);
-                System.out.println("Date : " + strFromDate);
-            } catch (Exception ex) {
-                System.out.println("Error " + ex.getLocalizedMessage());
+                int size = nodeArray.length();
+                for (int i = 0; i < size; i++) {
+                    JSONObject temp = nodeArray.getJSONObject(i);
+
+                    String poNumber = null;
+                    if (temp.getString("PO_NUMBER") != null)
+                        poNumber = temp.getString("PO_NUMBER");
+
+                    if(poNumber == null)
+                        continue;
+                    
+                    String poOrderType = null;
+                    if (temp.getString("PO_ORDER_TYPE") != null)
+                        poOrderType = temp.getString("PO_ORDER_TYPE");
+
+                    String poDate = null;
+                    if (temp.getString("PO_DATE") != null)
+                        poDate = temp.getString("PO_DATE");
+
+                    String buyer = null;
+                    if (temp.getString("BUYER") != null)
+                        buyer = temp.getString("BUYER");
+
+                    String status = null;
+                    if (temp.getString("STATUS") != null)
+                        status = temp.getString("STATUS");
+
+                    String pickUpDate = null;
+                    if (temp.getString("PICKUP_DATE") != null)
+                        pickUpDate = temp.getString("PICKUP_DATE");
+
+                    String notAfterDate = null;
+                    if (temp.getString("NOT_AFTER_DATE") != null)
+                        notAfterDate = temp.getString("NOT_AFTER_DATE");
+
+                    String poTotal = null;
+                    if (temp.getString("PO_TOTAL") != null)
+                        poTotal = temp.getString("PO_TOTAL");
+
+                    String recordId = null;
+                    if (temp.getString("RECORD_ID") != null)
+                        recordId = temp.getString("RECORD_ID");
+
+
+                    POHeaders poHeader =
+                        new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
+                                      poTotal);
+                    //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
+                    poHeaderList.add(poHeader);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-        }
-
-        if (strToDate == null) {
-            System.out.println("strToDate Date : is null");
-
-        } else {
-            SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            SimpleDateFormat destinationFormat = new SimpleDateFormat("dd-MMM-yyyy");
-            Date date = null;
+        }else{
+            /*this is the part of status based headers list*/
+            String loginType = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}");
+            String loginNumber;
+            if(loginType.equals("SUPPLIER")){
+                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}"); 
+            }else{
+                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}"); 
+            }
+          
+            System.out.println("loginType is " + loginType);
+            System.out.println("loginNumber is " + loginNumber);
+            System.out.println("selectedStatus is "+selectedStatus);
+            
+            String url =
+                RestURIs.getPObyStatus(loginType, loginNumber, selectedStatus);
+            System.out.println("po status by header url:" + url);
+            String jsonArrayAsString = serviceManager.invokeREAD(url);
+                        
             try {
-                date = sourceFormat.parse(strToDate);
-                System.out.println(date);
-                System.out.println(destinationFormat.format(date));
+                JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+                JSONObject parent = jsonObject.getJSONObject("X_HDR_NTF_TAB");
+                JSONArray nodeArray = parent.getJSONArray("X_HDR_NTF_TAB_ITEM");
 
-                strToDate = destinationFormat.format(date);
-                System.out.println("Date : " + strToDate);
-            } catch (Exception ex) {
-                System.out.println("Error " + ex.getLocalizedMessage());
+                int size = nodeArray.length();
+                for (int i = 0; i < size; i++) {
+                    JSONObject temp = nodeArray.getJSONObject(i);
+
+                    String poNumber = null;
+                    if (temp.getString("ORDER_NO") != null)
+                        poNumber = temp.getString("ORDER_NO");
+
+                    if(poNumber == null)
+                        continue;
+                    
+                    String poOrderType = null;
+                    if (temp.getString("ORDER_TYPE") != null)
+                        poOrderType = temp.getString("ORDER_TYPE");
+
+                    String poDate = null;
+                    if (temp.getString("PO_DATE") != null)
+                        poDate = temp.getString("PO_DATE");
+
+                    String buyer = null;
+                    if (temp.getString("BUYER") != null)
+                        buyer = temp.getString("BUYER");
+
+                    String status = null;
+                    if (temp.getString("STATUS") != null)
+                        status = temp.getString("STATUS");
+
+                    String pickUpDate = null;
+                    if (temp.getString("PICKUP_DATE") != null)
+                        pickUpDate = temp.getString("PICKUP_DATE");
+
+                    String notAfterDate = null;
+                    if (temp.getString("NOT_AFTER_DATE") != null)
+                        notAfterDate = temp.getString("NOT_AFTER_DATE");
+
+                    String poTotal = null;
+                    if (temp.getString("PO_TOTAL") != null)
+                        poTotal = temp.getString("PO_TOTAL");
+
+                    String recordId = null;
+                    if (temp.getString("RECORD_ID") != null)
+                        recordId = temp.getString("RECORD_ID");
+
+
+                    POHeaders poHeader =
+                        new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
+                                      poTotal);
+                    //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
+                    poHeaderList.add(poHeader);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
-
-        strFromDate = strFromDate == null ? "-999" : strFromDate;
-        strToDate = strToDate == null ? "-999" : strToDate;
-
-
-        String url =
-            RestURIs.getPOHeaderURI(strOrderFrom, strOrderTo, strSupplier, strBuyer, strFromDate, strToDate, strStatus,
-                                    strType);
-        System.out.println("po header url:" + url);
-        String jsonArrayAsString = serviceManager.invokeREAD(url);
-        String strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + "New");
-        try {
-            JSONObject jsonObject = new JSONObject(jsonArrayAsString);
-            JSONObject parent = jsonObject.getJSONObject("P_PO_HDR_TAB");
-            JSONArray nodeArray = parent.getJSONArray("P_PO_HDR_TAB_ITEM");
-
-            int size = nodeArray.length();
-            for (int i = 0; i < size; i++) {
-                JSONObject temp = nodeArray.getJSONObject(i);
-
-                String poNumber = null;
-                if (temp.getString("PO_NUMBER") != null)
-                    poNumber = temp.getString("PO_NUMBER");
-
-                String poOrderType = null;
-                if (temp.getString("PO_ORDER_TYPE") != null)
-                    poOrderType = temp.getString("PO_ORDER_TYPE");
-
-                String poDate = null;
-                if (temp.getString("PO_DATE") != null)
-                    poDate = temp.getString("PO_DATE");
-
-                String buyer = null;
-                if (temp.getString("BUYER") != null)
-                    buyer = temp.getString("BUYER");
-
-                String status = null;
-                if (temp.getString("STATUS") != null)
-                    status = temp.getString("STATUS");
-
-                String pickUpDate = null;
-                if (temp.getString("PICKUP_DATE") != null)
-                    pickUpDate = temp.getString("PICKUP_DATE");
-
-                String notAfterDate = null;
-                if (temp.getString("NOT_AFTER_DATE") != null)
-                    notAfterDate = temp.getString("NOT_AFTER_DATE");
-
-                String poTotal = null;
-                if (temp.getString("PO_TOTAL") != null)
-                    poTotal = temp.getString("PO_TOTAL");
-
-                String recordId = null;
-                if (temp.getString("RECORD_ID") != null)
-                    recordId = temp.getString("RECORD_ID");
-
-
-                POHeaders poHeader =
-                    new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal);
-                //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
-                poHeaderList.add(poHeader);
-
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        
+        
         poHeadersArray = poHeaderList.toArray(new POHeaders[poHeaderList.size()]);
         return poHeadersArray;
     }

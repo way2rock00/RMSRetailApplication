@@ -1,5 +1,7 @@
 package com.deloitte.rmsapp.service;
 
+import com.deloitte.rmsapp.Supplier.POLine;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +23,8 @@ import oracle.adfmf.bindings.dbf.AmxTreeBinding.AmxTreeNodeDefinitionAccessor;
 import oracle.adfmf.bindings.iterator.BasicIterator;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfInvocationException;
+import oracle.adfmf.json.JSONArray;
+import oracle.adfmf.json.JSONObject;
 import oracle.adfmf.util.GenericType;
 
 public class PurchaseOrderBean {
@@ -30,8 +34,27 @@ public class PurchaseOrderBean {
     public void clicked(ActionEvent actionEvent) {
 
         AmxIteratorBinding ib = null;
+        String strDebug = "S";
         int alertCount = 0;
-
+        try
+        {
+            JSONObject jsonObject = new JSONObject();
+            POLine p1 = new POLine("1", "L1", "10", "EACH", "100", "TestLineReason1");
+            POLine p2 = new POLine("2", "L2", "20", "EACH", "200", "TestLineReason2");
+            List liTest = new ArrayList();
+            liTest.add(p1);
+            liTest.add(p2);
+            JSONArray jsonArray = new JSONArray(liTest);            
+        jsonObject.put("Test1", "Hello1");
+        jsonObject.put("Test2", "Hello2");
+            jsonObject.put("TestList",jsonArray);
+            strDebug= strDebug+jsonObject.toString();
+        }
+        catch(Exception e)
+        {
+            strDebug= strDebug+"Error:"+e.getMessage();
+        }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
         ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
         ib.getIterator().first();
         for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {

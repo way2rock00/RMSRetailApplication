@@ -30,8 +30,9 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-        </amx:panelGroupLayout>-->        
-        
+        </amx:panelGroupLayout>-->
+        <amx:outputText value="#{pageFlowScope.debugVal}" id="ot24"/>
+        <amx:commandButton text="Test" id="cb8" actionListener="#{pageFlowScope.PurchaseOrderBean.clicked}"/>
         <amx:listView var="row" value="#{bindings.PODetailsData.collectionModel}"
                       fetchSize="#{bindings.PODetailsData.rangeSize}"
                       selectedRowKeys="#{bindings.PODetailsData.collectionModel.selectedRow}"

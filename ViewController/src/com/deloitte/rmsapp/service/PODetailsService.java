@@ -115,10 +115,14 @@ public class PODetailsService {
                     if (lineTemp.getString("UOM") != null)
                         lineUOM = lineTemp.getString("UOM");
                     
+                    String locationName = null;
+                    if (lineTemp.getString("LOCATION_NAME") != null)
+                        locationName = lineTemp.getString("LOCATION_NAME");                    
+                    
                     //Placeholder for line reason
                     String lineReason = null;
 
-                    POLine poLine = new POLine(lineNumber, item,lineQuantity, lineUOM, lineReason, linePrice);
+                    POLine poLine = new POLine(lineNumber, item,lineQuantity, lineUOM, linePrice,lineReason,locationName);
                     poLineList.add(poLine);
 
                 }

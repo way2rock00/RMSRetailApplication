@@ -12,7 +12,22 @@ public class RestURIs {
     private static String PO_DETAILS = "/XxRpmGetPODetailsPrj/GetPODetailsService";
     private static String NotifcationsList = "/XxRpmPONotification/PONotificationRS";
     private static String PO_BY_STATUS = "/XxRpmPosByStatus/PoByStatusPS";
+    private static String PO_NUMBER_LOV = "/XxRpmGetPoLov/RestService";
+    private static String SupplierLOV = "/XxRpmGetSuppLov/GetSuppLov_RS";
+    private static String BuyerLOV = "/XxRpmGetBuyerLov/GetBuyerLov_RS";
 
+    public static String getPONumberLovURI(String loginType,String loginNumber){
+        return PO_NUMBER_LOV+"/"+loginType+"/"+loginNumber;
+    }
+    
+    public static String getSupplierLovURI(String buyerNumber){
+        return SupplierLOV+"/"+buyerNumber;
+    }
+    
+    public static String getBuyerLovURI(String supplierNumber){
+        return BuyerLOV+"/"+supplierNumber;
+    }
+    
     public static String getPoSummaryURI(String Supplier, String Buyer) {
         return PO_SUMMARY + "/" + Supplier + "/" + Buyer;
     }

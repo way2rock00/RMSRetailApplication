@@ -32,9 +32,11 @@
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
-                            <amx:inputText styleClass="username_field" id="it6" inputType="number"
+                             <amx:inputText styleClass="username_field" id="it6" inputType="number"
                                            valueChangeListener="#{pageControl.fromPOChanged}"
                                            value="#{pageFlowScope.searchOrderFrom}"/>
+                                        
+                            
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -47,6 +49,8 @@
                             <amx:inputText styleClass="username_field" id="it1" inputType="number"
                                            valueChangeListener="#{pageControl.toPOChanged}"
                                            value="#{pageFlowScope.searchOrderTo}"/>
+                                           
+                           
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

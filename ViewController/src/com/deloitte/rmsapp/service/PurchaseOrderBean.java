@@ -36,6 +36,7 @@ public class PurchaseOrderBean {
         AmxIteratorBinding ib = null;
         String strDebug = "S";
         int alertCount = 0;
+        /*
         try
         {
             JSONObject jsonObject = new JSONObject();
@@ -44,32 +45,91 @@ public class PurchaseOrderBean {
             List liTest = new ArrayList();
             liTest.add(p1);
             liTest.add(p2);
-            JSONArray jsonArray = new JSONArray(liTest);            
+            JSONArray jsonArray = new JSONArray(liTest);
         jsonObject.put("Test1", "Hello1");
         jsonObject.put("Test2", "Hello2");
             jsonObject.put("TestList",jsonArray);
             strDebug= strDebug+jsonObject.toString();
         }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
         catch(Exception e)
         {
             strDebug= strDebug+"Error:"+e.getMessage();
-        }
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
-        ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
-        ib.getIterator().first();
-        for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {
-            GenericType row = (GenericType) ib.getIterator().getCurrentRow();
-            System.out.println(row.getAttribute("poDate").toString());
-        }
+        }*/
+        try {
+            JSONObject poHeaderParentObject = new JSONObject();
 
-        ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
-        //ib.getIterator().first();
-        for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {
-            ib.getIterator().next();
-            GenericType row = (GenericType) ib.getIterator().getCurrentRow();
-            System.out.println(row.getAttribute("item").toString());
-            System.out.println(row.getAttribute("quantity").toString());
-            System.out.println(row.getAttribute("price").toString());
+            JSONObject poObject = new JSONObject();
+            strDebug = strDebug + ":1:";
+            ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
+            ib.getIterator().first();
+            for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {
+                GenericType row = (GenericType) ib.getIterator().getCurrentRow();
+                System.out.println(row.getAttribute("poDate").toString());
+                strDebug = strDebug + ":2:";
+                poObject.put("PO_HDR_ID",
+                             row.getAttribute("recordId") == null ? "" : row.getAttribute("recordId").toString());
+                poObject.put("ORDER_NO",
+                             row.getAttribute("poNumber") == null ? "" : row.getAttribute("poNumber").toString());
+                poObject.put("VERSION_NO", ""); //This needs to be included
+                poObject.put("HEADER_REASON",
+                             row.getAttribute("headerReason") == null ? "" :
+                             row.getAttribute("headerReason").toString());
+                poObject.put("PICKUP_DATE",
+                             row.getAttribute("pickUpDate") == null ? "" : row.getAttribute("pickUpDate").toString());
+                poObject.put("STATUS", row.getAttribute("status") == null ? "" : row.getAttribute("status").toString());
+                poObject.put("CREATED_BY", "");
+                poObject.put("CREATION_DATE", "");
+                poObject.put("LAST_UPDATED_BY", "");
+                poObject.put("LAST_UPDATE_DATE", "");
+                poObject.put("LAST_UPDATE_LOGIN", "");
+            }
+
+            ib = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
+            //ib.getIterator().first();
+            List poLineList = new ArrayList();
+            for (int i = 0; i < ib.getIterator().getTotalRowCount(); i++) {
+                ib.getIterator().next();
+                JSONObject poLineObject = new JSONObject();
+                GenericType row = (GenericType) ib.getIterator().getCurrentRow();
+                System.out.println(row.getAttribute("item").toString());
+                System.out.println(row.getAttribute("quantity").toString());
+                System.out.println(row.getAttribute("price").toString());
+                strDebug = strDebug + ":3:";
+                poLineObject.put("PO_LINE_ID",
+                                 row.getAttribute("poLineNumber") == null ? "" :
+                                 row.getAttribute("poLineNumber").toString());
+                poLineObject.put("ORDER_NO",
+                                 row.getAttribute("poLineNumber") == null ? "" :
+                                 row.getAttribute("poLineNumber").toString());
+                poLineObject.put("ITEM", row.getAttribute("item") == null ? "" : row.getAttribute("item").toString());
+                poLineObject.put("QUANTITY",
+                                 row.getAttribute("quantity") == null ? "" : row.getAttribute("quantity").toString());
+                poLineObject.put("PRICE",
+                                 row.getAttribute("price") == null ? "" : row.getAttribute("price").toString());
+                poLineObject.put("UOM", row.getAttribute("uom") == null ? "" : row.getAttribute("uom").toString());
+                poLineObject.put("LOCATION",
+                                 row.getAttribute("locationName") == null ? "" :
+                                 row.getAttribute("locationName").toString());
+                poLineObject.put("LINE_REASON",
+                                 row.getAttribute("lineReason") == null ? "" :
+                                 row.getAttribute("lineReason").toString());
+                poLineObject.put("CREATED_BY", "");
+                poLineObject.put("CREATION_DATE", "");
+                poLineObject.put("LAST_UPDATED_BY", "");
+                poLineObject.put("LAST_UPDATE_DATE", "");
+                poLineObject.put("LAST_UPDATE_LOGIN", "");
+                poLineList.add(poLineObject);
+            }
+
+            poObject.put("P_LINE_TBL_OBJ", poLineList);
+            poHeaderParentObject.put("P_PO_HDR_DATA_TAB", poObject);
+            strDebug = strDebug + ":4:";
+            strDebug = strDebug + poHeaderParentObject.toString();
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
+        } catch (Exception e) {
+            strDebug = strDebug + ":5:";
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.debugVal}", strDebug);
         }
 
 

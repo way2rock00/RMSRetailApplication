@@ -25,25 +25,7 @@ public class PONumberLOV {
 
     public String getPoNumber() {
         return poNumberlov;
-    private String poNumber;
-    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-    public PONumberLOV() {
-        super();
-    }
-
-    public PONumberLOV(String poNumber) {
-        setPoNumber(poNumber);
-    }
-
-    public void setPoNumber(String poNumber) {
-        String oldPoNumber = this.poNumber;
-        this.poNumber = poNumber;
-        propertyChangeSupport.firePropertyChange("poNumber", oldPoNumber, poNumber);
-    }
-
-    public String getPoNumber() {
-        return poNumber;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

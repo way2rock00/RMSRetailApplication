@@ -10,8 +10,9 @@
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:outputText value="#{pageFlowScope.debugVal}" id="ot24"/>
+        <!-- <amx:outputText value="#{pageFlowScope.debugVal}" id="ot24"/>
         <amx:commandButton text="Test" id="cb8" actionListener="#{pageFlowScope.PurchaseOrderBean.clicked}"/>
+        -->
         <amx:listView var="row" value="#{bindings.PODetailsData.collectionModel}"
                       fetchSize="#{bindings.PODetailsData.rangeSize}"
                       selectedRowKeys="#{bindings.PODetailsData.collectionModel.selectedRow}"
@@ -159,16 +160,18 @@
                         <amx:cellFormat id="cf1" width="2%"/>
                         <amx:cellFormat id="cf24" width="32%" styleClass="cell-border">
                             <amx:inputText id="it1" value="#{lineRow.quantity}" simple="true" inputType="number"
+                                           styleClass="xxRobotoFieldValue"
                                            inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf2" width="2%"/>
                         <amx:cellFormat id="cf26" width="32%" styleClass="cell-border">
                             <amx:inputText id="it3" value="#{lineRow.uom}" readOnly="true" simple="true"
-                                           inputType="text"/>
+                                           inputType="text" styleClass="xxRobotoFieldValue"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" width="2%"/>
                         <amx:cellFormat id="cf28" width="32%" styleClass="cell-border">
                             <amx:inputText id="it4" value="#{lineRow.price}" simple="true" inputType="number"
+                                           styleClass="xxRobotoFieldValue"
                                            inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -182,7 +185,7 @@
                         <amx:cellFormat id="cf23" width="3%"/>
                         <amx:cellFormat id="cf25" width="auto" halign="end" inlineStyle="padding-top:5px;">
                             <amx:inputText simple="true" inputType="text" id="it5" rows="2"
-                                           value="#{lineRow.lineReason}"
+                                           value="#{lineRow.lineReason}" styleClass="xxRobotoFieldValue"
                                            inlineStyle=" border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -207,41 +210,49 @@
             </amx:panelGroupLayout>
         </amx:facet>
     </amx:panelPage>
-    <amx:popup id="p1">
+    <amx:popup id="p1" inlineStyle="left:100px; top:300px; z-index:1000;">
         <amx:panelGroupLayout id="pgl1">
-            <amx:outputText value="Confirm Submission?" id="ot20"/>
+            <amx:outputText value="Confirm Submission?" id="ot20"
+                            inlineStyle="text-align:center; border-bottom-color:Scrollbar; border-bottom-style:solid; border-bottom-width:thin;"/>
             <amx:outputText value="Confirm changes for Order# #{pageFlowScope.selectedPONum}" id="ot21"/>
             <amx:tableLayout id="tl7" width="100">
                 <amx:rowLayout id="rl7">
                     <amx:cellFormat id="cf27" width="10%"/>
                     <amx:cellFormat id="cf29" width="30%">
-                        <amx:commandButton text="Yes" id="cb1"
-                                           actionListener="#{pageFlowScope.PurchaseOrderBean.submitClicked}"/>
+                        <amx:commandButton text="Yes" id="cb1" styleClass="buttonsLarge"
+                                           actionListener="#{pageFlowScope.PurchaseOrderBean.submitClicked}">
+                            <amx:closePopupBehavior id="cpb1" popupId="p1"/>
+                        </amx:commandButton>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf34" width="10%"/>
                     <amx:cellFormat id="cf35" width="30%">
-                        <amx:commandButton text="No" id="cb5">
-                            <amx:closePopupBehavior id="cpb1" popupId="p1"/>
+                        <amx:commandButton text="No" id="cb5" styleClass="buttonsLarge"
+                                           inlineStyle="background-color:Red;">
+                            <amx:closePopupBehavior id="cpb3" popupId="p1"/>
                         </amx:commandButton>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
     </amx:popup>
-    <amx:popup id="p2">
+    <amx:popup id="p2" inlineStyle="left:100px; top:300px; z-index:1000;">
         <amx:panelGroupLayout id="pgl3">
-            <amx:outputText value="Approve Order?" id="ot23"/>
+            <amx:outputText value="Approve Order?" id="ot23"
+                            inlineStyle="text-align:center; border-bottom-color:Scrollbar; border-bottom-style:solid; border-bottom-width:thin;"/>
             <amx:outputText value="Do you want to approve Order# #{pageFlowScope.selectedPONum}" id="ot22"/>
             <amx:tableLayout id="tl8" width="100">
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf36" width="10%"/>
                     <amx:cellFormat id="cf37" width="30%">
-                        <amx:commandButton text="Yes" id="cb6"
-                                           actionListener="#{pageFlowScope.PurchaseOrderBean.approveClicked}"/>
+                        <amx:commandButton text="Yes" id="cb6" styleClass="buttonsLarge"
+                                           actionListener="#{pageFlowScope.PurchaseOrderBean.approveClicked}">
+                            <amx:closePopupBehavior id="cpb4" popupId="p2"/>
+                        </amx:commandButton>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf38" width="10%"/>
                     <amx:cellFormat id="cf39" width="30%">
-                        <amx:commandButton text="No" id="cb7">
+                        <amx:commandButton text="No" id="cb7" styleClass="buttonsLarge"
+                                           inlineStyle="background-color:Red;">
                             <amx:closePopupBehavior id="cpb2" popupId="p2"/>
                         </amx:commandButton>
                     </amx:cellFormat>

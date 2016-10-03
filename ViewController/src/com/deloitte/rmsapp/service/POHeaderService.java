@@ -36,9 +36,9 @@ public class POHeaderService {
         ServiceManager serviceManager = new ServiceManager();
 
         String selectedStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStatus}");
-        System.out.println("selectedStatus is " + selectedStatus);        
+        System.out.println("selectedStatus is " + selectedStatus);
 
-        if (selectedStatus == null || selectedStatus.length()==0) {
+        if (selectedStatus == null || selectedStatus.length() == 0) {
             /*this is the part of individual search parameters based headers list*/
             String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
             System.out.println("strOrderFrom" + strOrderFrom);
@@ -132,9 +132,9 @@ public class POHeaderService {
                     if (temp.getString("PO_NUMBER") != null)
                         poNumber = temp.getString("PO_NUMBER");
 
-                    if(poNumber == null)
+                    if (poNumber == null)
                         continue;
-                    
+
                     String poOrderType = null;
                     if (temp.getString("PO_ORDER_TYPE") != null)
                         poOrderType = temp.getString("PO_ORDER_TYPE");
@@ -179,25 +179,24 @@ public class POHeaderService {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }else{
+        } else {
             /*this is the part of status based headers list*/
             String loginType = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}");
             String loginNumber;
-            if(loginType.equals("SUPPLIER")){
-                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}"); 
-            }else{
-                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}"); 
+            if (loginType.equals("SUPPLIER")) {
+                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}");
+            } else {
+                loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}");
             }
-          
+
             System.out.println("loginType is " + loginType);
             System.out.println("loginNumber is " + loginNumber);
-            System.out.println("selectedStatus is "+selectedStatus);
-            
-            String url =
-                RestURIs.getPObyStatus(loginType, loginNumber, selectedStatus);
+            System.out.println("selectedStatus is " + selectedStatus);
+
+            String url = RestURIs.getPObyStatus(loginType, loginNumber, selectedStatus);
             System.out.println("po status by header url:" + url);
             String jsonArrayAsString = serviceManager.invokeREAD(url);
-                        
+
             try {
                 JSONObject jsonObject = new JSONObject(jsonArrayAsString);
                 JSONObject parent = jsonObject.getJSONObject("X_HDR_NTF_TAB");
@@ -211,9 +210,9 @@ public class POHeaderService {
                     if (temp.getString("ORDER_NO") != null)
                         poNumber = temp.getString("ORDER_NO");
 
-                    if(poNumber == null)
+                    if (poNumber == null)
                         continue;
-                    
+
                     String poOrderType = null;
                     if (temp.getString("ORDER_TYPE") != null)
                         poOrderType = temp.getString("ORDER_TYPE");
@@ -259,9 +258,10 @@ public class POHeaderService {
                 System.out.println(e.getMessage());
             }
         }
-        
-        
+
+
         poHeadersArray = poHeaderList.toArray(new POHeaders[poHeaderList.size()]);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.headerRecCount}", poHeaderList.size());
         return poHeadersArray;
     }
 

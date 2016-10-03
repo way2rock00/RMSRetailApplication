@@ -2,7 +2,7 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
-        <amx:facet name="header" >
+        <amx:facet name="header">
             <amx:outputText value="#{pageFlowScope.selectedStatus} Purchase Orders" id="ot1"
                             styleClass="headertextwhite"
                             inlineStyle="flex-wrap:wrap; overflow-wrap:break-word; text-align:center;"/>
@@ -12,7 +12,7 @@
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
             <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{bindings.gotoSpringboard.execute}"
-                             rendered="#{pageFlowScope.showExpand == 'false'}">
+                             rendered="#{pageFlowScope.showExpand2 == 'false'}">
                 <amx:outputHtml id="oh2" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>
         </amx:facet>
@@ -136,6 +136,15 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
+        <!--
+        <amx:tableLayout id="tl1" width="100%" rendered="#{pageFlowScope.headerRecCount &lt; 1}">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">
+                    <amx:outputText value="No Data Found" id="ot3" styleClass="xxRobotoFieldValue"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        -->
         <amx:listView var="row" value="#{bindings.POHeaderData.collectionModel}"
                       fetchSize="#{bindings.POHeaderData.rangeSize}"
                       selectedRowKeys="#{bindings.POHeaderData.collectionModel.selectedRow}"
@@ -151,7 +160,7 @@
                             <amx:outputText value="PO ##{row.poNumber}" id="ot13" styleClass="xxRobotoGroupHeader"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf013" width="37%" halign="end">
-                            <amx:outputText value="USD #{row.poTotal}" id="ot3" styleClass="xxRobotoGroupValue"/>
+                            <amx:outputText value="USD #{row.poTotal}" id="ot14" styleClass="xxRobotoGroupValue"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

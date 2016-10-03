@@ -29,7 +29,7 @@ public class PODetailsService {
     }
     private static List<PODetails> poDetailsList = new ArrayList<PODetails>();
 
-    public  PODetails[] getPODetailsData() {
+    public PODetails[] getPODetailsData() {
         PODetails[] poDetailsArray = null;
         poDetailsList = new ArrayList<PODetails>();
         ServiceManager serviceManager = new ServiceManager();
@@ -85,7 +85,7 @@ public class PODetailsService {
                 String recordId = null;
                 if (temp.getString("RECORD_ID") != null)
                     recordId = temp.getString("RECORD_ID");
-                
+
                 // Place holder for Reason mapping
                 String headerReason = "Test Reason";
 
@@ -94,14 +94,21 @@ public class PODetailsService {
                 JSONArray poLineArray = poLineParentObject.getJSONArray("PO_LINE_ITEM");
                 for (int j = 0; j < poLineArray.length(); j++) {
                     JSONObject lineTemp = poLineArray.getJSONObject(j);
-
+                    System.out.println("lineTemp" + lineTemp);
                     String lineNumber = null;
                     if (lineTemp.getString("LINE_NUMBER") != null)
                         lineNumber = lineTemp.getString("LINE_NUMBER");
 
                     String item = null;
-                    if (lineTemp.getString("LINE_NUMBER") != null)
+                    if (lineTemp.getString("ITEM") != null) {
                         item = lineTemp.getString("ITEM");
+                        System.out.println("under item");
+                        JSONObject itemobj = lineTemp.getJSONObject("ITEM");
+                        System.out.println(itemobj);
+                        JSONArray itemobjs = lineTemp.getJSONArray("ITEM");
+                        System.out.println(itemobjs);
+
+                    }
 
                     String lineQuantity = null;
                     if (lineTemp.getString("QTY") != null)
@@ -114,22 +121,23 @@ public class PODetailsService {
                     String lineUOM = null;
                     if (lineTemp.getString("UOM") != null)
                         lineUOM = lineTemp.getString("UOM");
-                    
+
                     String locationName = null;
                     if (lineTemp.getString("LOCATION_NAME") != null)
-                        locationName = lineTemp.getString("LOCATION_NAME");                    
-                    
+                        locationName = lineTemp.getString("LOCATION_NAME");
+
                     //Placeholder for line reason
                     String lineReason = null;
 
-                    POLine poLine = new POLine(lineNumber, item,lineQuantity, lineUOM, linePrice,lineReason,locationName);
+                    POLine poLine =
+                        new POLine(lineNumber, item, lineQuantity, lineUOM, linePrice, lineReason, locationName);
                     poLineList.add(poLine);
 
                 }
 
                 PODetails poDetails =
                     new PODetails(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal, headerReason , poLineList.toArray(new POLine[poLineList.size()]));
+                                  poTotal, headerReason, poLineList.toArray(new POLine[poLineList.size()]));
                 //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                 poDetailsList.add(poDetails);
 
@@ -140,8 +148,6 @@ public class PODetailsService {
         poDetailsArray = poDetailsList.toArray(new PODetails[poDetailsList.size()]);
         return poDetailsArray;
     }
-    
-
 
 
 }

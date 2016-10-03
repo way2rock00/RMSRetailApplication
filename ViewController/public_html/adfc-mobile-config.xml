@@ -2,7 +2,7 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <managed-bean id="__1">
     <managed-bean-name>ttt</managed-bean-name>
-    <managed-bean-class>com.deloitte.rmsapp.mobile.tttt</managed-bean-class>
+    <managed-bean-class>com.deloitte.rmsapp.mobile.pageControl</managed-bean-class>
     <managed-bean-scope>application</managed-bean-scope>
   </managed-bean>
   <managed-bean id="__2">

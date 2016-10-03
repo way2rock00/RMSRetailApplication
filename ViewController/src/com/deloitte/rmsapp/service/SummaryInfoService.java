@@ -21,6 +21,7 @@ public class SummaryInfoService {
     private static List<SummaryInfo> summaryList = new ArrayList<SummaryInfo>();
 
     public SummaryInfo[] getSummaryData() {
+        System.out.println("summary start");
         SummaryInfo[] summaryArray = null;
         summaryList = new ArrayList<SummaryInfo>();
         ServiceManager serviceManager = new ServiceManager();
@@ -30,9 +31,11 @@ public class SummaryInfoService {
         if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
 
             supplier = AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString();
+            System.out.println("supplier");
 
         } else {
             buyer = AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString();
+            System.out.println("buyer");
 
         }
 
@@ -73,6 +76,7 @@ public class SummaryInfoService {
         }
         summaryArray = summaryList.toArray(new SummaryInfo[summaryList.size()]);
 
+
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand2}", "true");
         if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
@@ -85,7 +89,8 @@ public class SummaryInfoService {
                                           AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString());
         }
 
-
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.summaryRecCount}", summaryList.size());
+        System.out.println("summary end");
         return summaryArray;
 
     }

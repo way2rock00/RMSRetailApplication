@@ -15,19 +15,24 @@ public class RestURIs {
     private static String PO_NUMBER_LOV = "/XxRpmGetPoLov/RestService";
     private static String SupplierLOV = "/XxRpmGetSuppLov/GetSuppLov_RS";
     private static String BuyerLOV = "/XxRpmGetBuyerLov/GetBuyerLov_RS";
+    private static String LoadPO = "/XxRpmLoadPurchaseOrders/LoadPurchaseOrderRS";
 
-    public static String getPONumberLovURI(String loginType,String loginNumber){
-        return PO_NUMBER_LOV+"/"+loginType+"/"+loginNumber;
+    public static String getPONumberLovURI(String loginType, String loginNumber) {
+        return PO_NUMBER_LOV + "/" + loginType + "/" + loginNumber;
     }
-    
-    public static String getSupplierLovURI(String buyerNumber){
-        return SupplierLOV+"/"+buyerNumber;
+
+    public static String getLoadPOURI() {
+        return LoadPO;
     }
-    
-    public static String getBuyerLovURI(String supplierNumber){
-        return BuyerLOV+"/"+supplierNumber;
+
+    public static String getSupplierLovURI(String buyerNumber) {
+        return SupplierLOV + "/" + buyerNumber;
     }
-    
+
+    public static String getBuyerLovURI(String supplierNumber) {
+        return BuyerLOV + "/" + supplierNumber;
+    }
+
     public static String getPoSummaryURI(String Supplier, String Buyer) {
         return PO_SUMMARY + "/" + Supplier + "/" + Buyer;
     }
@@ -43,8 +48,9 @@ public class RestURIs {
     public static String getPOHeaderURI(String strOrderFromDate, String strOrderToDate, String strSupplier,
                                         String strBuyer, String strFromDate, String strToDate, String strStatus,
                                         String strType) {
-        return convertString2URLFormat(PO_HEADERS + "/" + strOrderFromDate + "/" + strOrderToDate + "/" + strSupplier + "/" + strBuyer + "/" +
-               strFromDate + "/" + strToDate + "/" + strStatus + "/" + strType);
+        return convertString2URLFormat(PO_HEADERS + "/" + strOrderFromDate + "/" + strOrderToDate + "/" + strSupplier +
+                                       "/" + strBuyer + "/" + strFromDate + "/" + strToDate + "/" + strStatus + "/" +
+                                       strType);
     }
 
     public static String getPoLineURI(String strPONubmer) {

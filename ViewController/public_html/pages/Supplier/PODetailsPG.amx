@@ -206,7 +206,6 @@
                 <amx:commandButton actionListener="#{pageFlowScope.PurchaseOrderBean.rejectClicked}" text="Reject"
                                    id="cb4" rendered="#{applicationScope.loginType == 'BUYER'}"
                                    styleClass="buttonsLarge" inlineStyle="background-color:Red;"/>
-                "/&gt;
             </amx:panelGroupLayout>
         </amx:facet>
     </amx:panelPage>

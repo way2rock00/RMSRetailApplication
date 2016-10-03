@@ -192,14 +192,12 @@
         <amx:facet name="footer">
             <amx:panelGroupLayout layout="horizontal" id="pgl2" halign="center">
                 <amx:commandButton text="Submit" id="cb111" rendered="#{applicationScope.loginType == 'SUPPLIER'}"
-                                   styleClass="buttonsLarge"
-                                   actionListener="#{pageFlowScope.PurchaseOrderBean.submitClicked}">
+                                   styleClass="buttonsLarge">
                     <amx:showPopupBehavior id="spb1" popupId="p1" alignId="lv3"/>
                 </amx:commandButton>
                 <amx:commandButton text="Cancel" id="cb2" rendered="#{applicationScope.loginType == 'SUPPLIER'}"
                                    styleClass="buttonsLarge" inlineStyle="background-color:Red;" action="__back"/>
-                <amx:commandButton actionListener="#{pageFlowScope.PurchaseOrderBean.approveClicked}" text="Accept"
-                                   id="cb3" rendered="#{applicationScope.loginType == 'BUYER'}"
+                <amx:commandButton text="Accept" id="cb3" rendered="#{applicationScope.loginType == 'BUYER'}"
                                    styleClass="buttonsLarge">
                     <amx:showPopupBehavior id="spb2" popupId="p2" alignId="lv3"/>
                 </amx:commandButton>
@@ -217,7 +215,8 @@
                 <amx:rowLayout id="rl7">
                     <amx:cellFormat id="cf27" width="10%"/>
                     <amx:cellFormat id="cf29" width="30%">
-                        <amx:commandButton text="Yes" id="cb1"/>
+                        <amx:commandButton text="Yes" id="cb1"
+                                           actionListener="#{pageFlowScope.PurchaseOrderBean.submitClicked}"/>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf34" width="10%"/>
                     <amx:cellFormat id="cf35" width="30%">
@@ -237,7 +236,8 @@
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf36" width="10%"/>
                     <amx:cellFormat id="cf37" width="30%">
-                        <amx:commandButton text="Yes" id="cb6"/>
+                        <amx:commandButton text="Yes" id="cb6"
+                                           actionListener="#{pageFlowScope.PurchaseOrderBean.approveClicked}"/>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf38" width="10%"/>
                     <amx:cellFormat id="cf39" width="30%">

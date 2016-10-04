@@ -54,6 +54,9 @@ public class NotificationDetailsService {
                 if (temp.getString("PO_NUMBER") != null)
                     poNumber = temp.getString("PO_NUMBER");
 
+                if (poNumber == null)
+                    continue;
+
                 String poOrderType = null;
                 if (temp.getString("PO_ORDER_TYPE") != null)
                     poOrderType = temp.getString("PO_ORDER_TYPE");
@@ -85,6 +88,7 @@ public class NotificationDetailsService {
             System.out.println(e.getMessage());
         }
         notificationArray = notificationsList.toArray(new NotificationDetails[notificationsList.size()]);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.notificateCount}", notificationsList.size());
         return notificationArray;
     }
 

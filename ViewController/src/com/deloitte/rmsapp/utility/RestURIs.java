@@ -16,6 +16,7 @@ public class RestURIs {
     private static String SupplierLOV = "/XxRpmGetSuppLov/GetSuppLov_RS";
     private static String BuyerLOV = "/XxRpmGetBuyerLov/GetBuyerLov_RS";
     private static String LoadPO = "/XxRpmLoadPurchaseOrders/LoadPurchaseOrderRS";
+    private static String Approvals = "/XxRpmModifyPoByBuyer/POModifyRS";
 
     public static String getPONumberLovURI(String loginType, String loginNumber) {
         return PO_NUMBER_LOV + "/" + loginType + "/" + loginNumber;
@@ -23,6 +24,10 @@ public class RestURIs {
 
     public static String getLoadPOURI() {
         return LoadPO;
+    }
+
+    public static String getApprovalURI() {
+        return Approvals;
     }
 
     public static String getSupplierLovURI(String buyerNumber) {

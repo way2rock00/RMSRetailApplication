@@ -66,11 +66,16 @@ public class ServiceManager {
 
         try {
             response = (restServiceAdapter.send(restPayload)).toString();
+            if(payload != null){
+                System.out.println("restServiceAdapter:"+restServiceAdapter.toString());
+                System.out.println("response"+ response);
+            }
         } catch (Exception e) {
             //log error
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "invokeRestRequest",
                       "Invoke of REST Resource failed for " + httpMethod + " to " + requestURI);
             System.out.println("REST_JSON"+ e.getLocalizedMessage());
+            System.out.println("REST_JSON"+ e.getStackTrace());
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "invokeRestRequest", e.getLocalizedMessage());
         }
         return response;

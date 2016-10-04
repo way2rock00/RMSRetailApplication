@@ -13,12 +13,19 @@
     font-family: xxRobotoLight;
     src: url("../fonts/font/roboto.light.ttf")format("truetype");
 }
+@font-face {
+    font-family: xxRobotoRegular;
+    src: url("../fonts/font/Roboto.Regular.ttf")format("truetype");
+}
 
 .xxRobotoMedium14 {
     font-family: xxRobotoMedium;
     font-size: 14px;
 }
-
+.xxRobotoMedium18 {
+    font-family: xxRobotoMedium;
+    font-size: 18px;
+}
 .xxRobotoLight14 {
     font-family: xxRobotoLight;
     font-size: 14px;
@@ -56,17 +63,18 @@
 
 .xxRobotoGroupValue {
     font-family: xxRobotoLight !important;
-    font-size: 25px !important;
+    font-size: 22px !important;
     color: #999999 !important;
 }
 
 .xxRobotoFieldValue {
-    font-family: xxRobotoLight !important;
-    font-size: 15px !important;
+    font-family: xxRobotoRegular !important;
+    font-size: 16px !important;
     color: #000000 !important;
     text-wrap: normal !important;
     overflow: visible !important;
     white-space: pre !important;
+     font-weight: normal !important;
     /* CSS 2.0 */
 
     white-space: pre-wrap !important;
@@ -250,7 +258,7 @@ input[type="password"] {
     border-radius: 4px;
     background: #86BC25;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }
@@ -265,7 +273,7 @@ input[type="password"] {
     background: #86BC25;
     background-image: url("../images/DownArrow.png")!important;
     background-repeat: no-repeat;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
     width: 96%;
@@ -282,7 +290,7 @@ input[type="password"] {
     background: #86BC25;
     background-image: url("../images/UpArrow.png")!important;
     background-repeat: no-repeat;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
     width: 96%;
@@ -323,7 +331,7 @@ input[type="password"] {
     background: #1C75BC;
     width: 75px;
     background-image: none;
-    font-family: Helvetica;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     height: 21px;
     min-height: 21px;
@@ -337,7 +345,7 @@ input[type="password"] {
     background: Gray;
     width: 75px;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     height: 21px;
     min-height: 21px;
@@ -353,7 +361,7 @@ input[type="password"] {
     background: #1C75BC;
     width: 150px;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }

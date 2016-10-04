@@ -110,6 +110,10 @@ public class POHeaderService {
 
             strFromDate = strFromDate == null ? "-999" : strFromDate;
             strToDate = strToDate == null ? "-999" : strToDate;
+            if (strFromDate.length() < 1)
+                strFromDate = "-999";
+            if (strToDate.length() < 1)
+                strToDate = "-999";
 
 
             String url =

@@ -101,13 +101,15 @@ public class PODetailsService {
 
                     String item = null;
                     if (lineTemp.getString("ITEM") != null) {
-                        item = lineTemp.getString("ITEM");
-                        /*System.out.println("under item");
+                        // item = lineTemp.getString("ITEM");
+                        System.out.println("under item");
                         JSONObject itemobj = lineTemp.getJSONObject("ITEM");
                         System.out.println(itemobj);
-                        JSONArray itemobjs = lineTemp.getJSONArray("ITEM");
+                        System.out.println(itemobj.getString("$"));
+                        item = itemobj.getString("$");
+                        /*JSONArray itemobjs = lineTemp.getJSONArray("ITEM");
                         System.out.println(itemobjs);
-*/
+                        */
                     }
 
                     String lineQuantity = null;

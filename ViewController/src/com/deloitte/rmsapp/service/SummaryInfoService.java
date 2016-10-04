@@ -89,7 +89,7 @@ public class SummaryInfoService {
                                           AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString());
         }
 
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.summaryRecCount}", summaryList.size());
+         AdfmfJavaUtilities.setELValue("#{pageFlowScope.summaryRecCount}", summaryList.size());
         System.out.println("summary end");
         return summaryArray;
 

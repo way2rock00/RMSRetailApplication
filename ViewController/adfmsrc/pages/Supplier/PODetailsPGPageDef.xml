@@ -50,6 +50,7 @@
           <Item Value="quantity"/>
           <Item Value="uom"/>
           <Item Value="lineReason"/>
+          <Item Value="locationName"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -51,8 +51,8 @@
         <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
             <amx:rowLayout id="r1l2">
                 <amx:cellFormat id="cf15" width="100%" halign="center">
-                    <amx:outputText value="No Data Found" rendered="#{bindings.notifications.rangeSize &lt; 1}"
-                                    id="ot36" styleClass="xxRobotoFieldTitle"/>
+                    <amx:outputText value="No Data Found" rendered="#{pageFlowScope.notificateCount &lt; 1}"
+                                    id="ot36" styleClass="xxRobotoFieldValue"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
@@ -84,9 +84,9 @@
                             <amx:outputText value="Response to your change request for #{row.poOrderType} #{row.poNumber}, #{row.poRevision}"
                                             id="ot6" styleClass="xxRobotoFieldValue"
                                             rendered="#{applicationScope.loginType == 'SUPPLIER'}"
-                                            inlineStyle="flex-wrap:wrap;"/>
+                                            inlineStyle="flex-wrap:wrap;padding-top:5px;"/>
                             <amx:outputText value="Purchase Order #{row.poNumber}, #{row.poRevision} requires your acceptance"
-                                            id="ot7" styleClass="xxRobotoFieldValue" inlineStyle="flex-wrap:wrap;"
+                                            id="ot7" styleClass="xxRobotoFieldValue" inlineStyle="flex-wrap:wrap;padding-top:5px;"
                                             rendered="#{applicationScope.loginType == 'BUYER'}"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf8" width="3%"/>

@@ -27,7 +27,7 @@
         <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
-            <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label" showRequired="false"
+            <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label xxRobotoFieldValue" showRequired="false"
                                       rendered="true">
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
@@ -41,7 +41,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam1" label="PO Number To" styleClass="label" showRequired="false"
+            <amx:panelLabelAndMessage id="plam1" label="PO Number To" styleClass="label  xxRobotoFieldValue" showRequired="false"
                                       rendered="true">
                 <amx:tableLayout id="tl1" width="100%">
                     <amx:rowLayout id="rl1">
@@ -56,7 +56,7 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage id="plam2" label="Buyer" rendered="#{applicationScope.loginType == 'SUPPLIER'}"
-                                      styleClass="label" showRequired="false">
+                                      styleClass="label  xxRobotoFieldValue" showRequired="false">
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
@@ -67,7 +67,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label" showRequired="false"
+            <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label  xxRobotoFieldValue" showRequired="false"
                                       rendered="#{applicationScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
@@ -79,7 +79,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam5" label="From Date" styleClass="label" showRequired="false"
+            <amx:panelLabelAndMessage id="plam5" label="From Date" styleClass="label  xxRobotoFieldValue" showRequired="false"
                                       rendered="true">
                 <amx:tableLayout id="tl5" width="100%">
                     <amx:rowLayout id="rl6">
@@ -90,7 +90,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam6" label="To Date" styleClass="label" showRequired="false"
+            <amx:panelLabelAndMessage id="plam6" label="To Date" styleClass="label  xxRobotoFieldValue" showRequired="false"
                                       rendered="true">
                 <amx:tableLayout id="tl7" width="100%">
                     <amx:rowLayout id="rl7">
@@ -101,7 +101,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam7" label="Status" styleClass="label" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam7" label="Status" styleClass="label  xxRobotoFieldValue" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl8" width="100%">
                     <amx:rowLayout id="rl8">
                         <amx:cellFormat styleClass="cell-border" id="cf11" width="95%">
@@ -112,7 +112,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam8" label="Item" styleClass="label" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam8" label="Item" styleClass="label  xxRobotoFieldValue" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl9" width="100%">
                     <amx:rowLayout id="rl9">
                         <amx:cellFormat styleClass="cell-border" id="cf12" width="95%">
@@ -148,7 +148,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <!--
+        
          <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
             <amx:rowLayout id="rl11">
                 <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">
@@ -156,7 +156,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        -->
+        
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"

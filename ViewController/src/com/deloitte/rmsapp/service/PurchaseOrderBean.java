@@ -16,6 +16,8 @@ import java.util.Date;
 import com.deloitte.rmsapp.utility.RestURIs;
 import com.deloitte.rmsapp.utility.ServiceManager;
 
+import java.text.SimpleDateFormat;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.bindings.DataControl;
 import oracle.adfmf.bindings.OperationBinding;
@@ -39,10 +41,122 @@ public class PurchaseOrderBean {
 
     public void approveClicked(ActionEvent actionEvent) {
         System.out.println("approveClicked");
+        buyerActions("APPROVE");
     }
 
     public void rejectClicked(ActionEvent actionEvent) {
         System.out.println("rejectClicked");
+        buyerActions("REJECT");
+    }
+
+    public void buyerActions(String action) {
+        System.out.println("buyerActions start");
+        AmxIteratorBinding headerIterator = null;
+        AmxIteratorBinding lineIterator = null;
+        String strDebug = "S";
+        int alertCount = 0;
+        JSONObject poHeaderParentObject = new JSONObject();
+        JSONObject poObject = new JSONObject();
+        try {
+
+            Date sysDate = new Date();
+            String order_no = "";
+            System.out.println("sysDate" + sysDate);
+            headerIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
+            headerIterator.getIterator().first();
+            List poHeaderList = new ArrayList();
+
+            for (int header = 0; header < headerIterator.getIterator().getTotalRowCount(); header++) {
+                GenericType headerRow = (GenericType) headerIterator.getIterator().getCurrentRow();
+                System.out.println(headerRow.getAttribute("poDate").toString());
+
+                JSONObject poLineObjects = new JSONObject();
+
+                order_no =
+                    headerRow.getAttribute("poNumber") == null ? "" : headerRow.getAttribute("poNumber").toString();
+                poObject.put("P_ORDER_NO_IN",
+                             headerRow.getAttribute("poNumber") == null ? "" :
+                             headerRow.getAttribute("poNumber").toString());
+
+                poObject.put("P_REASON_IN",
+                             headerRow.getAttribute("headerReason") == null ? "" :
+                             headerRow.getAttribute("headerReason").toString());
+
+                String pickupDate = (String) headerRow.getAttribute("pickUpDate");
+                if (pickupDate == null) {
+                    pickupDate = "";
+                } else {
+                    SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+                    SimpleDateFormat destinationFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    Date date = null;
+                    try {
+                        date = sourceFormat.parse(pickupDate);
+                        System.out.println(date);
+                        System.out.println(destinationFormat.format(date));
+
+                        pickupDate = destinationFormat.format(date);
+                        System.out.println("Date : " + pickupDate);
+                    } catch (Exception ex) {
+                        System.out.println("Error " + ex.getLocalizedMessage());
+                    }
+                }
+
+                poObject.put("P_PICKUP_DATE_IN", pickupDate);
+
+                poObject.put("P_REQUEST_STATUS", action);
+                System.out.println("poObject" + poObject.toString());
+
+                lineIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
+                List poLineList = new ArrayList();
+                for (int child = 0; child < lineIterator.getIterator().getTotalRowCount(); child++) {
+                    lineIterator.getIterator().next();
+                    System.out.println("line loop");
+
+                    JSONObject poLineObject = new JSONObject();
+                    GenericType childRow = (GenericType) lineIterator.getIterator().getCurrentRow();
+
+
+                    poLineObject.put("ORDER_NO", order_no);
+                    String itemDesc =
+                        childRow.getAttribute("item") == null ? "" : childRow.getAttribute("item").toString();
+                    System.out.println("itemDesc" + itemDesc);
+                    int indexPos = itemDesc.indexOf(" / ");
+                    String itemNum = itemDesc.substring(0, indexPos);
+                    poLineObject.put("ITEM", itemNum);
+                    poLineObject.put("QTY",
+                                     childRow.getAttribute("quantity") == null ? "" :
+                                     childRow.getAttribute("quantity").toString());
+                    poLineObject.put("PRICE",
+                                     childRow.getAttribute("price") == null ? "" :
+                                     childRow.getAttribute("price").toString());
+                    poLineObject.put("REASON",
+                                     childRow.getAttribute("lineReason") == null ? "" :
+                                     childRow.getAttribute("lineReason").toString());
+                }
+
+                poLineObjects.put("P_ORDLOC_IN_ITEM", poLineList);
+
+                poObject.put("P_ORDLOC_IN", poLineObjects);
+
+                //poHeaderList.add(poObject);
+            }
+
+            //JSONObject poHeaderParentObjects = new JSONObject();
+            //poHeaderParentObjects.put("P_PO_HDR_DATA_TAB_ITEM", poHeaderList);
+            //poHeaderParentObject.put("P_PO_HDR_DATA_TAB", poHeaderParentObjects);
+            System.out.println(poObject.toString());
+        } catch (Exception e) {
+            System.out.println("exception " + e.getLocalizedMessage());
+        }
+
+        String url = RestURIs.getApprovalURI();
+        System.out.println("loader url:" + url);
+        ServiceManager serviceManager = new ServiceManager();
+        String jsonArrayAsString = serviceManager.invokeUPDATE(url, poObject.toString());
+
+        System.out.println("jsonArrayAsString " + jsonArrayAsString);
+
+        System.out.println("buyerActions end");
     }
 
     public void submitClicked(ActionEvent actionEvent) {
@@ -77,9 +191,28 @@ public class PurchaseOrderBean {
                 poObject.put("HEADER_REASON",
                              headerRow.getAttribute("headerReason") == null ? "" :
                              headerRow.getAttribute("headerReason").toString());
-                poObject.put("PICKUP_DATE",
-                             headerRow.getAttribute("pickUpDate") == null ? "" :
-                             headerRow.getAttribute("pickUpDate").toString());
+
+                String pickupDate = (String) headerRow.getAttribute("pickUpDate");
+                if (pickupDate == null) {
+                    pickupDate = "";
+                } else {
+                    SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+                    SimpleDateFormat destinationFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    Date date = null;
+                    try {
+                        date = sourceFormat.parse(pickupDate);
+                        System.out.println(date);
+                        System.out.println(destinationFormat.format(date));
+
+                        pickupDate = destinationFormat.format(date);
+                        System.out.println("Date : " + pickupDate);
+                    } catch (Exception ex) {
+                        System.out.println("Error " + ex.getLocalizedMessage());
+                    }
+                }
+
+                poObject.put("PICKUP_DATE", pickupDate);
+
                 poObject.put("STATUS",
                              headerRow.getAttribute("status") == null ? "" :
                              headerRow.getAttribute("status").toString());
@@ -102,9 +235,12 @@ public class PurchaseOrderBean {
 
 
                     poLineObject.put("ORDER_NO", order_no);
-                    poLineObject.put("ITEM",
-                                     childRow.getAttribute("item") == null ? "" :
-                                     childRow.getAttribute("item").toString());
+                    String itemDesc =
+                        childRow.getAttribute("item") == null ? "" : childRow.getAttribute("item").toString();
+                    System.out.println("itemDesc" + itemDesc);
+                    int indexPos = itemDesc.indexOf(" / ");
+                    String itemNum = itemDesc.substring(0, indexPos);
+                    poLineObject.put("ITEM", itemNum);
                     poLineObject.put("QUANTITY",
                                      childRow.getAttribute("quantity") == null ? "" :
                                      childRow.getAttribute("quantity").toString());
@@ -118,8 +254,8 @@ public class PurchaseOrderBean {
                                      childRow.getAttribute("locationName") == null ? "" :
                                      childRow.getAttribute("locationName").toString());
                     */poLineObject.put("LINE_REASON",
-                                     childRow.getAttribute("lineReason") == null ? "" :
-                                     childRow.getAttribute("lineReason").toString());
+                                       childRow.getAttribute("lineReason") == null ? "" :
+                                       childRow.getAttribute("lineReason").toString());
                     poLineObject.put("CREATED_BY", "-1");
                     //  poLineObject.put("CREATION_DATE", sysDate.toString());
                     poLineObject.put("LAST_UPDATED_BY", "-1");
@@ -153,6 +289,4 @@ public class PurchaseOrderBean {
 
         System.out.println("submitClicked end");
     }
-
-
 }

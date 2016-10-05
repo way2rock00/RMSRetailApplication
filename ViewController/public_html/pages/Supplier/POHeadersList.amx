@@ -25,7 +25,7 @@
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
                             <amx:inputText styleClass="username_field" id="it6" inputType="number"
-                                           valueChangeListener="#{pageControl.fromPOChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.fromPOChanged}"
                                            value="#{pageFlowScope.searchOrderFrom}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -37,7 +37,7 @@
                     <amx:rowLayout id="rl10">
                         <amx:cellFormat styleClass="cell-border" id="cf6" width="95%">
                             <amx:inputText styleClass="username_field" id="it1" inputType="number"
-                                           valueChangeListener="#{pageControl.toPOChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.toPOChanged}"
                                            value="#{pageFlowScope.searchOrderTo}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -49,7 +49,7 @@
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
                             <amx:inputText styleClass="username_field" id="it2" inputType="text"
-                                           valueChangeListener="#{pageControl.buyerChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.buyerChanged}"
                                            value="#{pageFlowScope.searchBuyer}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -61,7 +61,7 @@
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
                             <amx:inputText styleClass="username_field" id="it3" inputType="text"
-                                           valueChangeListener="#{pageControl.supplierChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.supplierChanged}"
                                            value="#{pageFlowScope.searchSupplier}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -72,7 +72,7 @@
                 <amx:tableLayout id="tl5" width="100%">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat styleClass="cell-border" id="cf9" width="95%">
-                            <amx:inputDate id="id1" valueChangeListener="#{pageControl.fromDateChanged}"
+                            <amx:inputDate id="id1" valueChangeListener="#{pageFlowScope.pageControl.fromDateChanged}"
                                            value="#{pageFlowScope.searchFromDate}" simple="true" inputType="date"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -83,7 +83,7 @@
                 <amx:tableLayout id="tl7" width="100%">
                     <amx:rowLayout id="rl7">
                         <amx:cellFormat styleClass="cell-border" id="cf10" width="95%">
-                            <amx:inputDate id="id2" valueChangeListener="#{pageControl.toDateChanged}"
+                            <amx:inputDate id="id2" valueChangeListener="#{pageFlowScope.pageControl.toDateChanged}"
                                            value="#{pageFlowScope.searchToDate}" simple="true" inputType="date"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -94,7 +94,7 @@
                     <amx:rowLayout id="rl8">
                         <amx:cellFormat styleClass="cell-border" id="cf11" width="95%">
                             <amx:inputText styleClass="username_field" id="it4" inputType="text"
-                                           valueChangeListener="#{pageControl.statusChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.statusChanged}"
                                            value="#{pageFlowScope.searchStatus}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -105,7 +105,7 @@
                     <amx:rowLayout id="rl9">
                         <amx:cellFormat styleClass="cell-border" id="cf12" width="95%">
                             <amx:inputText styleClass="username_field" id="it5" inputType="number"
-                                           valueChangeListener="#{pageControl.itemChanged}"
+                                           valueChangeListener="#{pageFlowScope.pageControl.itemChanged}"
                                            value="#{pageFlowScope.searchItem}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>

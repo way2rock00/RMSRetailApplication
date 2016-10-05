@@ -66,10 +66,10 @@ public class ServiceManager {
 
         try {
             response = (restServiceAdapter.send(restPayload)).toString();
-            if(payload != null){
+          /*  if(payload != null){
                 System.out.println("restServiceAdapter:"+restServiceAdapter.toString());
                 System.out.println("response"+ response);
-            }
+            }*/
         } catch (Exception e) {
             //log error
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "invokeRestRequest",

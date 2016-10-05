@@ -394,7 +394,9 @@ input[type="password"] {
     height: 25px;
     min-height: 25px;
 }
-
+.amx-commandButton-label{
+    overflow: visible ;
+}
 .approve > .amx-commandButton-label {
     font-size: 11px;
     font-weight: 500;

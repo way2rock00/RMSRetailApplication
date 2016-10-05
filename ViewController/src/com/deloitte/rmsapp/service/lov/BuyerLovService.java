@@ -1,6 +1,7 @@
 package com.deloitte.rmsapp.service.lov;
 
 import com.deloitte.rmsapp.Supplier.lov.BuyerLov;
+import com.deloitte.rmsapp.Supplier.lov.SupplierLOV;
 import com.deloitte.rmsapp.utility.RestURIs;
 import com.deloitte.rmsapp.utility.ServiceManager;
 
@@ -23,7 +24,10 @@ public class BuyerLovService {
     public BuyerLov[] getBuyerLov() {
         BuyerLov[] BuyerArray = null;
         ServiceManager serviceManager = new ServiceManager();
-
+        
+        BuyerLov dummyRec = new BuyerLov(null, "Select Buyer");
+        BuyerList.add(dummyRec);
+        
         String loginNumber = "-1";
         String loginType = AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString();
 

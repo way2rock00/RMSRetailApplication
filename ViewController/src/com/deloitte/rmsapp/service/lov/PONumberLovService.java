@@ -23,6 +23,8 @@ public class PONumberLovService {
     public PONumberLOV[] getPoNumber() {
         PONumberLOV[] PoNumberArray = null;
         ServiceManager serviceManager = new ServiceManager();
+        PONumberLOV dummyRec = new PONumberLOV("Pick One");
+        poNumberList.add(dummyRec);
 
         String loginNumber;
         String loginType = AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString();
@@ -36,6 +38,7 @@ public class PONumberLovService {
         String url = RestURIs.getPONumberLovURI(loginType, loginNumber);
         System.out.println("poNumber Lov url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
+
 
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);

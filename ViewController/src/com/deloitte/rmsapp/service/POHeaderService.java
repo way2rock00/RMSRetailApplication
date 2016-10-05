@@ -53,10 +53,12 @@ public class POHeaderService {
             System.out.println("strOrderTo" + strToDate);
             String strStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchStatus}");
             String strType = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchItem}");
-
+            
+            strOrderFrom = strOrderFrom == "Pick One" ? "-999" : strOrderFrom;
             strOrderFrom = strOrderFrom == null ? "-999" : strOrderFrom;
             strOrderFrom = strOrderFrom.length() == 0 ? "-999" : strOrderFrom;
 
+            strOrderTo = strOrderTo == "Pick One" ? "-999" : strOrderTo;
             strOrderTo = strOrderTo == null ? "-999" : strOrderTo;
             strOrderTo = strOrderTo.length() == 0 ? "-999" : strOrderTo;
 

@@ -29,8 +29,8 @@
                       initialScrollRowKeys="#{bindings.springboardItems.collectionModel.selectedRow}"
                       selectionListener="#{bindings.springboardItems.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" styleClass="springboardList">
-            <amx:listItem id="li1" styleClass="sprigboardListItem" showLinkIcon="true">
-                <amx:tableLayout width="100%" id="tl1" inlineStyle="padding-bottom:5px; padding-top:5px;">
+            <amx:listItem id="li1" styleClass="sprigboardListItem" showLinkIcon="true" inlineStyle="padding-bottom:20px; padding-top:10px;">
+                <amx:tableLayout width="100%" id="tl1" >
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="10px" id="cf9"/>
                         <amx:cellFormat width="10%" halign="center">

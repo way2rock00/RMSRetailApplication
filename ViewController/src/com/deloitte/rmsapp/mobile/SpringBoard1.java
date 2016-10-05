@@ -23,9 +23,11 @@ public class SpringBoard1 {
             String currentFeature = AdfmfJavaUtilities.getELValue("#{pageFlowScope.Nav}").toString();
             System.out.println("Current Feature1 :" + currentFeature);
             if (currentFeature.equals("com.deloitte.rmsapp.Notification")) {
+               // AdfmfContainerUtilities.resetApplication(currentFeature);
                 AdfmfContainerUtilities.gotoFeature(currentFeature);
             } else if (currentFeature.equals("Logout")) {
                 //AdfmfJavaUtilities.logout();
+                AdfmfContainerUtilities.resetApplication("com.deloitte.rmsapp.Login");
                 AdfmfContainerUtilities.gotoFeature("com.deloitte.rmsapp.Login");
                 System.out.println("gotoFeature:com.deloitte.rmsapp.Login");    
 

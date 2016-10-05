@@ -24,6 +24,9 @@ public class SupplierLovService {
         SupplierLOV[] SupplierArray = null;
         ServiceManager serviceManager = new ServiceManager();
 
+        SupplierLOV dummyRec = new SupplierLOV(null, "Select Supplier");
+        SupplierList.add(dummyRec);
+
         String loginNumber = "-1";
         String loginType = AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString();
 

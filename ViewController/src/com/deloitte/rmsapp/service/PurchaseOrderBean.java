@@ -107,9 +107,10 @@ public class PurchaseOrderBean {
                 System.out.println("poObject" + poObject.toString());
 
                 lineIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
+                lineIterator.getIterator().first();
                 List poLineList = new ArrayList();
                 for (int child = 0; child < lineIterator.getIterator().getTotalRowCount(); child++) {
-                    lineIterator.getIterator().next();
+                    
                     System.out.println("line loop");
 
                     JSONObject poLineObject = new JSONObject();
@@ -132,6 +133,7 @@ public class PurchaseOrderBean {
                     poLineObject.put("REASON",
                                      childRow.getAttribute("lineReason") == null ? "" :
                                      childRow.getAttribute("lineReason").toString());
+                    lineIterator.getIterator().next();
                 }
 
                 poLineObjects.put("P_ORDLOC_IN_ITEM", poLineList);
@@ -225,9 +227,10 @@ public class PurchaseOrderBean {
                 System.out.println("poObject" + poObject.toString());
 
                 lineIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.poLinesIterator}");
+                lineIterator.getIterator().first();
                 List poLineList = new ArrayList();
                 for (int child = 0; child < lineIterator.getIterator().getTotalRowCount(); child++) {
-                    lineIterator.getIterator().next();
+
                     System.out.println("line loop");
 
                     JSONObject poLineObject = new JSONObject();
@@ -263,6 +266,7 @@ public class PurchaseOrderBean {
                     poLineObject.put("LAST_UPDATE_LOGIN", "-1");
                     System.out.println("poLineObject:" + poLineObject.toString());
                     poLineList.add(poLineObject);
+                    lineIterator.getIterator().next();
                 }
 
                 poLineObjects.put("P_LINE_TBL_OBJ_ITEM", poLineList);

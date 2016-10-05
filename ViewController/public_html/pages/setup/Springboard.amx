@@ -29,16 +29,16 @@
                       initialScrollRowKeys="#{bindings.springboardItems.collectionModel.selectedRow}"
                       selectionListener="#{bindings.springboardItems.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" styleClass="springboardList">
-            <amx:listItem id="li1" styleClass="sprigboardListItem" showLinkIcon="false">
-                <amx:tableLayout width="100%" id="tl1">
+            <amx:listItem id="li1" styleClass="sprigboardListItem" showLinkIcon="true">
+                <amx:tableLayout width="100%" id="tl1" inlineStyle="padding-bottom:5px; padding-top:5px;">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="10px" id="cf9"/>
                         <amx:cellFormat width="10%" halign="center">
-                            <amx:outputHtml id="oh5" styleClass="#{row.value}" />
+                            <amx:outputHtml id="oh5" styleClass="#{row.value}" inlineStyle="color:Black;"/>
                         </amx:cellFormat>
                         <amx:cellFormat width="10px" id="cf3"/>
-                        <amx:cellFormat width="80%" height="50px" id="cf2" >
-                            <amx:commandLink id="cl1">
+                        <amx:cellFormat width="80%" height="50px" id="cf2" halign="start" valign="middle">
+                            <amx:commandLink id="cl1">                            
                                 <amx:outputText value="#{row.key}" id="ot3" styleClass="xxRobotoFieldValue" inlineStyle="flex-wrap:wrap;"/>
                                 <amx:setPropertyListener id="spl1" from="#{row.featureId}" to="#{pageFlowScope.Nav}"/>
                                 <!--<amx:setPropertyListener id="spl1"/>-->

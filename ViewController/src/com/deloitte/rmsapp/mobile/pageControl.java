@@ -26,16 +26,16 @@ public class pageControl {
             this.validated = true;
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginType}", "SUPPLIER");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}", "3030");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchSupplier}", "3030");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginSuppier}", "250");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchSupplier}", "250");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
             System.out.println("loginType:" + "SUPPLIER");
-            System.out.println("loginSuppier:" + "3030");
+            System.out.println("loginSuppier:" + "250");
             
             AdfmfJavaUtilities.setELValue("#{applicationScope.userName}", userName);
             AdfmfJavaUtilities.setELValue("#{applicationScope.loginType}", "SUPPLIER");
-            AdfmfJavaUtilities.setELValue("#{applicationScope.loginSuppier}", "3030");
-            AdfmfJavaUtilities.setELValue("#{applicationScope.searchSupplier}", "3030");
+            AdfmfJavaUtilities.setELValue("#{applicationScope.loginSuppier}", "250");
+            AdfmfJavaUtilities.setELValue("#{applicationScope.searchSupplier}", "250");
             
             
             

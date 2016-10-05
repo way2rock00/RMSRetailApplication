@@ -23,9 +23,9 @@ public class SpringboardDC {
     public SpringboardDC() {
         springboardItems = new ArrayList<SpringboardItem>();
 //        springboardItems.add(new SpringboardItem("Home", "icon-3-financials fa-lg"));
-        springboardItems.add(new SpringboardItem("Notification", "icon-4-manufacturing fa-lg", "com.deloitte.rmsapp.Notification"));
+        springboardItems.add(new SpringboardItem("Notification", "fa fa-bell-o fa-1x", "com.deloitte.rmsapp.Notification"));
 //        springboardItems.add(new SpringboardItem("Settings", "icon-3-financials fa-lg",""));
-        springboardItems.add(new SpringboardItem("Logout", "icon-4-manufacturing fa-lg","Logout"));        
+        springboardItems.add(new SpringboardItem("Logout", "fa fa-sign-out fa-1x","Logout"));        
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

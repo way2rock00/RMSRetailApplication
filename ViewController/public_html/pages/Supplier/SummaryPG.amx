@@ -32,14 +32,15 @@
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
-                            <!--<amx:inputText styleClass="username_field" id="it6" inputType="number"
+                            <amx:inputText styleClass="username_field" id="it6" inputType="number"
                                            valueChangeListener="#{pageControl.fromPOChanged}"
                                            value="#{pageFlowScope.searchOrderFrom}"/>
-                                 -->
-                            <amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderFrom}"
+                            <!--<amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderFrom}"
                                                  valueChangeListener="#{pageControl.fromPOChanged}" id="soc1">
                                 <amx:selectItems value="#{bindings.poNumber.items}" id="si1"/>
                             </amx:selectOneChoice>
+                        </amx:cellFormat>
+                        -->
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -49,14 +50,14 @@
                 <amx:tableLayout id="tl1" width="100%">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat styleClass="cell-border" id="cf6" width="95%">
-                            <!--<amx:inputText styleClass="username_field" id="it1" inputType="number"
+                            <amx:inputText styleClass="username_field" id="it1" inputType="number"
                                            valueChangeListener="#{pageControl.toPOChanged}"
                                            value="#{pageFlowScope.searchOrderTo}"/>
-                            -->
-                            <amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderTo}"
+                            <!--<amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderTo}"
                                                  valueChangeListener="#{pageControl.toPOChanged}" id="soc3">
                                 <amx:selectItems value="#{bindings.poNumber.items}" id="si2"/>
                             </amx:selectOneChoice>
+                            -->
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -66,14 +67,14 @@
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
-                            <!--<amx:inputText styleClass="username_field" id="it2" inputType="text"
+                            <amx:inputText styleClass="username_field" id="it2" inputType="text"
                                            valueChangeListener="#{pageControl.buyerChanged}"
                                            value="#{pageFlowScope.searchBuyer}"/>
-                                           -->
-                            <amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.buyerChanged}"
+                            <!--<amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.buyerChanged}"
                                                  value="#{pageFlowScope.searchBuyer}" id="soc5">
                                 <amx:selectItems value="#{bindings.buyerLov.items}" id="si3"/>
                             </amx:selectOneChoice>
+                            -->
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -83,14 +84,14 @@
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
-                            <!-- <amx:inputText styleClass="username_field" id="it3" inputType="text"
+                            <amx:inputText styleClass="username_field" id="it3" inputType="text"
                                            valueChangeListener="#{pageControl.supplierChanged}"
                                            value="#{pageFlowScope.searchSupplier}"/>
-                                           -->
-                            <amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.supplierChanged}"
+                            <!-- <amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.supplierChanged}"
                                                  value="#{pageFlowScope.searchSupplier}" id="soc2">
                                 <amx:selectItems value="#{bindings.supplierLov.items}" id="si4"/>
                             </amx:selectOneChoice>
+                            -->
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

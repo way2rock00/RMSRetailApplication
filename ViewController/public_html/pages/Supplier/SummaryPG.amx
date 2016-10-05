@@ -7,7 +7,7 @@
                 <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite"
                                 inlineStyle="text-align:center;font-size:16px;"/>
                 <amx:outputText value="#{applicationScope.userName}" id="ot4" styleClass="headertextwhite"
-                                inlineStyle="text-align:center;"/>
+                                inlineStyle="text-align:center;padding-top:2px;"/>
             </amx:panelGroupLayout>
         </amx:facet>
         <amx:facet name="primary">
@@ -27,30 +27,36 @@
         <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
-            <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label xxRobotoFieldValue" showRequired="false"
-                                      rendered="true">
+            <amx:panelLabelAndMessage id="plam4" label="PO Number From" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
-                             <amx:inputText styleClass="username_field" id="it6" inputType="number"
+                            <!--<amx:inputText styleClass="username_field" id="it6" inputType="number"
                                            valueChangeListener="#{pageControl.fromPOChanged}"
                                            value="#{pageFlowScope.searchOrderFrom}"/>
-                                        
-                            
+                                 -->
+                            <amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderFrom}"
+                                                 valueChangeListener="#{pageControl.fromPOChanged}" id="soc1">
+                                <amx:selectItems value="#{bindings.poNumber.items}" id="si1"/>
+                            </amx:selectOneChoice>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam1" label="PO Number To" styleClass="label  xxRobotoFieldValue" showRequired="false"
-                                      rendered="true">
+            <amx:panelLabelAndMessage id="plam1" label="PO Number To" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl1" width="100%">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat styleClass="cell-border" id="cf6" width="95%">
-                            <amx:inputText styleClass="username_field" id="it1" inputType="number"
+                            <!--<amx:inputText styleClass="username_field" id="it1" inputType="number"
                                            valueChangeListener="#{pageControl.toPOChanged}"
                                            value="#{pageFlowScope.searchOrderTo}"/>
-                                           
-                           
+                            -->
+                            <amx:selectOneChoice simple="true" value="#{pageFlowScope.searchOrderTo}"
+                                                 valueChangeListener="#{pageControl.toPOChanged}" id="soc3">
+                                <amx:selectItems value="#{bindings.poNumber.items}" id="si2"/>
+                            </amx:selectOneChoice>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -60,27 +66,37 @@
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
-                            <amx:inputText styleClass="username_field" id="it2" inputType="text"
+                            <!--<amx:inputText styleClass="username_field" id="it2" inputType="text"
                                            valueChangeListener="#{pageControl.buyerChanged}"
                                            value="#{pageFlowScope.searchBuyer}"/>
+                                           -->
+                            <amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.buyerChanged}"
+                                                 value="#{pageFlowScope.searchBuyer}" id="soc5">
+                                <amx:selectItems value="#{bindings.buyerLov.items}" id="si3"/>
+                            </amx:selectOneChoice>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label  xxRobotoFieldValue" showRequired="false"
-                                      rendered="#{applicationScope.loginType == 'BUYER'}">
+            <amx:panelLabelAndMessage id="plam3" label="Supplier" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="#{applicationScope.loginType == 'BUYER'}">
                 <amx:tableLayout id="tl4" width="100%">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
-                            <amx:inputText styleClass="username_field" id="it3" inputType="text"
+                            <!-- <amx:inputText styleClass="username_field" id="it3" inputType="text"
                                            valueChangeListener="#{pageControl.supplierChanged}"
                                            value="#{pageFlowScope.searchSupplier}"/>
+                                           -->
+                            <amx:selectOneChoice simple="true" valueChangeListener="#{pageControl.supplierChanged}"
+                                                 value="#{pageFlowScope.searchSupplier}" id="soc2">
+                                <amx:selectItems value="#{bindings.supplierLov.items}" id="si4"/>
+                            </amx:selectOneChoice>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam5" label="From Date" styleClass="label  xxRobotoFieldValue" showRequired="false"
-                                      rendered="true">
+            <amx:panelLabelAndMessage id="plam5" label="From Date" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl5" width="100%">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat styleClass="cell-border" id="cf9" width="95%">
@@ -90,8 +106,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam6" label="To Date" styleClass="label  xxRobotoFieldValue" showRequired="false"
-                                      rendered="true">
+            <amx:panelLabelAndMessage id="plam6" label="To Date" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl7" width="100%">
                     <amx:rowLayout id="rl7">
                         <amx:cellFormat styleClass="cell-border" id="cf10" width="95%">
@@ -101,7 +117,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam7" label="Status" styleClass="label  xxRobotoFieldValue" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam7" label="Status" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl8" width="100%">
                     <amx:rowLayout id="rl8">
                         <amx:cellFormat styleClass="cell-border" id="cf11" width="95%">
@@ -112,7 +129,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage id="plam8" label="Item" styleClass="label  xxRobotoFieldValue" showRequired="false" rendered="true">
+            <amx:panelLabelAndMessage id="plam8" label="Item" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
                 <amx:tableLayout id="tl9" width="100%">
                     <amx:rowLayout id="rl9">
                         <amx:cellFormat styleClass="cell-border" id="cf12" width="95%">
@@ -148,21 +166,19 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        
-         <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
+        <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
             <amx:rowLayout id="rl11">
                 <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">
                     <amx:outputText value="No Data Found" id="ot3" styleClass="xxRobotoFieldValue"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       initialScrollRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
                       selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}" showMoreStrategy="off"
-                      bufferStrategy="viewport" id="lv2" >
+                      bufferStrategy="viewport" id="lv2">
             <amx:listItem id="li2" action="toPOList"
                           inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">

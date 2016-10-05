@@ -538,6 +538,7 @@ html[dir=ltr] .amx-inputText .field-value {
 html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     border-width: 1px;
     border-radius: 5px;
+    border: #000000;
     border-style: solid;
     -webkit-border-image: none;
     border-image: none;
@@ -548,12 +549,16 @@ html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     background-position: 98%;
     padding-left: 2px;
     padding-right: 2px;
+    font-family: xxRobotoLight;
+    background-color: White;
+    vertical-align: middle;
+    position: relative;
 }
 
 HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
     border-width: 1px;
     border: #000000;
-    border-radius: 1px;
+    border-radius: 5px;
     border-style: solid;
     -webkit-border-image: none;
     border-image: none;

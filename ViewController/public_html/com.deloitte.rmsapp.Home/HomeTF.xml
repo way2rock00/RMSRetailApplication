@@ -1,63 +1,68 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
-  <task-flow-definition id="HomeTF">
-    <default-activity>SummaryPage</default-activity>
-    <managed-bean id="__1">
-      <managed-bean-name>PurchaseOrderBean</managed-bean-name>
-      <managed-bean-class>com.deloitte.rmsapp.service.PurchaseOrderBean</managed-bean-class>
-      <managed-bean-scope>pageFlow</managed-bean-scope>
-    </managed-bean>
-    <managed-bean id="__6">
-      <managed-bean-name>SpringBoardNavBean</managed-bean-name>
-      <managed-bean-class>com.deloitte.rmsapp.mobile.SpringBoard1</managed-bean-class>
-      <managed-bean-scope>application</managed-bean-scope>
-    </managed-bean>
-    <view id="HeaderListPage">
-      <page>/pages/Supplier/POHeadersList.amx</page>
-    </view>
-    <view id="SearchPage">
-      <page>/pages/Supplier/POSearchPG.amx</page>
-    </view>
-    <view id="DetailsPage">
-      <page>/pages/Supplier/PODetailsPG.amx</page>
-    </view>
-    <view id="SummaryPage">
-      <page>/pages/Supplier/SummaryPG.amx</page>
-    </view>
-    <view id="NotificationsPage">
-      <page>/pages/Supplier/NotificationsPG.amx</page>
-    </view>
-    <control-flow-rule id="__7">
-      <from-activity-id>HeaderListPage</from-activity-id>
-      <control-flow-case id="__8">
-        <from-outcome>openPODetail</from-outcome>
-        <to-activity-id>DetailsPage</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__11">
-        <from-outcome>backToSummary</from-outcome>
-        <to-activity-id>SummaryPage</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__4">
-        <from-outcome>toPOList</from-outcome>
-        <to-activity-id>HeaderListPage</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__2">
-      <from-activity-id>SummaryPage</from-activity-id>
-      <control-flow-case id="__3">
-        <from-outcome>toPOList</from-outcome>
-        <to-activity-id>HeaderListPage</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__9">
-      <from-activity-id>DetailsPage</from-activity-id>
-      <control-flow-case id="__10">
-        <from-outcome>backToPOList</from-outcome>
-        <to-activity-id>HeaderListPage</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <page-flow-scope-behavior>
-      <push-new/>
-    </page-flow-scope-behavior>
-  </task-flow-definition>
+    <task-flow-definition id="HomeTF">
+        <default-activity>SummaryPage</default-activity>
+        <managed-bean id="__1">
+            <managed-bean-name>PurchaseOrderBean</managed-bean-name>
+            <managed-bean-class>com.deloitte.rmsapp.service.PurchaseOrderBean</managed-bean-class>
+            <managed-bean-scope>pageFlow</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__6">
+            <managed-bean-name>SpringBoardNavBean</managed-bean-name>
+            <managed-bean-class>com.deloitte.rmsapp.mobile.SpringBoard1</managed-bean-class>
+            <managed-bean-scope>application</managed-bean-scope>
+        </managed-bean>
+        <managed-bean id="__12">
+            <managed-bean-name>pageControl</managed-bean-name>
+            <managed-bean-class>com.deloitte.rmsapp.mobile.pageControl</managed-bean-class>
+            <managed-bean-scope>pageFlow</managed-bean-scope>
+        </managed-bean>
+        <view id="HeaderListPage">
+            <page>/pages/Supplier/POHeadersList.amx</page>
+        </view>
+        <view id="SearchPage">
+            <page>/pages/Supplier/POSearchPG.amx</page>
+        </view>
+        <view id="DetailsPage">
+            <page>/pages/Supplier/PODetailsPG.amx</page>
+        </view>
+        <view id="SummaryPage">
+            <page>/pages/Supplier/SummaryPG.amx</page>
+        </view>
+        <view id="NotificationsPage">
+            <page>/pages/Supplier/NotificationsPG.amx</page>
+        </view>
+        <control-flow-rule id="__7">
+            <from-activity-id>HeaderListPage</from-activity-id>
+            <control-flow-case id="__8">
+                <from-outcome>openPODetail</from-outcome>
+                <to-activity-id>DetailsPage</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__11">
+                <from-outcome>backToSummary</from-outcome>
+                <to-activity-id>SummaryPage</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__4">
+                <from-outcome>toPOList</from-outcome>
+                <to-activity-id>HeaderListPage</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__2">
+            <from-activity-id>SummaryPage</from-activity-id>
+            <control-flow-case id="__3">
+                <from-outcome>toPOList</from-outcome>
+                <to-activity-id>HeaderListPage</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__9">
+            <from-activity-id>DetailsPage</from-activity-id>
+            <control-flow-case id="__10">
+                <from-outcome>backToPOList</from-outcome>
+                <to-activity-id>HeaderListPage</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <page-flow-scope-behavior>
+            <push-new/>
+        </page-flow-scope-behavior>
+    </task-flow-definition>
 </adfc-mobile-config>

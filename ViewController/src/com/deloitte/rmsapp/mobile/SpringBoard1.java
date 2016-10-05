@@ -27,6 +27,7 @@ public class SpringBoard1 {
             } else if (currentFeature.equals("Logout")) {
                 //AdfmfJavaUtilities.logout();
                 AdfmfContainerUtilities.gotoFeature("com.deloitte.rmsapp.Login");
+                System.out.println("gotoFeature:com.deloitte.rmsapp.Login");    
 
             }
             //AdfmfContainerUtilities.gotoFeature(currentFeature);

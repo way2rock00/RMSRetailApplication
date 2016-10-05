@@ -20,6 +20,8 @@
     <page id="com_deloitte_rmsapp_mobile_NotificationsPGPageDef" path="pages.Supplier.NotificationsPGPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="SupplierLovService" path="com.deloitte.rmsapp.mobile.SupplierLovService"/>
+    <dc id="BuyerLovService" path="com.deloitte.rmsapp.mobile.BuyerLovService"/>
     <dc id="PONumberLovService" path="com.deloitte.rmsapp.mobile.PONumberLovService"/>
     <dc id="NotificationDetailsService" path="com.deloitte.rmsapp.mobile.NotificationDetailsService"/>
     <dc id="ApplicationFeatures" path="com.deloitte.rmsapp.application.ApplicationFeatures"/>

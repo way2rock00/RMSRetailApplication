@@ -11,6 +11,18 @@
     <accessorIterator MasterBinding="SummaryInfoServiceIterator" Binds="summaryData" RangeSize="-1"
                       DataControl="SummaryInfoService" BeanClass="com.deloitte.rmsapp.Supplier.SummaryInfo"
                       id="summaryDataIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PONumberLovService" id="PONumberLovServiceIterator"/>
+    <accessorIterator MasterBinding="PONumberLovServiceIterator" Binds="poNumber" RangeSize="25"
+                      DataControl="PONumberLovService" BeanClass="com.deloitte.rmsapp.Supplier.lov.PONumberLOV"
+                      id="poNumberIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="BuyerLovService" id="BuyerLovServiceIterator"/>
+    <accessorIterator MasterBinding="BuyerLovServiceIterator" Binds="buyerLov" RangeSize="25"
+                      DataControl="BuyerLovService" BeanClass="com.deloitte.rmsapp.Supplier.lov.BuyerLov"
+                      id="buyerLovIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SupplierLovService" id="SupplierLovServiceIterator"/>
+    <accessorIterator MasterBinding="SupplierLovServiceIterator" Binds="supplierLov" RangeSize="25"
+                      DataControl="SupplierLovService" BeanClass="com.deloitte.rmsapp.Supplier.lov.SupplierLOV"
+                      id="supplierLovIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="summaryDataIterator" id="summaryData">
@@ -25,5 +37,25 @@
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <list IterBinding="poNumberIterator" ListOperMode="navigation" ListIter="poNumberIterator" id="poNumber"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="poNumber"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="buyerLovIterator" ListOperMode="navigation" ListIter="buyerLovIterator" id="buyerLov"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="buyerName"/>
+        <Item Value="buyerNumber"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="supplierLovIterator" ListOperMode="navigation" ListIter="supplierLovIterator" id="supplierLov"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="supplierName"/>
+        <Item Value="supplierNumber"/>
+      </AttrNames>
+    </list>
   </bindings>
 </pageDefinition>

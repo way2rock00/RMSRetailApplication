@@ -2,25 +2,25 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1" styleClass="headertextwhite">
+        <amx:facet name="primary">
+            <amx:commandLink id="cl134" shortDesc="usericon">
+                <amx:outputHtml id="oh1" styleClass="fa fa-user fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+        </amx:facet>
         <amx:facet name="header">
-            <amx:tableLayout id="tl4" inlineStyle="width:100%;" width="100%">
-                <amx:rowLayout id="rl4">
-                    <amx:cellFormat id="cf16" width="20px">
-                        <amx:outputHtml id="oh1" styleClass="fa fa-user fa-0.5g"
-                                        inlineStyle="color:White; flex-wrap:wrap; font-size:14px; text-align:justify;"
-                                        value="#{applicationScope.userName}"/>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-            </amx:tableLayout>
-            <amx:panelGroupLayout id="pgl1">
-                <amx:commandLink id="cb2" shortDesc="Home" actionListener="#{bindings.gotoFeature.execute}">
-                    <amx:outputHtml id="oh3" styleClass="fa fa-home fa-0.5g" inlineStyle="color:White;"/>
-                    <amx:setPropertyListener id="spl2" from="com.deloitte.rmsapp.Home" to="#{pageFlowScope.Nav}"/>
-                    <amx:actionListener id="al1" binding="#{SBBean.springBoardNavi}"/>
-                </amx:commandLink>
+            <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="#{applicationScope.userName}" id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;flex-wrap:wrap;"/>
             </amx:panelGroupLayout>
         </amx:facet>
-        <amx:panelGroupLayout id="pgl2" layout="vertical" styleClass="springboardSubHeading">
+        <amx:facet name="secondary">
+            <amx:commandLink id="cb2" shortDesc="Home" actionListener="#{bindings.gotoFeature.execute}">
+                <amx:outputHtml id="oh3" styleClass="fa fa-home fa-1x" inlineStyle="color:White;"/>
+                <amx:setPropertyListener id="spl2" from="com.deloitte.rmsapp.Home" to="#{pageFlowScope.Nav}"/>
+                <amx:actionListener id="al1" binding="#{SBBean.springBoardNavi}"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" layout="vertical" styleClass="springboardSubHeading">
             <amx:outputText value="DASHBOARD" id="ot5" styleClass="springboardSubText"/>
         </amx:panelGroupLayout>
         <amx:listView var="row" value="#{bindings.springboardItems.collectionModel}"
@@ -33,13 +33,13 @@
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="10px" id="cf9"/>
-                        <amx:cellFormat width="10%" halign="end">
-                            <amx:outputHtml id="oh5" inlineStyle="color:#1C75BC;"/>
+                        <amx:cellFormat width="10%" halign="center">
+                            <amx:outputHtml id="oh5" styleClass="#{row.value}" />
                         </amx:cellFormat>
                         <amx:cellFormat width="10px" id="cf3"/>
-                        <amx:cellFormat width="80%" height="43px" id="cf2">
+                        <amx:cellFormat width="80%" height="50px" id="cf2" >
                             <amx:commandLink id="cl1">
-                                <amx:outputText value="#{row.key}" id="ot3" inlineStyle="color:#888888;"/>
+                                <amx:outputText value="#{row.key}" id="ot3" styleClass="xxRobotoFieldValue" inlineStyle="flex-wrap:wrap;"/>
                                 <amx:setPropertyListener id="spl1" from="#{row.featureId}" to="#{pageFlowScope.Nav}"/>
                                 <!--<amx:setPropertyListener id="spl1"/>-->
                                 <amx:actionListener id="al2" binding="#{SBBean.springBoardNavi}"/>

@@ -20,7 +20,7 @@
                       selectionListener="#{bindings.PODetailsData.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1"
-                          inlineStyle="border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
+                          inlineStyle="border-bottom-color:#86BC25;border-bottom-width:thick;border-bottom-style:solid">
                 <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:10px; padding-top:10px;">
                     <amx:rowLayout id="r1l2">
                         <amx:cellFormat id="cf15" width="3%"/>
@@ -108,8 +108,8 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf32" width="3%"/>
                         <amx:cellFormat id="cf33" width="auto" halign="end" inlineStyle="padding-top:5px;">
-                            <amx:inputText simple="true" inputType="text" id="it2" rows="2" value="#{row.headerReason}"
-                                           inlineStyle=" border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
+                            <amx:inputText simple="true" inputType="text" id="it2" value="#{row.headerReason}"
+                                           inlineStyle=" border-bottom-color:gray; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -128,7 +128,7 @@
                         <amx:cellFormat id="cf3" width="3%"/>
                         <amx:cellFormat id="cf6" width="auto" halign="start">
                             <amx:outputText value="Line ##{lineRow.poLineNumber}" id="ot13"
-                                            styleClass="xxRobotoMedium18"/>
+                                            styleClass="xxRobotoGroupHeader"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl3">
@@ -161,7 +161,7 @@
                         <amx:cellFormat id="cf24" width="32%" styleClass="cell-border">
                             <amx:inputText id="it1" value="#{lineRow.quantity}" simple="true" inputType="number"
                                            styleClass="xxRobotoFieldValue"
-                                           inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
+                                           inlineStyle="border-bottom-color:gray; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf2" width="2%"/>
                         <amx:cellFormat id="cf26" width="32%" styleClass="cell-border">
@@ -172,11 +172,11 @@
                         <amx:cellFormat id="cf28" width="32%" styleClass="cell-border">
                             <amx:inputText id="it4" value="#{lineRow.price}" simple="true" inputType="number"
                                            styleClass="xxRobotoFieldValue"
-                                           inlineStyle="border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
+                                           inlineStyle="border-bottom-color:gray; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:tableLayout id="tl5" width="100%">
+                <amx:tableLayout id="tl5" width="100%" inlineStyle="padding-top:5px;padding-bottom:10px;">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat id="cf5" width="2%" inlineStyle="padding-top:5px;"/>
                         <amx:cellFormat id="cf21" width="20%" halign="start" inlineStyle="padding-top:5px;">
@@ -195,9 +195,9 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf42" width="3%"/>
                         <amx:cellFormat id="cf43" width="auto" halign="end" inlineStyle="padding-top:5px;">
-                            <amx:inputText simple="true" inputType="text" id="it5" rows="2"
+                            <amx:inputText simple="true" inputType="text" id="it5"
                                            value="#{lineRow.lineReason}" styleClass="xxRobotoFieldValue"
-                                           inlineStyle=" border-bottom-color:#86BC25; border-bottom-style:solid; border-bottom-width:thin;"/>
+                                           inlineStyle=" border-bottom-color:gray; border-bottom-style:solid; border-bottom-width:thin;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -239,13 +239,14 @@
                             <amx:closePopupBehavior id="cpb1" popupId="p1"/>
                         </amx:commandButton>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf34" width="10%"/>
+                    <amx:cellFormat id="cf34" width="20%"/>
                     <amx:cellFormat id="cf35" width="30%">
                         <amx:commandButton text="No" id="cb5" inlineStyle="background-color:Red;width:275px;"
                                            styleClass="buttonsLarge" >
                             <amx:closePopupBehavior id="cpb3" popupId="p1"/>
                         </amx:commandButton>
                     </amx:cellFormat>
+                    <amx:cellFormat id="cf44" width="10%"/>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>

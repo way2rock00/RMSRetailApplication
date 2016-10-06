@@ -123,12 +123,12 @@
             <amx:rowLayout id="r1l2">
                 <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
                                 inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "
+                    <amx:commandButton id="cb1" styleClass="fa fa-angle-down fa-1.5x "
                                        inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
                                        rendered="#{pageFlowScope.showExpand2 == 'true'}">
                         <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand2}"/>
                     </amx:commandButton>
-                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x" shortDesc="Collapse"
+                    <amx:commandButton id="cb2" styleClass="fa fa-angle-up fa-1.5x" shortDesc="Collapse"
                                        inlineStyle="min-height:5pt;color:#ffffff;"
                                        rendered="#{pageFlowScope.showExpand2 == 'false'}">
                         <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand2}"/>

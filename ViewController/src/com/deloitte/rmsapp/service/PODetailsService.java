@@ -87,7 +87,7 @@ public class PODetailsService {
                     recordId = temp.getString("RECORD_ID");
 
                 // Place holder for Reason mapping
-                String headerReason = "Test Reason";
+                String headerReason = "";
 
                 List<POLine> poLineList = new ArrayList<POLine>();
                 JSONObject poLineParentObject = temp.getJSONObject("PO_LINE");
@@ -101,12 +101,13 @@ public class PODetailsService {
 
                     String item = null;
                     if (lineTemp.getString("ITEM") != null) {
-                        // item = lineTemp.getString("ITEM");
-                        System.out.println("under item");
+                        item = lineTemp.getString("ITEM");
+                        /*System.out.println("under item");
                         JSONObject itemobj = lineTemp.getJSONObject("ITEM");
                         System.out.println(itemobj);
                         System.out.println(itemobj.getString("$"));
                         item = itemobj.getString("$");
+                        */
                         /*JSONArray itemobjs = lineTemp.getJSONArray("ITEM");
                         System.out.println(itemobjs);
                         */

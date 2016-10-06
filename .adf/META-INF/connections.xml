@@ -4,8 +4,8 @@
     <RefAddresses>
       <XmlRefAddr addrType="RMSServiceConnection">
         <Contents>
-          <!--<restconnection name="RMSServiceConnection" url="http://app101111.glbsnet.com"/>-->
-          <restconnection name="RMSServiceConnection" url="http://ussltcsnl3432.solutions.glbsnet.com:7004"/>
+          <restconnection name="RMSServiceConnection" url="http://app101111.glbsnet.com"/>
+          <!--<restconnection name="RMSServiceConnection" url="http://ussltcsnl3432.solutions.glbsnet.com:7004"/>-->
         </Contents>
       </XmlRefAddr>
     </RefAddresses>

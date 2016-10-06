@@ -32,11 +32,9 @@
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
-                             <amx:inputText styleClass="username_field" id="it6" inputType="number"
+                            <amx:inputText styleClass="username_field" id="it6" inputType="number"
                                            valueChangeListener="#{pageFlowScope.pageControl.fromPOChanged}"
                                            value="#{pageFlowScope.searchOrderFrom}"/>
-                                           
-                            
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -49,8 +47,6 @@
                             <amx:inputText styleClass="username_field" id="it1" inputType="number"
                                            valueChangeListener="#{pageFlowScope.pageControl.toPOChanged}"
                                            value="#{pageFlowScope.searchOrderTo}"/>
-                                           
-                           
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -63,8 +59,6 @@
                             <amx:inputText styleClass="username_field" id="it2" inputType="text"
                                            valueChangeListener="#{pageFlowScope.pageControl.buyerChanged}"
                                            value="#{pageFlowScope.searchBuyer}"/>
-                                
-                           
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -77,7 +71,6 @@
                             <amx:inputText styleClass="username_field" id="it3" inputType="text"
                                            valueChangeListener="#{pageFlowScope.pageControl.supplierChanged}"
                                            value="#{pageFlowScope.searchSupplier}"/>
-                                        
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -137,17 +130,20 @@
             </amx:commandButton>
         </amx:panelGroupLayout>
         <amx:tableLayout id="tl11" width="100%">
-            <amx:rowLayout id="r1l2">
+            <amx:rowLayout id="r1l2" rendered="#{pageFlowScope.showExpand == 'true'}">
                 <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
                                 inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb1" styleClass="fa fa-arrow-down fa-1.5x "
-                                       inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
-                                       rendered="#{pageFlowScope.showExpand == 'true'}">
+                    <amx:commandButton id="cb1" styleClass="fa fa-angle-down fa-2x " inlineStyle="color:#ffffff;"
+                                       shortDesc="Expand">
                         <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
-                    <amx:commandButton id="cb2" styleClass="fa fa-arrow-up fa-1.5x" shortDesc="Collapse"
-                                       inlineStyle="min-height:5pt;color:#ffffff;"
-                                       rendered="#{pageFlowScope.showExpand == 'false'}">
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl12" rendered="#{pageFlowScope.showExpand == 'false'}">
+                <amx:cellFormat id="cf14" width="100%" halign="center" valign="middle"
+                                inlineStyle="background-color:#86BC25;">
+                    <amx:commandButton id="cb2" styleClass="fa fa-angle-up fa-2x" shortDesc="Collapse"
+                                       inlineStyle="color:#ffffff;">
                         <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
                 </amx:cellFormat>
@@ -171,16 +167,17 @@
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
                         <amx:cellFormat id="cf13" width="15%" valign="middle" halign="center">
-                            <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-1.5x"
-                                            inlineStyle="color:#000000; "/>
+                            <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-x" inlineStyle="color:GrayText;"/>
                             <amx:spacer id="s1" width="5"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf2" halign="start" width="70%" valign="middle">
                             <amx:outputText value="#{row.status}" id="ot5" styleClass="xxRobotoFieldValue"
-                                            inlineStyle="vertical-align:middle;"/>
+                                            inlineStyle="vertical-align:middle;font-size:18px"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf4" halign="start" width="auto">
-                            <amx:commandButton text="#{row.status_count}" id="cb3" styleClass="round-button"/>
+                        <amx:cellFormat id="cf4" width="auto" halign="center">
+                            <amx:commandButton text="#{row.status_count}" id="cb3"
+                                               inlineStyle="vertical-align:middle; color:White; font-size:18px; text-align:center; font-weight:bold; #{row.status == 'New' ? 'background-color:#2f8dea;' : row.status == 'Changed or Cancelled' ? 'background-color:Navy;' : row.status == 'Pending Buyer Acknowledgement' ? 'background-color:Green;' : 'background-color:gray;'}"
+                                               styleClass="round-button "/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

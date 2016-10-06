@@ -42,7 +42,7 @@
 
 .xxRobotoFieldTitle {
     font-family: xxRobotoMedium !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
     color: #999999 !important;
 }
 
@@ -69,7 +69,7 @@
 
 .xxRobotoFieldValue {
     font-family: xxRobotoRegular !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
     color: #000000 !important;
     text-wrap: normal !important;
     overflow: visible !important;
@@ -93,12 +93,12 @@
 
 .blueHeader > .amx-panelPage-header {
     background-color: #1C75BC;
-    height: 30px;
+    height: auto;
 }
 
 .whiteHeader > .amx-panelPage-header {
     background-color: #ffffff;
-    height: 30px;
+    height: auto;
 }
 
 .amx-panelPage-header-appIcon {
@@ -127,7 +127,7 @@
 .amx-inputText-content {
     border: none !important;
     outline: 0 !important;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
 }
 
 input[type="password"] {
@@ -136,18 +136,18 @@ input[type="password"] {
 
 .username_field, .password_field {
     background: #ffffff none repeat scroll 0 0;
-    border: 1px solid #c0b4aa;
-    border-radius: 4px;
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset;
+    border: thin solid #000000;
+    border-radius: 5px;
+    /*box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset;*/
     font-size: 16px;
     text-align: left !important;
     width: 100%;
     box-sizing: border-box;
-    font-family: xxRobotoLight !important;
+    font-family: xxRobotoRegular !important;
 }
 
 .remember_me_field {
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     font-size: 11px;
 }
 
@@ -208,16 +208,14 @@ input[type="password"] {
 
 .round-button {
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     line-height: 50px;
-    border: 2px solid #f5f5f5;
     border-radius: 50%;
-    color: #f5f5f5;
     text-align: center;
     text-decoration: none;
     background: #464646;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
 }
 
 .amx-commandButton.homeButtonSel {
@@ -230,7 +228,7 @@ input[type="password"] {
     background: #00b500;
     border: 2px solid #00b500;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }
@@ -244,7 +242,7 @@ input[type="password"] {
     border-radius: 4px;
     background: #00b500;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }
@@ -376,7 +374,7 @@ input[type="password"] {
     background: Gray;
     width: 150px;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }
@@ -389,14 +387,18 @@ input[type="password"] {
     background: #1C75BC;
     width: 50px;
     background-image: none;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     height: 25px;
     min-height: 25px;
 }
 .amx-commandButton-label{
     overflow: visible ;
+    margin-left:2px;
+    margin-right:2px;
+    font-size:16px;
 }
+
 .approve > .amx-commandButton-label {
     font-size: 11px;
     font-weight: 500;
@@ -449,7 +451,7 @@ input[type="password"] {
     background: transparent;
     width: 180px;
     border-bottom: #ffffff solid 8px;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     color: #ffffff;
     font-size: 16px;
 }
@@ -468,7 +470,7 @@ input[type="password"] {
 }
 
 .amx-outputText.springboardSubText {
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     font-size: 16px;
     font-weight: bold;
     color: #757575;
@@ -503,7 +505,7 @@ input[type="password"] {
 .amx-outputText.dashboardListItemText {
     color: Black;
     font-size: 14px;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     white-space: normal;
 }
 
@@ -530,7 +532,7 @@ html[dir=ltr] .amx-inputText .field-value {
 .amx-panelFormLayout .field > .field-label {
     color: #000000;
     font-size: 14px;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
 }
 
 .amx-label-position-topCenter .amx-panelFormLayout_sizingTable > *, .amx-label-position-topStart .amx-panelFormLayout_sizingTable > *, .amx-label-position-topEnd .amx-panelFormLayout_sizingTable > * {
@@ -540,8 +542,9 @@ html[dir=ltr] .amx-inputText .field-value {
 html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     border-width: 1px;
     border-radius: 5px;
-    border: #000000;
+    border: #000000 !important;
     border-style: solid;
+    border-width: thin !important;
     -webkit-border-image: none;
     border-image: none;
     position: static;
@@ -551,17 +554,18 @@ html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     background-position: 98%;
     padding-left: 2px;
     padding-right: 2px;
-    font-family: xxRobotoLight;
+    font-family: xxRobotoRegular;
     background-color: White;
     vertical-align: middle;
     position: relative;
 }
 
-HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
+HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {    
     border-width: 1px;
-    border: #000000;
+    border: #000000 !important;
     border-radius: 5px;
     border-style: solid;
+    border-width: thin;
     -webkit-border-image: none;
     border-image: none;
     position: static;

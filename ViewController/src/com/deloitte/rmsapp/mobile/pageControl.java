@@ -32,7 +32,7 @@ public class pageControl {
             System.out.println("loginType:" + "SUPPLIER");
             System.out.println("loginSuppier:" + "2500");
             
-            AdfmfJavaUtilities.setELValue("#{applicationScope.userName}", userName);
+            AdfmfJavaUtilities.setELValue("#{applicationScope.userName}", "Coca Cola - Chicago");
             AdfmfJavaUtilities.setELValue("#{applicationScope.loginType}", "SUPPLIER");
             AdfmfJavaUtilities.setELValue("#{applicationScope.loginSuppier}", "2500");
             AdfmfJavaUtilities.setELValue("#{applicationScope.searchSupplier}", "2500");
@@ -49,7 +49,7 @@ public class pageControl {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showExpand}", "true");
             System.out.println("loginType:" + "BUYER");
             System.out.println("loginSuppier:" + "305");
-            AdfmfJavaUtilities.setELValue("#{applicationScope.userName}", userName);
+            AdfmfJavaUtilities.setELValue("#{applicationScope.userName}", "Henry Roden");
             AdfmfJavaUtilities.setELValue("#{applicationScope.loginType}", "BUYER");
             AdfmfJavaUtilities.setELValue("#{applicationScope.loginBuyer}", "305");
             AdfmfJavaUtilities.setELValue("#{applicationScope.searchBuyer}", "305");

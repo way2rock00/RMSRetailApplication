@@ -88,17 +88,8 @@ public class POHeaders {
         return recordId;
     }
 
-    public POHeaders (String recordId
-                    ,String poNumber
-                    ,String orderType
-                    ,String poDate
-                    ,String buyer   
-                    ,String status
-                    ,String pickUpDate
-                    ,String notAfterDate
-                    ,String poTotal
-                      )
-    {
+    public POHeaders(String recordId, String poNumber, String orderType, String poDate, String buyer, String status,
+                     String pickUpDate, String notAfterDate, String poTotal) {
         this.recordId = recordId;
         this.poNumber = poNumber;
         this.orderType = orderType;

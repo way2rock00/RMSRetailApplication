@@ -10,7 +10,11 @@
     <iterator Binds="root" RangeSize="25" DataControl="POHeaderService" id="POHeaderServiceIterator"/>
     <accessorIterator MasterBinding="POHeaderServiceIterator" Binds="POHeaderData" RangeSize="25"
                       DataControl="POHeaderService" BeanClass="com.deloitte.rmsapp.Supplier.POHeaders"
-                      id="POHeaderDataIterator"/>
+                      id="POHeaderDataIterator">
+      <sortCriteria>
+        <sort attribute="poNumber" ascending="true"/>
+      </sortCriteria>
+    </accessorIterator>
   </executables>
   <bindings>
     <tree IterBinding="listOfDataIterator" id="listOfData">

@@ -6,7 +6,7 @@
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" height="30%" valign="middle" halign="center"
                                 inlineStyle="padding:50px 20px 20px 20px;">
-                    <amx:image id="i1"  source="/resources/images/Login_Page_Image.png" inlineStyle="width:50%"/>
+                    <amx:image id="i1" source="/resources/images/Login_Page_Image.png" inlineStyle="width:50%"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
@@ -24,11 +24,13 @@
             <amx:panelLabelAndMessage label="" id="plam4" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl6" width="100%">
                     <amx:rowLayout id="rl5">
-                        <amx:cellFormat styleClass="cell-border" id="cf5" >
-                            <amx:inputText hintText="Username" styleClass="icon icon-2-customer-id inputTextValue username_field" id="it6"
+                        <amx:cellFormat styleClass="cell-border" id="cf5">
+                            <amx:inputText hintText="Username"
+                                           styleClass="icon icon-2-customer-id inputTextValue username_field" id="it6"
                                            inputType="text" maximumLength="16"
                                            valueChangeListener="#{pageControl.usernameChanged}"
-                                           value="#{pageFlowScope.userName}"/>
+                                           value="#{pageFlowScope.userName}"
+                                           inlineStyle="height:40px;font-size:large;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -36,17 +38,19 @@
             <amx:panelLabelAndMessage label="" id="plam1" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl2" width="100%">
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat styleClass="cell-border" id="cf2" >
-                            <amx:inputText  hintText="Password" styleClass="icon icon-1-password inputTextValue password_field" id="it1"
+                        <amx:cellFormat styleClass="cell-border" id="cf2">
+                            <amx:inputText hintText="Password"
+                                           styleClass="icon icon-1-password inputTextValue password_field" id="it1"
                                            inputType="text" secret="true"
                                            valueChangeListener="#{pageControl.passwordChanged}" maximumLength="16"
-                                           value="#{pageFlowScope.password}"/>
+                                           value="#{pageFlowScope.password}"
+                                           inlineStyle="height:40px; font-size:large;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="" id="plam2" showRequired="false" rendered="true">
-                <amx:tableLayout id="tl4" width="80%">
+                <amx:tableLayout id="tl4" width="70%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf3" width="40%" halign="end"
                                         inlineStyle="left:70%;">
@@ -58,10 +62,16 @@
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
-        <amx:panelGroupLayout layout="vertical" id="pgl2" halign="center">
-            <amx:commandButton text="Login" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
-                               actionListener="#{pageControl.LoginIn_buttonClick}"
-                               action="#{pageControl.landingNavigation}"/>     
+        <amx:panelGroupLayout layout="vertical" id="pgl2" halign="start">
+            <amx:tableLayout id="tl5" width="90%" halign="center" layout="fixed">
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat styleClass="cell-border" id="cf4" width="100%" halign="center">
+                        <amx:commandButton text="Login" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
+                                           actionListener="#{pageControl.LoginIn_buttonClick}"
+                                           action="#{pageControl.landingNavigation}" inlineStyle="width:100%;height:auto;"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>
 </amx:view>

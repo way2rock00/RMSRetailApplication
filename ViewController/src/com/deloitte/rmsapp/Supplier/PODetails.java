@@ -16,6 +16,15 @@ public class PODetails {
     private String notAfterDate;
     private String poTotal;
     private String headerReason;
+    private String edit_flag;
+
+    public void setEdit_flag(String edit_flag) {
+        this.edit_flag = edit_flag;
+    }
+
+    public String getEdit_flag() {
+        return edit_flag;
+    }
     private POLine[] poLines;
 
     public void setRecordId(String recordId) {
@@ -118,6 +127,7 @@ public class PODetails {
                     ,String notAfterDate
                     ,String poTotal
                     ,String headerReason
+                      ,String edit_flag
                     ,POLine[] poLines
                       )
     {
@@ -131,6 +141,7 @@ public class PODetails {
         this.notAfterDate = notAfterDate;
         this.poTotal = poTotal;
         this.headerReason = headerReason;
+        this.edit_flag = edit_flag;
         this.poLines = poLines;
     }
 }

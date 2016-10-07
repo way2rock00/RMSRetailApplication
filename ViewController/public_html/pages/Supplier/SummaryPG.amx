@@ -81,7 +81,7 @@
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat styleClass="cell-border" id="cf9" width="95%">
                             <amx:inputDate id="id1" valueChangeListener="#{pageFlowScope.pageControl.fromDateChanged}"
-                                           value="#{pageFlowScope.searchFromDate}" simple="true" inputType="date"/>
+                                           value="#{pageFlowScope.searchFromDate}" simple="true" inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;" inputType="date"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -92,7 +92,7 @@
                     <amx:rowLayout id="rl7">
                         <amx:cellFormat styleClass="cell-border" id="cf10" width="95%">
                             <amx:inputDate id="id2" valueChangeListener="#{pageFlowScope.pageControl.toDateChanged}"
-                                           value="#{pageFlowScope.searchToDate}" simple="true" inputType="date"/>
+                                           value="#{pageFlowScope.searchToDate}" simple="true" inputType="date" inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -130,20 +130,17 @@
             </amx:commandButton>
         </amx:panelGroupLayout>
         <amx:tableLayout id="tl11" width="100%">
-            <amx:rowLayout id="r1l2" rendered="#{pageFlowScope.showExpand == 'true'}">
+            <amx:rowLayout id="r1l2">
                 <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
                                 inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb1" styleClass="fa fa-angle-down fa-2x " inlineStyle="color:#ffffff;"
-                                       shortDesc="Expand">
+                    <amx:commandButton id="cb1" styleClass="fa fa-angle-down fa-2g "
+                                       inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
+                                       rendered="#{pageFlowScope.showExpand == 'true'}">
                         <amx:setPropertyListener id="spl1" from="false" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
-                </amx:cellFormat>
-            </amx:rowLayout>
-            <amx:rowLayout id="rl12" rendered="#{pageFlowScope.showExpand == 'false'}">
-                <amx:cellFormat id="cf14" width="100%" halign="center" valign="middle"
-                                inlineStyle="background-color:#86BC25;">
-                    <amx:commandButton id="cb2" styleClass="fa fa-angle-up fa-2x" shortDesc="Collapse"
-                                       inlineStyle="color:#ffffff;">
+                    <amx:commandButton id="cb2" styleClass="fa fa-angle-up fa-2g" shortDesc="Collapse"
+                                       inlineStyle="min-height:5pt;color:#ffffff;"
+                                       rendered="#{pageFlowScope.showExpand == 'false'}">
                         <amx:setPropertyListener id="spl2" from="true" to="#{pageFlowScope.showExpand}"/>
                     </amx:commandButton>
                 </amx:cellFormat>
@@ -175,9 +172,19 @@
                                             inlineStyle="vertical-align:middle;font-size:18px"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" width="auto" halign="center">
-                            <amx:commandButton text="#{row.status_count}" id="cb3"
-                                               inlineStyle="vertical-align:middle; color:White; font-size:18px; text-align:center; font-weight:bold; #{row.status == 'New' ? 'background-color:#2f8dea;' : row.status == 'Changed or Cancelled' ? 'background-color:Navy;' : row.status == 'Pending Buyer Acknowledgement' ? 'background-color:Green;' : 'background-color:gray;'}"
-                                               styleClass="round-button "/>
+                            <amx:commandButton text="#{row.status_count}" id="cb3" rendered="#{row.status == 'New'}"
+                                               inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:#2f8dea;"
+                                               styleClass="round-button"/>
+                            <amx:commandButton text="#{row.status_count}" id="cb4" rendered="#{row.status == 'Changed or Cancelled'}"
+                                               inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:Navy;"
+                                               styleClass="round-button"/>
+                            <amx:commandButton text="#{row.status_count}" id="cb5" rendered="#{row.status == 'Pending Buyer Acknowledgement'}"
+                                               inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:Green;"
+                                               styleClass="round-button"/>
+                            <amx:commandButton text="#{row.status_count}" id="cb6" 
+                                               inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:gray; text-height:font-size;"
+                                               styleClass="round-button"
+                                               rendered="#{row.status !='New' &amp;&amp; row.status !='Changed or Cancelled' &amp;&amp; row.status !='Pending Buyer Acknowledgement'}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

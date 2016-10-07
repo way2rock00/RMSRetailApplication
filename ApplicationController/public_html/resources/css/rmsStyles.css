@@ -13,6 +13,7 @@
     font-family: xxRobotoLight;
     src: url("../fonts/font/roboto.light.ttf")format("truetype");
 }
+
 @font-face {
     font-family: xxRobotoRegular;
     src: url("../fonts/font/Roboto.Regular.ttf")format("truetype");
@@ -22,10 +23,12 @@
     font-family: xxRobotoMedium;
     font-size: 14px;
 }
+
 .xxRobotoMedium18 {
     font-family: xxRobotoMedium;
     font-size: 18px;
 }
+
 .xxRobotoLight14 {
     font-family: xxRobotoLight;
     font-size: 14px;
@@ -41,7 +44,7 @@
 }
 
 .xxRobotoFieldTitle {
-    font-family: xxRobotoMedium !important;
+    font-family: xxRobotoLight !important;
     font-size: 14px !important;
     color: #999999 !important;
 }
@@ -62,7 +65,7 @@
 }
 
 .xxRobotoGroupValue {
-    font-family: xxRobotoLight !important;
+    font-family: xxRobotoMedium !important;
     font-size: 22px !important;
     color: #999999 !important;
 }
@@ -74,7 +77,7 @@
     text-wrap: normal !important;
     overflow: visible !important;
     white-space: pre !important;
-     font-weight: normal !important;
+    font-weight: normal !important;
     /* CSS 2.0 */
 
     white-space: pre-wrap !important;
@@ -128,6 +131,7 @@
     border: none !important;
     outline: 0 !important;
     font-family: xxRobotoRegular;
+    height:30px;
 }
 
 input[type="password"] {
@@ -139,6 +143,7 @@ input[type="password"] {
     border: thin solid #000000;
     border-radius: 5px;
     /*box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset;*/
+
     font-size: 16px;
     text-align: left !important;
     width: 100%;
@@ -187,6 +192,18 @@ input[type="password"] {
     font-family: xxRobotoLight;
 }
 
+.amx-panelPage-footer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 48px;
+    display: block;
+    background-color: #F6F6F7;
+    border-top: 1px solid #D5D5D7;
+    z-index: 1;
+    padding-bottom: 10px;
+}
+
 .headertextwhite {
     color: #ffffff !important;
     font-size: x-large;
@@ -210,12 +227,27 @@ input[type="password"] {
     display: block;
     width: 40px;
     height: 40px;
-    line-height: 50px;
+    line-height: 40px;
     border-radius: 50%;
     text-align: center;
     text-decoration: none;
     background: #464646;
     font-family: xxRobotoRegular;
+}
+
+.round-button-up {
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    content: "\f107";
+    background-image:  "\f107";
+    background-repeat: no-repeat;
+    font-family: xxRobotoRegular;
+    background-position: 50% 50%;
 }
 
 .amx-commandButton.homeButtonSel {
@@ -253,12 +285,12 @@ input[type="password"] {
     padding: 10px 10px;
     display: inline-block;
     outline: 0;
-    border-radius: 4px;
+    border-radius: 1px;
     background: #86BC25;
     background-image: none;
     font-family: xxRobotoRegular;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .amx-commandButton.buttonsLarge1 {
@@ -267,13 +299,13 @@ input[type="password"] {
     padding: 9px 0px;
     display: inline-block;
     outline: 0;
-    border-radius: 4px;
+    border-radius: 1px;
     background: #86BC25;
     background-image: url("../images/DownArrow.png")!important;
     background-repeat: no-repeat;
     font-family: xxRobotoRegular;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     width: 96%;
     background-position: 50% 50%;
 }
@@ -284,13 +316,13 @@ input[type="password"] {
     padding: 9px 0px;
     display: inline-block;
     outline: 0;
-    border-radius: 4px;
+    border-radius: 1px;
     background: #86BC25;
     background-image: url("../images/UpArrow.png")!important;
     background-repeat: no-repeat;
     font-family: xxRobotoRegular;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 18px;
     width: 96%;
     background-position: 50% 50%;
 }
@@ -392,11 +424,12 @@ input[type="password"] {
     height: 25px;
     min-height: 25px;
 }
-.amx-commandButton-label{
-    overflow: visible ;
-    margin-left:2px;
-    margin-right:2px;
-    font-size:16px;
+
+.amx-commandButton-label {
+    overflow: visible;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 16px;
 }
 
 .approve > .amx-commandButton-label {
@@ -544,7 +577,6 @@ html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     border-radius: 5px;
     border: #000000 !important;
     border-style: solid;
-    border-width: thin !important;
     -webkit-border-image: none;
     border-image: none;
     position: static;
@@ -560,12 +592,11 @@ html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
     position: relative;
 }
 
-HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {    
+HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
     border-width: 1px;
     border: #000000 !important;
     border-radius: 5px;
     border-style: solid;
-    border-width: thin;
     -webkit-border-image: none;
     border-image: none;
     position: static;
@@ -632,6 +663,10 @@ keygen, select, select[size="0"], select[size="1"] {
     margin: 10px;
     padding: 8px;
     height: 125px;
+}
+
+.amx-popup {
+    left: 30px !important;
 }
 
 .amx-popup.confirmationPopup {

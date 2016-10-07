@@ -26,6 +26,7 @@
           <Item Value="poTotal"/>
           <Item Value="status"/>
           <Item Value="headerReason"/>
+          <Item Value="edit_flag"/>
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>
@@ -51,6 +52,7 @@
           <Item Value="uom"/>
           <Item Value="lineReason"/>
           <Item Value="locationName"/>
+          <Item Value="locationNumber"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -40,6 +40,7 @@ public class PODetailsService {
         String strSelectedPONum = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedPONum}");
         String jsonArrayAsString = serviceManager.invokeREAD(RestURIs.getPoLineURI(strSelectedPONum));
         String strDebug = ":" + strSelectedPONum;
+        String edit_flag = null;
         //AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + jsonArrayAsString);
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
@@ -87,7 +88,15 @@ public class PODetailsService {
                     recordId = temp.getString("RECORD_ID");
 
                 // Place holder for Reason mapping
-                String headerReason = "";
+                String headerReason = null;
+                if (temp.getString("REASON_CODE") != null)
+                    headerReason = temp.getString("REASON_CODE");
+                
+                edit_flag = null;
+                if (temp.getString("EDIT_FLAG") != null)
+                    edit_flag = temp.getString("EDIT_FLAG");                                    
+                
+               
 
                 List<POLine> poLineList = new ArrayList<POLine>();
                 JSONObject poLineParentObject = temp.getJSONObject("PO_LINE");
@@ -129,18 +138,26 @@ public class PODetailsService {
                     if (lineTemp.getString("LOCATION_NAME") != null)
                         locationName = lineTemp.getString("LOCATION_NAME");
 
+                    String locationNumber = null;
+                    if (lineTemp.getString("LOCATION_NUMBER") != null)
+                        locationNumber = lineTemp.getString("LOCATION_NUMBER");
+
                     //Placeholder for line reason
                     String lineReason = null;
+                    if (lineTemp.getString("REASON_CODE") != null)
+                        locationNumber = lineTemp.getString("REASON_CODE");
+
 
                     POLine poLine =
-                        new POLine(lineNumber, item, lineQuantity, lineUOM, linePrice, lineReason, locationName);
+                        new POLine(lineNumber, item, lineQuantity, lineUOM, linePrice, lineReason, locationName,
+                                   locationNumber);
                     poLineList.add(poLine);
 
                 }
 
                 PODetails poDetails =
                     new PODetails(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal, headerReason, poLineList.toArray(new POLine[poLineList.size()]));
+                                  poTotal, headerReason,edit_flag, poLineList.toArray(new POLine[poLineList.size()]));
                 //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                 poDetailsList.add(poDetails);
 
@@ -148,6 +165,7 @@ public class PODetailsService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.showActions}", edit_flag);
         poDetailsArray = poDetailsList.toArray(new PODetails[poDetailsList.size()]);
         return poDetailsArray;
     }

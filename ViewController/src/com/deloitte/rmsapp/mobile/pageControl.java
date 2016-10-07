@@ -18,6 +18,7 @@ public class pageControl {
         String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
         System.out.println("user:" + userName);
         System.out.println("password:" + password);
+        this.validated = false;
         if (userName == null || password == null) {
 
         }
@@ -87,7 +88,6 @@ public class pageControl {
             System.out.println("validated true");
         }
         else {
-            pageNav = "LandingPage";
             pageNav = null;
         }
         System.out.println("landingNavigation end");

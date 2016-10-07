@@ -49,7 +49,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="" id="plam2" showRequired="false" rendered="true">
+            <!--   <amx:panelLabelAndMessage label="" id="plam2" showRequired="false" rendered="true">
                 <amx:tableLayout id="tl4" width="70%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat styleClass="cell-border" id="cf3" width="40%" halign="end"
@@ -61,17 +61,27 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelLabelAndMessage>
+            -->
         </amx:panelFormLayout>
-        <amx:panelGroupLayout layout="vertical" id="pgl2" halign="start">
-            <amx:tableLayout id="tl5" width="90%" halign="center" layout="fixed">
-                <amx:rowLayout id="rl4">
-                    <amx:cellFormat styleClass="cell-border" id="cf4" width="100%" halign="center">
-                        <amx:commandButton text="Login" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
-                                           actionListener="#{pageControl.LoginIn_buttonClick}"
-                                           action="#{pageControl.landingNavigation}" inlineStyle="width:100%;height:auto;"/>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-            </amx:tableLayout>
-        </amx:panelGroupLayout>
+        <amx:tableLayout id="tl4" width="95%">
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat styleClass="cell-border" id="cf3" halign="end">
+                    <amx:selectBooleanCheckbox text="Remember Me" styleClass="remember_me_field" simple="true" id="sbc1"
+                                               valueChangeListener="#{pageControl.rememberMeChanged}"
+                                               value="#{pageFlowScope.rememberMe}"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:tableLayout id="tl5" width="100%">
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat id="cf40" width="2%"/>
+                <amx:cellFormat styleClass="cell-border" id="cf4" width="92%" halign="center">
+                    <amx:commandButton text="Login" id="cb111" styleClass="buttonsLarge" shortDesc="Login In"
+                                       actionListener="#{pageControl.LoginIn_buttonClick}"
+                                       action="#{pageControl.landingNavigation}" inlineStyle="width:100%;height:auto;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf6" width="6%"/>
+            </amx:rowLayout>
+        </amx:tableLayout>
     </amx:panelPage>
 </amx:view>

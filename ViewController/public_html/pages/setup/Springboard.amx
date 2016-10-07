@@ -24,7 +24,7 @@
                         </amx:cellFormat>
                         <amx:cellFormat width="90%" id="cf5">
                             <amx:outputText value="#{applicationScope.userName}" id="ot1" styleClass="headertextwhite"
-                                            inlineStyle="text-align:center;flex-wrap:wrap;font-size:18px;"/>
+                                            inlineStyle="text-align:center;flex-wrap:wrap;font-size:20px;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -47,7 +47,7 @@
                         </amx:cellFormat>
                         <amx:cellFormat width="80%" id="cf2" halign="start" valign="middle">
                             <amx:outputText value="#{row.key}" id="ot3" styleClass="xxRobotoFieldValue"
-                                            inlineStyle="flex-wrap:wrap; font-size:16px;"/>
+                                            inlineStyle="flex-wrap:wrap; "/>
                         </amx:cellFormat>
                         <amx:cellFormat width="5%" halign="end" id="cf4">
                             <amx:outputHtml id="oh2" styleClass="fa  fa-angle-right fa-0.5g" inlineStyle="color:Gray;"/>

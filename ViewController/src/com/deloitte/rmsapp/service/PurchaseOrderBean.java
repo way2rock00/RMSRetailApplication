@@ -50,6 +50,7 @@ public class PurchaseOrderBean {
     }
 
     public void buyerActions(String action) {
+        String service_msg = null;
         System.out.println("buyerActions start");
         AmxIteratorBinding headerIterator = null;
         AmxIteratorBinding lineIterator = null;
@@ -110,7 +111,7 @@ public class PurchaseOrderBean {
                 lineIterator.getIterator().first();
                 List poLineList = new ArrayList();
                 for (int child = 0; child < lineIterator.getIterator().getTotalRowCount(); child++) {
-                    
+
                     System.out.println("line loop");
 
                     JSONObject poLineObject = new JSONObject();
@@ -127,12 +128,20 @@ public class PurchaseOrderBean {
                     poLineObject.put("QTY",
                                      childRow.getAttribute("quantity") == null ? "" :
                                      childRow.getAttribute("quantity").toString());
+
+                    poLineObject.put("LOCATION",
+                                     childRow.getAttribute("locationNumber") == null ? "" :
+                                     childRow.getAttribute("locationNumber").toString());
+
                     poLineObject.put("PRICE",
                                      childRow.getAttribute("price") == null ? "" :
                                      childRow.getAttribute("price").toString());
+
                     poLineObject.put("REASON",
                                      childRow.getAttribute("lineReason") == null ? "" :
                                      childRow.getAttribute("lineReason").toString());
+
+                    poLineList.add(poLineObject);
                     lineIterator.getIterator().next();
                 }
 
@@ -157,7 +166,15 @@ public class PurchaseOrderBean {
         String jsonArrayAsString = serviceManager.invokeUPDATE(url, poObject.toString());
 
         System.out.println("jsonArrayAsString " + jsonArrayAsString);
-
+        try {
+            JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+            String returnStatus = jsonObject.getString("X_STATUS_OUT");
+            if (!returnStatus.equals("SUCCESS"))
+                service_msg = "Error while processing the request. Please try again later.";
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+        } catch (Exception ex) {
+            System.out.println("exception:" + ex.getLocalizedMessage());
+        }
         System.out.println("buyerActions end");
     }
 
@@ -167,6 +184,7 @@ public class PurchaseOrderBean {
         AmxIteratorBinding lineIterator = null;
         String strDebug = "S";
         int alertCount = 0;
+        String service_msg = null;
         JSONObject poHeaderParentObject = new JSONObject();
 
         try {
@@ -290,7 +308,16 @@ public class PurchaseOrderBean {
         String jsonArrayAsString = serviceManager.invokeUPDATE(url, poHeaderParentObject.toString());
 
         System.out.println("jsonArrayAsString " + jsonArrayAsString);
+        try {
+            JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+            String returnStatus = jsonObject.getString("X_RETURN_STATUS");
+            if (!returnStatus.equals("S"))
+                service_msg = "Error while processing the request. Please try again later.";
 
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+        } catch (Exception ex) {
+            System.out.println("exception:" + ex.getLocalizedMessage());
+        }
         System.out.println("submitClicked end");
     }
 }

@@ -29,7 +29,6 @@ public class SpringBoard1 {
                 //AdfmfJavaUtilities.logout();
                 AdfmfContainerUtilities.resetApplication("com.deloitte.rmsapp.Login");
                 AdfmfContainerUtilities.gotoFeature("com.deloitte.rmsapp.Login");
-                System.out.println("gotoFeature:com.deloitte.rmsapp.Login");    
 
             }
             //AdfmfContainerUtilities.gotoFeature(currentFeature);

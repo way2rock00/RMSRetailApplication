@@ -131,7 +131,7 @@
     border: none !important;
     outline: 0 !important;
     font-family: xxRobotoRegular;
-    height:30px;
+    height: 30px;
 }
 
 input[type="password"] {
@@ -179,11 +179,20 @@ input[type="password"] {
     margin: 10px;
 }
 
+textarea:focus, textarea:active, -webkit-textarea:focus, -webkit-textarea:active, input:focus, input:active, -webkit-input:focus, -webkit-input:active {
+    border-bottom-color: #86BC25;
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+}
+
 .amx-panelPage-header {
     border-bottom-color: #86BC25;
     background-color: #000000;
     border-bottom-width: medium;
     border-bottom-style: solid;
+    height: auto;
+    padding-top: 10px !important;
+    padding-bottom: 10px;
 }
 
 .amx-panelPage-header .amx-outputText {
@@ -243,8 +252,6 @@ input[type="password"] {
     border-radius: 50%;
     text-align: center;
     text-decoration: none;
-    content: "\f107";
-    background-image:  "\f107";
     background-repeat: no-repeat;
     font-family: xxRobotoRegular;
     background-position: 50% 50%;
@@ -513,11 +520,23 @@ input[type="password"] {
     border: 0px;
 }
 
+.amx-listView {
+    border-bottom: none 0px #BABABC;
+}
+
 .amx-listItem.sprigboardListItem {
     padding: 0px !important;
     border: 0px;
     height: 35px !important;
     min-height: 0px !important;
+}
+
+.amx-listItem.amx-listItem-selected, .amx-listItem:active {
+    border-bottom: none 0px #BABABC;
+    border-top: none 0px #BABABC;
+    top: -1px;
+    margin-bottom: -1px;
+    background-color: transparent;
 }
 
 .sprigboardListItem.amx-listItem.amx-listItem-selected, .sprigboardListItem.amx-listItem:active {
@@ -527,7 +546,7 @@ input[type="password"] {
 }
 
 .reportListItem.amx-listItem.amx-listItem-selected, .reportListItem.amx-listItem:active {
-    background-color: #1C75BC;
+    background-color: white;
 }
 
 .amx-listItem.dashboardListItem {

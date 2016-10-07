@@ -145,7 +145,7 @@ public class PODetailsService {
                     //Placeholder for line reason
                     String lineReason = null;
                     if (lineTemp.getString("REASON_CODE") != null)
-                        locationNumber = lineTemp.getString("REASON_CODE");
+                        lineReason = lineTemp.getString("REASON_CODE");
 
 
                     POLine poLine =

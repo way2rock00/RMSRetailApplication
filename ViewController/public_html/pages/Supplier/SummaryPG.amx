@@ -81,7 +81,9 @@
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat styleClass="cell-border" id="cf9" width="95%">
                             <amx:inputDate id="id1" valueChangeListener="#{pageFlowScope.pageControl.fromDateChanged}"
-                                           value="#{pageFlowScope.searchFromDate}" simple="true" inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;" inputType="date"/>
+                                           value="#{pageFlowScope.searchFromDate}" simple="true"
+                                           inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"
+                                           inputType="date"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -92,7 +94,8 @@
                     <amx:rowLayout id="rl7">
                         <amx:cellFormat styleClass="cell-border" id="cf10" width="95%">
                             <amx:inputDate id="id2" valueChangeListener="#{pageFlowScope.pageControl.toDateChanged}"
-                                           value="#{pageFlowScope.searchToDate}" simple="true" inputType="date" inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"/>
+                                           value="#{pageFlowScope.searchToDate}" simple="true" inputType="date"
+                                           inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -146,13 +149,6 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
-            <amx:rowLayout id="rl11">
-                <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">
-                    <amx:outputText value="No Data Found" id="ot3" styleClass="xxRobotoFieldValue"/>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.summaryData.collectionModel}"
                       fetchSize="#{bindings.summaryData.rangeSize}"
                       selectedRowKeys="#{bindings.summaryData.collectionModel.selectedRow}"
@@ -160,7 +156,7 @@
                       selectionListener="#{bindings.summaryData.collectionModel.makeCurrent}" showMoreStrategy="off"
                       bufferStrategy="viewport" id="lv2">
             <amx:listItem id="li2" action="toPOList"
-                          inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:transparent; border-bottom-width:0px;">
+                          inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid;">
                 <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
                     <amx:rowLayout id="rl10">
                         <amx:cellFormat id="cf13" width="15%" valign="middle" halign="center">
@@ -175,13 +171,15 @@
                             <amx:commandButton text="#{row.status_count}" id="cb3" rendered="#{row.status == 'New'}"
                                                inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:#2f8dea;"
                                                styleClass="round-button"/>
-                            <amx:commandButton text="#{row.status_count}" id="cb4" rendered="#{row.status == 'Changed or Cancelled'}"
+                            <amx:commandButton text="#{row.status_count}" id="cb4"
+                                               rendered="#{row.status == 'Changed or Cancelled'}"
                                                inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:Navy;"
                                                styleClass="round-button"/>
-                            <amx:commandButton text="#{row.status_count}" id="cb5" rendered="#{row.status == 'Pending Buyer Acknowledgement'}"
+                            <amx:commandButton text="#{row.status_count}" id="cb5"
+                                               rendered="#{row.status == 'Pending Buyer Acknowledgement'}"
                                                inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:Green;"
                                                styleClass="round-button"/>
-                            <amx:commandButton text="#{row.status_count}" id="cb6" 
+                            <amx:commandButton text="#{row.status_count}" id="cb6"
                                                inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:gray; text-height:font-size;"
                                                styleClass="round-button"
                                                rendered="#{row.status !='New' &amp;&amp; row.status !='Changed or Cancelled' &amp;&amp; row.status !='Pending Buyer Acknowledgement'}"/>
@@ -191,5 +189,12 @@
                 <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
             </amx:listItem>
         </amx:listView>
+        <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
+            <amx:rowLayout id="rl11">
+                <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">
+                    <amx:outputText value="No Data Found" id="ot3" styleClass="xxRobotoFieldValue"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
     </amx:panelPage>
 </amx:view>

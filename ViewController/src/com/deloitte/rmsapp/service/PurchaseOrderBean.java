@@ -41,12 +41,12 @@ public class PurchaseOrderBean {
 
     public void approveClicked(ActionEvent actionEvent) {
         System.out.println("approveClicked");
-        buyerActions("APPROVE");
+        buyerActions("APPROVED");
     }
 
     public void rejectClicked(ActionEvent actionEvent) {
         System.out.println("rejectClicked");
-        buyerActions("REJECT");
+        buyerActions("REJECTED");
     }
 
     public void buyerActions(String action) {

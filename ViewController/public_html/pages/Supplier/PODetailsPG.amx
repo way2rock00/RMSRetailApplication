@@ -276,9 +276,9 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl12">
-                    <amx:cellFormat id="cf53" halign="center" valign="middle">
+                    <amx:cellFormat id="cf53" halign="center" valign="middle" inlineStyle="padding-bottom:10px;">
                         <amx:outputText value="Confirm changes for Order# #{pageFlowScope.selectedPONum} ?"
-                                        styleClass="xxRobotoFieldTitle" id="ot21" inlineStyle="padding-bottom:10px;"/>
+                                        styleClass="xxRobotoFieldTitle" id="ot21" />
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
@@ -315,9 +315,9 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl15">
-                    <amx:cellFormat id="cf56" halign="center" valign="middle">
+                    <amx:cellFormat id="cf56" halign="center" valign="middle" inlineStyle="padding-bottom:10px;">
                         <amx:outputText value="Do you want to approve Order# #{pageFlowScope.selectedPONum} ?"
-                                        styleClass="xxRobotoFieldTitle" id="ot25" inlineStyle="padding-bottom:10px;"/>
+                                        styleClass="xxRobotoFieldTitle" id="ot25" />
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>

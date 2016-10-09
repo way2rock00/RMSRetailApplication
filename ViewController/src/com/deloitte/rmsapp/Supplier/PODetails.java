@@ -17,6 +17,7 @@ public class PODetails {
     private String poTotal;
     private String headerReason;
     private String edit_flag;
+    private String approval_flag;
 
     public void setEdit_flag(String edit_flag) {
         this.edit_flag = edit_flag;
@@ -24,6 +25,14 @@ public class PODetails {
 
     public String getEdit_flag() {
         return edit_flag;
+    }
+
+    public void setApproval_flag(String approval_flag) {
+        this.approval_flag = approval_flag;
+    }
+
+    public String getApproval_flag() {
+        return approval_flag;
     }
     private POLine[] poLines;
 
@@ -128,6 +137,7 @@ public class PODetails {
                     ,String poTotal
                     ,String headerReason
                       ,String edit_flag
+                      ,String approval_flag
                     ,POLine[] poLines
                       )
     {
@@ -142,6 +152,7 @@ public class PODetails {
         this.poTotal = poTotal;
         this.headerReason = headerReason;
         this.edit_flag = edit_flag;
+        this.approval_flag = approval_flag;
         this.poLines = poLines;
     }
 }

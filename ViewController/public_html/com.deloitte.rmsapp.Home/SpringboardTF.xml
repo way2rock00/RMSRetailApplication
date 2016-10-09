@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="SpringboardTF">
     <default-activity>Springboard</default-activity>
+     <managed-bean id="__6">
+            <managed-bean-name>SpringBoardNavBean</managed-bean-name>
+            <managed-bean-class>com.deloitte.rmsapp.mobile.SpringBoard1</managed-bean-class>
+            <managed-bean-scope>application</managed-bean-scope>
+        </managed-bean>
     <view id="Springboard">
       <page>/pages/setup/Springboard.amx</page>
     </view>

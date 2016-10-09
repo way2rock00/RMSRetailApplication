@@ -29,6 +29,7 @@ import oracle.adfmf.bindings.dbf.AmxBindingContext;
 import oracle.adfmf.bindings.dbf.AmxCollectionModel;
 import oracle.adfmf.bindings.dbf.AmxTreeBinding.AmxTreeNodeDefinitionAccessor;
 import oracle.adfmf.bindings.iterator.BasicIterator;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfInvocationException;
 import oracle.adfmf.json.JSONArray;
@@ -168,7 +169,7 @@ public class PurchaseOrderBean {
         System.out.println("jsonArrayAsString " + jsonArrayAsString);
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
-            String returnStatus = jsonObject.getString("X_STATUS_OUT");
+            String returnStatus = jsonObject.getString("X_STATUS_OUT");            
             if (!returnStatus.equals("SUCCESS"))
                 service_msg = "Error while processing the request. Please try again later.";
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);

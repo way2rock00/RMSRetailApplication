@@ -41,6 +41,7 @@ public class PODetailsService {
         String jsonArrayAsString = serviceManager.invokeREAD(RestURIs.getPoLineURI(strSelectedPONum));
         String strDebug = ":" + strSelectedPONum;
         String edit_flag = null;
+        String approval_flag = null;
         //AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + jsonArrayAsString);
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
@@ -91,12 +92,15 @@ public class PODetailsService {
                 String headerReason = null;
                 if (temp.getString("REASON_CODE") != null)
                     headerReason = temp.getString("REASON_CODE");
-                
+
                 edit_flag = null;
                 if (temp.getString("EDIT_FLAG") != null)
-                    edit_flag = temp.getString("EDIT_FLAG");                                    
-                
-               
+                    edit_flag = temp.getString("EDIT_FLAG");
+
+                approval_flag = null;
+                if (temp.getString("APPROVAL_REQD_FLAG") != null)
+                    approval_flag = temp.getString("APPROVAL_REQD_FLAG");
+
 
                 List<POLine> poLineList = new ArrayList<POLine>();
                 JSONObject poLineParentObject = temp.getJSONObject("PO_LINE");
@@ -157,7 +161,8 @@ public class PODetailsService {
 
                 PODetails poDetails =
                     new PODetails(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal, headerReason,edit_flag, poLineList.toArray(new POLine[poLineList.size()]));
+                                  poTotal, headerReason, edit_flag, approval_flag,
+                                  poLineList.toArray(new POLine[poLineList.size()]));
                 //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                 poDetailsList.add(poDetails);
 
@@ -165,7 +170,14 @@ public class PODetailsService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.showActions}", edit_flag);
+        String loginType = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}");        
+        if(loginType.equals("SUPPLIER")){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showActions}", edit_flag);
+            System.out.println("choosing edit falg");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showActions}", approval_flag);
+            System.out.println("choosing approval falg");
+        }
         poDetailsArray = poDetailsList.toArray(new PODetails[poDetailsList.size()]);
         return poDetailsArray;
     }

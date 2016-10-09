@@ -27,6 +27,7 @@
           <Item Value="status"/>
           <Item Value="headerReason"/>
           <Item Value="edit_flag"/>
+          <Item Value="approval_flag"/>
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>

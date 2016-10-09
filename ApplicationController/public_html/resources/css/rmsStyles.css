@@ -685,7 +685,15 @@ keygen, select, select[size="0"], select[size="1"] {
 }
 
 .amx-popup {
-    left: 40px !important;
+    left: 15% !important;
+    top: 40% !important;
+    bottom: 35% !important;
+    z-index: 1000;
+    alignment-adjust: middle;
+    alignment-baseline: middle;
+    vertical-align: middle;
+    position: absolute;
+    width: 60%;
 }
 
 .amx-popup.confirmationPopup {

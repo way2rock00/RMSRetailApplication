@@ -316,6 +316,7 @@ public class PurchaseOrderBean {
                 service_msg = "Error while processing the request. Please try again later.";
 
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "Y");
         } catch (Exception ex) {
             System.out.println("exception:" + ex.getLocalizedMessage());
         }

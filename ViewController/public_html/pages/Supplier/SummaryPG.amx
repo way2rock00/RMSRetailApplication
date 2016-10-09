@@ -24,6 +24,15 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl4" layout="vertical" styleClass="xxRobotoSubHeader" rendered="#{pageFlowScope.showMessage == 'Y'}">
+            <amx:tableLayout id="tl13" width="100%">
+                <amx:rowLayout id="rl12">
+                    <amx:cellFormat id="cf14" width="100%" halign="center" valign="middle">
+                        <amx:outputText value="#{pageFlowScope.message}" id="ot6"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
         <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
                              showHorizontalDividers="false" maxColumns="1"
                              rendered="#{pageFlowScope.showExpand == 'false'}">
@@ -130,6 +139,7 @@
             <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for PO"
                                action="toPOList">
                 <amx:setPropertyListener id="spl3" from="" to="#{pageFlowScope.selectedStatus}"/>
+                <amx:setPropertyListener id="spl5" from="N" to="#{pageFlowScope.showMessage}"/>
             </amx:commandButton>
         </amx:panelGroupLayout>
         <amx:tableLayout id="tl11" width="100%">
@@ -187,6 +197,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
+                <amx:setPropertyListener id="spl6" from="N" to="#{pageFlowScope.showMessage}"/>
             </amx:listItem>
         </amx:listView>
         <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">

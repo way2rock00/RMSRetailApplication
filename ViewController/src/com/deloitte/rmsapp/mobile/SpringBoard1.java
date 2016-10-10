@@ -27,9 +27,11 @@ public class SpringBoard1 {
                 AdfmfContainerUtilities.gotoFeature(currentFeature);
             } else if (currentFeature.equals("Logout")) {
                 //AdfmfJavaUtilities.logout();
-                AdfmfContainerUtilities.resetFeature("com.deloitte.rmsapp.Login", true);
+                
                 // AdfmfContainerUtilities.gotoDefaultFeature();
                 AdfmfContainerUtilities.resetApplication("moving to login page");
+                AdfmfContainerUtilities.resetFeature("com.deloitte.rmsapp.Springboard", false);
+                AdfmfContainerUtilities.resetFeature("com.deloitte.rmsapp.Login", true);
                 AdfmfContainerUtilities.gotoFeature("com.deloitte.rmsapp.Login");
                 System.out.println("Current Feature :" + currentFeature);
 

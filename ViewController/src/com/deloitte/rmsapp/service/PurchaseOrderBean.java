@@ -59,10 +59,11 @@ public class PurchaseOrderBean {
         int alertCount = 0;
         JSONObject poHeaderParentObject = new JSONObject();
         JSONObject poObject = new JSONObject();
+        String order_no = "";
         try {
 
             Date sysDate = new Date();
-            String order_no = "";
+           
             System.out.println("sysDate" + sysDate);
             headerIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
             headerIterator.getIterator().first();
@@ -171,10 +172,18 @@ public class PurchaseOrderBean {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
             String returnStatus = jsonObject.getString("X_STATUS_OUT");            
             if (!returnStatus.equals("SUCCESS"))
-                service_msg = "Error while processing the request. Please try again later.";
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+                service_msg = "Error while processing the request for Order#"+ order_no;
+            
+            
         } catch (Exception ex) {
             System.out.println("exception:" + ex.getLocalizedMessage());
+            service_msg = "Error while processing the request for Order#"+ order_no;
+        }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+        if(service_msg !=null){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "Y");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "N");
         }
         System.out.println("buyerActions end");
     }
@@ -186,12 +195,13 @@ public class PurchaseOrderBean {
         String strDebug = "S";
         int alertCount = 0;
         String service_msg = null;
+        String order_no = "";
         JSONObject poHeaderParentObject = new JSONObject();
 
         try {
 
             Date sysDate = new Date();
-            String order_no = "";
+            
             System.out.println("sysDate" + sysDate);
             headerIterator = (AmxIteratorBinding) AdfmfJavaUtilities.getELValue("#{bindings.PODetailsDataIterator}");
             headerIterator.getIterator().first();
@@ -272,10 +282,10 @@ public class PurchaseOrderBean {
                     poLineObject.put("UOM",
                                      childRow.getAttribute("uom") == null ? "" :
                                      childRow.getAttribute("uom").toString());
-                    /*poLineObject.put("LOCATION",
-                                     childRow.getAttribute("locationName") == null ? "" :
-                                     childRow.getAttribute("locationName").toString());
-                    */poLineObject.put("LINE_REASON",
+                    poLineObject.put("LOCATION",
+                                     childRow.getAttribute("locationNumber") == null ? "" :
+                                     childRow.getAttribute("locationNumber").toString());
+                    poLineObject.put("LINE_REASON",
                                        childRow.getAttribute("lineReason") == null ? "" :
                                        childRow.getAttribute("lineReason").toString());
                     poLineObject.put("CREATED_BY", "-1");
@@ -313,13 +323,20 @@ public class PurchaseOrderBean {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
             String returnStatus = jsonObject.getString("X_RETURN_STATUS");
             if (!returnStatus.equals("S"))
-                service_msg = "Error while processing the request. Please try again later.";
+                service_msg = "Error while processing the request for Order#"+order_no;
 
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "Y");
+            
         } catch (Exception ex) {
             System.out.println("exception:" + ex.getLocalizedMessage());
+            service_msg = "Error while processing the request for Order#"+order_no;
         }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+        if(service_msg !=null){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "Y");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "N");
+        }
+        
         System.out.println("submitClicked end");
     }
 }

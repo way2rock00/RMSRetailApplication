@@ -200,6 +200,8 @@
                 <amx:setPropertyListener id="spl6" from="N" to="#{pageFlowScope.showMessage}"/>
             </amx:listItem>
         </amx:listView>
+         <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
+          <amx:outputText value="#{applicationScope.strLoginDebug}" id="ot8"/>-->
         <amx:tableLayout id="tl12" width="100%" rendered="#{pageFlowScope.summaryRecCount &lt; 1}">
             <amx:rowLayout id="rl11">
                 <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">

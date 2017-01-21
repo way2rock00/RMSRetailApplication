@@ -27,22 +27,24 @@ public class SummaryInfoService {
         ServiceManager serviceManager = new ServiceManager();
         String supplier = "-999";
         String buyer = "-999";
-
-        if (AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}").toString().equals("SUPPLIER")) {
+        String strLoginType = (String)AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}");
+        String strDebug = "Sum:"+strLoginType;
+        if ("SUPPLIER".equalsIgnoreCase(strLoginType)) {
 
             supplier = AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}").toString();
             System.out.println("supplier");
 
-        } else {
+        } else if ("BUYER".equalsIgnoreCase(strLoginType)){
             buyer = AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}").toString();
             System.out.println("buyer");
 
         }
-
+        strDebug = strDebug + ":"+supplier+":"+buyer;
         String url = RestURIs.getPoSummaryURI(supplier, buyer);
+        strDebug = strDebug +"::"+url;
         System.out.println("summary url:" + url);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
-
+        strDebug = strDebug +"::"+jsonArrayAsString;
         try {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);
             JSONObject parent = jsonObject.getJSONObject("P_PO_SUMMARY_TAB");
@@ -90,6 +92,7 @@ public class SummaryInfoService {
         }
 
          AdfmfJavaUtilities.setELValue("#{pageFlowScope.summaryRecCount}", summaryList.size());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
         System.out.println("summary end");
         return summaryArray;
 

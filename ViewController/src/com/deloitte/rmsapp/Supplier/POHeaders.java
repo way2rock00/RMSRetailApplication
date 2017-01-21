@@ -13,7 +13,9 @@ public class POHeaders {
     private String pickUpDate;
     private String notAfterDate;
     private String poTotal;
-
+    private String supplierName;
+    private String supplierSiteName;
+    private String notBeforeDate;
 
     public void setPoNumber(String poNumber) {
         this.poNumber = poNumber;
@@ -88,8 +90,33 @@ public class POHeaders {
         return recordId;
     }
 
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierSiteName(String supplierSiteName) {
+        this.supplierSiteName = supplierSiteName;
+    }
+
+    public String getSupplierSiteName() {
+        return supplierSiteName;
+    }
+
+    public void setNotBeforeDate(String notBeforeDate) {
+        this.notBeforeDate = notBeforeDate;
+    }
+
+    public String getNotBeforeDate() {
+        return notBeforeDate;
+    }
+
     public POHeaders(String recordId, String poNumber, String orderType, String poDate, String buyer, String status,
-                     String pickUpDate, String notAfterDate, String poTotal) {
+                     String pickUpDate, String notAfterDate, String poTotal,String notBeforeDate,String supplierName,String supplierSiteName) {
         this.recordId = recordId;
         this.poNumber = poNumber;
         this.orderType = orderType;
@@ -99,6 +126,9 @@ public class POHeaders {
         this.pickUpDate = pickUpDate;
         this.notAfterDate = notAfterDate;
         this.poTotal = poTotal;
+        this.notBeforeDate = notBeforeDate;
+        this.supplierName = supplierName;
+        this.supplierSiteName = supplierSiteName;
     }
 
 }

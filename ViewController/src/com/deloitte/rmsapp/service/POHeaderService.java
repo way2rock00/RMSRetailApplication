@@ -37,7 +37,7 @@ public class POHeaderService {
 
         String selectedStatus = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStatus}");
         System.out.println("selectedStatus is " + selectedStatus);
-
+        String strDebug = "selectedStatus:"+selectedStatus+":";
         if (selectedStatus == null || selectedStatus.length() == 0) {
             /*this is the part of individual search parameters based headers list*/
             String strOrderFrom = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.searchOrderFrom}");
@@ -123,7 +123,7 @@ public class POHeaderService {
                                         strStatus, strType);
             System.out.println("po header url:" + url);
             String jsonArrayAsString = serviceManager.invokeREAD(url);
-            String strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
+            strDebug = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.arrayVal}");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.arrayVal}", strDebug + "::" + "New");
             try {
                 JSONObject jsonObject = new JSONObject(jsonArrayAsString);
@@ -172,11 +172,23 @@ public class POHeaderService {
                     String recordId = null;
                     if (temp.getString("RECORD_ID") != null)
                         recordId = temp.getString("RECORD_ID");
+                    
+                    String notBeforeDate = null;
+                    if (temp.getString("NOT_BEFORE_DATE") != null)
+                        notBeforeDate = temp.getString("NOT_BEFORE_DATE");
+                    
+                    String supplierName = null;
+                    if (temp.getString("SUP_NAME") != null)
+                        supplierName = temp.getString("SUP_NAME");
+                    
+                    String supplierSiteName = null;
+                    if (temp.getString("SUP_SITE_NAME") != null)
+                        supplierSiteName = temp.getString("SUP_SITE_NAME");                    
 
 
                     POHeaders poHeader =
                         new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                      poTotal);
+                                      poTotal,notBeforeDate,supplierName,supplierSiteName);
                     //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                     poHeaderList.add(poHeader);
                 }
@@ -194,15 +206,16 @@ public class POHeaderService {
             } else {
                 loginNumber = (String) AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}");
             }
-
+            strDebug  = strDebug +" Part 2: "+loginType+":"+loginNumber+":"+selectedStatus;
             System.out.println("loginType is " + loginType);
             System.out.println("loginNumber is " + loginNumber);
             System.out.println("selectedStatus is " + selectedStatus);
 
             String url = RestURIs.getPObyStatus(loginType, loginNumber, selectedStatus);
+            strDebug = strDebug +"::"+url;
             System.out.println("po status by header url:" + url);
             String jsonArrayAsString = serviceManager.invokeREAD(url);
-
+            strDebug =  strDebug + ":::"+jsonArrayAsString;
             try {
                 JSONObject jsonObject = new JSONObject(jsonArrayAsString);
                 JSONObject parent = jsonObject.getJSONObject("X_HDR_NTF_TAB");
@@ -236,8 +249,9 @@ public class POHeaderService {
                         status = temp.getString("STATUS");
 
                     String pickUpDate = null;
-                    if (temp.getString("PICKUP_DATE") != null)
-                        pickUpDate = temp.getString("PICKUP_DATE");
+                    //temp
+//                    if (temp.getString("PICKUP_DATE") != null)
+//                        pickUpDate = temp.getString("PICKUP_DATE");
 
                     String notAfterDate = null;
                     if (temp.getString("NOT_AFTER_DATE") != null)
@@ -250,11 +264,26 @@ public class POHeaderService {
                     String recordId = null;
                     if (temp.getString("RECORD_ID") != null)
                         recordId = temp.getString("RECORD_ID");
+                    
+                    String notBeforeDate = null;
+                    //temp
+//                    if (temp.getString("NOT_BEFORE_DATE") != null)
+//                        notBeforeDate = temp.getString("NOT_BEFORE_DATE");
+                    
+                    String supplierName = null;
+                    //temp
+//                    if (temp.getString("SUP_NAME") != null)
+//                        supplierName = temp.getString("SUP_NAME");
+                    
+                    String supplierSiteName = null;
+                    //temp
+//                    if (temp.getString("SUP_SITE_NAME") != null)
+//                        supplierSiteName = temp.getString("SUP_SITE_NAME");                       
 
 
                     POHeaders poHeader =
                         new POHeaders(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                      poTotal);
+                                      poTotal,notBeforeDate,supplierName,supplierSiteName);
                     //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                     poHeaderList.add(poHeader);
                 }
@@ -262,12 +291,14 @@ public class POHeaderService {
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+                strDebug = strDebug + ":Ex:"+e.getMessage();
             }
         }
 
 
         poHeadersArray = poHeaderList.toArray(new POHeaders[poHeaderList.size()]);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.headerRecCount}", poHeaderList.size());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
         return poHeadersArray;
     }
 

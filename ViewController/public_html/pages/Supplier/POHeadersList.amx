@@ -201,29 +201,62 @@
                     </amx:rowLayout>
                     <amx:rowLayout id="r0l5">
                         <amx:cellFormat id="cf025" width="3%" inlineStyle="padding-top:10px;"/>
-                        <amx:cellFormat id="cf031" width="45%" height="10" inlineStyle="padding-top:10px;">
+                        <amx:cellFormat id="cf031" width="45%" height="10" inlineStyle="padding-top:10px;" rendered="#{applicationScope.loginType == 'SUPPLIER'}">
                             <amx:outputText value="Buyer" id="ot4" styleClass="xxRobotoFieldTitle"/>
                         </amx:cellFormat>
+                        <amx:cellFormat id="cf42" width="45%" height="10" inlineStyle="padding-top:10px;" rendered="#{applicationScope.loginType == 'BUYER'}">
+                            <amx:outputText value="Pickup Date" id="ot24" styleClass="xxRobotoFieldTitle"/>
+                        </amx:cellFormat>                        
                         <amx:cellFormat id="cf17" width="3%" inlineStyle=" padding-top:10px;"/>
                         <amx:cellFormat id="cf032" width="45%" inlineStyle="padding-top:10px;">
                             <amx:outputText value="Status" id="ot6" styleClass="xxRobotoFieldTitle"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf23" width="4%" halign="end" valign="top">
+                        <!--<amx:cellFormat id="cf23" width="4%" halign="end" valign="top">
                             <amx:outputHtml id="oh6" styleClass="fa fa-angle-right"/>
-                        </amx:cellFormat>
+                        </amx:cellFormat>-->
                     </amx:rowLayout>
                     <amx:rowLayout id="r0l7">
                         <amx:cellFormat id="cf033" width="3%"/>
-                        <amx:cellFormat id="cf039" width="45%">
+                        <amx:cellFormat id="cf039" width="45%"  rendered="#{applicationScope.loginType == 'SUPPLIER'}">
                             <amx:outputText value="#{row.buyer}" id="ot017" styleClass="xxRobotoFieldValue"/>
                         </amx:cellFormat>
+                        <amx:cellFormat id="cf39" width="45%" rendered="#{applicationScope.loginType == 'BUYER'}">
+                            <amx:outputText value="#{row.pickUpDate}" id="ot22" styleClass="xxRobotoFieldValue">
+                                <amx:convertDateTime id="cdt4" dateStyle="medium" timeStyle="short" type="date"
+                                                     pattern="dd-MMM-yyyy"/>
+                            </amx:outputText>
+                        </amx:cellFormat>                        
                         <amx:cellFormat id="cf038" width="3%"/>
                         <amx:cellFormat id="cf037" width="45%">
                             <amx:outputText value="#{row.status}" id="ot016" styleClass="xxRobotoFieldValue"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf036" width="4%"/>
                     </amx:rowLayout>
-                    <amx:rowLayout id="rl16">
+                    <amx:rowLayout id="rl11" rendered="#{applicationScope.loginType == 'BUYER'}">
+                        <amx:cellFormat id="cf22" width="3%" inlineStyle="padding-top:10px;"/>
+                        <amx:cellFormat id="cf3" width="45%" height="10" inlineStyle="padding-top:10px;">
+                            <amx:outputText value="Supplier" id="ot16" styleClass="xxRobotoFieldTitle"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf24" width="3%" inlineStyle=" padding-top:10px;"/>
+                        <amx:cellFormat id="cf25" width="45%" inlineStyle="padding-top:10px;">
+                            <amx:outputText value="Site" id="ot18" styleClass="xxRobotoFieldTitle"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf26" width="4%" halign="end" valign="top">
+                            <amx:outputHtml id="oh4" styleClass="fa fa-angle-right"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>   
+                    <amx:rowLayout id="rl12" rendered="#{applicationScope.loginType == 'BUYER'}">
+                        <amx:cellFormat id="cf27" width="3%"/>
+                        <amx:cellFormat id="cf31" width="45%">
+                            <amx:outputText value="#{row.supplierName}" id="ot17" styleClass="xxRobotoFieldValue"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf32" width="3%"/>
+                        <amx:cellFormat id="cf28" width="45%">
+                            <amx:outputText value="#{row.supplierSiteName}" id="ot19" styleClass="xxRobotoFieldValue"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf29" width="4%"/>
+                    </amx:rowLayout>                    
+                    <amx:rowLayout id="rl16" rendered="#{applicationScope.loginType == 'SUPPLIER'}">
                         <amx:cellFormat id="cf023" width="3%" inlineStyle=" padding-top:10px;"/>
                         <amx:cellFormat id="cf024" width="45%" height="10" inlineStyle="padding-top:10px;">
                             <amx:outputText value="Pickup Date" id="ot9" styleClass="xxRobotoFieldTitle"></amx:outputText>
@@ -234,7 +267,7 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf035" width="4%"/>
                     </amx:rowLayout>
-                    <amx:rowLayout id="r1l7">
+                    <amx:rowLayout id="r1l7" rendered="#{applicationScope.loginType == 'SUPPLIER'}">
                         <amx:cellFormat id="cf027" width="3%" inlineStyle="padding-bottom:5px; "/>
                         <amx:cellFormat id="cf028" width="45%">
                             <amx:outputText value="#{row.pickUpDate}" id="ot11" styleClass="xxRobotoFieldValue">
@@ -251,10 +284,40 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf21" width="4%"/>
                     </amx:rowLayout>
+                    <amx:rowLayout id="rl13" rendered="#{applicationScope.loginType == 'BUYER'}">
+                        <amx:cellFormat id="cf34" width="3%" inlineStyle=" padding-top:10px;"/>
+                        <amx:cellFormat id="cf36" width="45%" height="10" inlineStyle="padding-top:10px;">
+                            <amx:outputText value="Not Before Date" id="ot20" styleClass="xxRobotoFieldTitle"></amx:outputText>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf33" width="3%" inlineStyle="padding-top:10px;"/>
+                        <amx:cellFormat id="cf35" width="45%" inlineStyle="padding-top:10px;">
+                            <amx:outputText value="Not After Date" id="ot21" styleClass="xxRobotoFieldTitle"></amx:outputText>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf30" width="4%"/>
+                    </amx:rowLayout>   
+                    <amx:rowLayout id="rl15" rendered="#{applicationScope.loginType == 'BUYER'}">
+                        <amx:cellFormat id="cf41" width="3%" inlineStyle="padding-bottom:5px; "/>
+                        <amx:cellFormat id="cf43" width="45%">
+                            <amx:outputText value="#{row.notBeforeDate}" id="ot25" styleClass="xxRobotoFieldValue">
+                                <amx:convertDateTime id="cdt6" dateStyle="medium" timeStyle="short" type="date"
+                                                     pattern="dd-MMM-yyyy"/>
+                            </amx:outputText>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf38" width="3%"/>
+                        <amx:cellFormat id="cf40" width="45%">
+                            <amx:outputText value="#{row.notAfterDate}" id="ot23" styleClass="xxRobotoFieldValue">
+                                <amx:convertDateTime id="cdt5" dateStyle="medium" timeStyle="short" type="date"
+                                                     pattern="dd-MMM-yyyy"/>
+                            </amx:outputText>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf37" width="4%"/>
+                    </amx:rowLayout>                    
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl4" from="#{row.poNumber}" to="#{pageFlowScope.selectedPONum}"/>
             </amx:listItem>
         </amx:listView>
+       <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot15"/> 
+       <amx:outputText value=" #{pageFlowScope.selectedStatus}" id="ot26"/>--> 
         <amx:tableLayout id="tl1" width="100%" rendered="#{pageFlowScope.headerRecCount &lt; 1}">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="100%" halign="center" valign="middle">

@@ -100,6 +100,27 @@ public class PODetailsService {
                 approval_flag = null;
                 if (temp.getString("APPROVAL_REQD_FLAG") != null)
                     approval_flag = temp.getString("APPROVAL_REQD_FLAG");
+                
+                String notBeforeDate = null;
+                if (temp.getString("NOT_BEFORE_DATE") != null)
+                    notBeforeDate = temp.getString("NOT_BEFORE_DATE");
+                
+                String supplierSiteName = null;
+                if (temp.getString("SUP_SITE_NAME") != null)
+                    supplierSiteName = temp.getString("SUP_SITE_NAME");
+                
+                String supplierName = null;
+                if (temp.getString("SUP_NAME") != null)
+                    supplierName = temp.getString("SUP_NAME");
+                
+                String buyerNum = null;
+                if (temp.getString("BUYER_NUM") != null)
+                    buyerNum = temp.getString("BUYER_NUM");
+                
+                String supplierNum = null;
+                if (temp.getString("SUP_NUM") != null)
+                    supplierNum = temp.getString("SUP_NUM");                
+                
 
 
                 List<POLine> poLineList = new ArrayList<POLine>();
@@ -115,15 +136,6 @@ public class PODetailsService {
                     String item = null;
                     if (lineTemp.getString("ITEM") != null) {
                         item = lineTemp.getString("ITEM");
-                        /*System.out.println("under item");
-                        JSONObject itemobj = lineTemp.getJSONObject("ITEM");
-                        System.out.println(itemobj);
-                        System.out.println(itemobj.getString("$"));
-                        item = itemobj.getString("$");
-                        */
-                        /*JSONArray itemobjs = lineTemp.getJSONArray("ITEM");
-                        System.out.println(itemobjs);
-                        */
                     }
 
                     String lineQuantity = null;
@@ -161,7 +173,7 @@ public class PODetailsService {
 
                 PODetails poDetails =
                     new PODetails(recordId, poNumber, poOrderType, poDate, buyer, status, pickUpDate, notAfterDate,
-                                  poTotal, headerReason, edit_flag, approval_flag,
+                                  poTotal, headerReason, edit_flag, approval_flag,notAfterDate,supplierSiteName,supplierName,buyerNum,supplierNum,
                                   poLineList.toArray(new POLine[poLineList.size()]));
                 //new POHeaders(organizationCode, category, item, quantity, valueInUsd, recordId);
                 poDetailsList.add(poDetails);

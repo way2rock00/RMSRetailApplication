@@ -7,17 +7,27 @@ public class RestURIs {
         super();
     }
 
-    private static String PO_SUMMARY = "/XxRpmGetPoSummary/GetPoSummary_RS";
+    private static String PO_SUMMARY = "/XxRpmGetPoSummary/GetPoSummary_RS";//http://app101111.glbsnet.com/XxRpmGetPoSummary/GetPoSummary_RS/-999/305
     private static String PO_HEADERS = "/XxRpmPoHeaderDetails/GetPOHeaderRS";
-    private static String PO_DETAILS = "/XxRpmGetPODetailsPrj/GetPODetailsService";
+    private static String PO_DETAILS = "/XxRpmGetPODetailsPrj/GetPODetailsService";//http://app101111.glbsnet.com/XxRpmGetPODetailsPrj/GetPODetailsService/1703
     private static String NotifcationsList = "/XxRpmPONotification/PONotificationRS";
-    private static String PO_BY_STATUS = "/XxRpmPosByStatus/PoByStatusPS";
+    private static String PO_BY_STATUS = "/XxRpmPosByStatus/PoByStatusPS";//http://app101111.glbsnet.com/XxRpmPosByStatus/PoByStatusPS/SUPPLIER/2500/NEW
     private static String PO_NUMBER_LOV = "/XxRpmGetPoLov/RestService";
     private static String SupplierLOV = "/XxRpmGetSuppLov/GetSuppLov_RS";
     private static String BuyerLOV = "/XxRpmGetBuyerLov/GetBuyerLov_RS";
     private static String LoadPO = "/XxRpmLoadPurchaseOrders/LoadPurchaseOrderRS";
     private static String Approvals = "/XxRpmModifyPoByBuyer/POModifyRS";
-
+    private static String LoginURL = "/XxRpmValidateUser/ValidateUser_RS";
+    private static String NotificationURL = "/NotificationAppModel/resources/notificationservice/sendnotification";
+    
+    public static String getPushNotificationURL(String userType,String from,String to,String appId,String message){
+        return NotificationURL+"/"+userType+"/"+from+"/"+to+"/"+appId+"/"+convertString2URLFormat(message);
+    }
+    
+    public static String getLoginURL(String userName,String password,String deviceId,
+                                     String loginType,String appId){
+        return LoginURL+"/"+userName+"/"+password+"/"+deviceId+"/"+loginType+"/"+appId;
+    }
     public static String getPONumberLovURI(String loginType, String loginNumber) {
         return PO_NUMBER_LOV + "/" + loginType + "/" + loginNumber;
     }

@@ -316,14 +316,47 @@ public class PurchaseOrderBean {
         String url = RestURIs.getLoadPOURI();
         System.out.println("loader url:" + url);
         ServiceManager serviceManager = new ServiceManager();
-        String jsonArrayAsString = serviceManager.invokeUPDATE(url, poHeaderParentObject.toString());
+        //String jsonArrayAsString = serviceManager.invokeUPDATE(url, poHeaderParentObject.toString());--temp
+        String jsonArrayAsString = "serviceManager.invokeUPDATE(url, poHeaderParentObject.toString());";
 
         System.out.println("jsonArrayAsString " + jsonArrayAsString);
         try {
-            JSONObject jsonObject = new JSONObject(jsonArrayAsString);
-            String returnStatus = jsonObject.getString("X_RETURN_STATUS");
+            //temp
+//            JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+//            String returnStatus = jsonObject.getString("X_RETURN_STATUS");
+            String returnStatus = "S";
             if (!returnStatus.equals("S"))
                 service_msg = "Error while processing the request for Order#"+order_no;
+            else{
+                //Send notification
+              strDebug = "HitNS";  
+              String userType = (String)AdfmfJavaUtilities.getELValue("#{applicationScope.loginType}");
+                String notificationUserType = "";
+                strDebug = strDebug+":"+userType;
+                String from = "NA";
+                if("BUYER".equalsIgnoreCase(userType)){
+                    from =  (String)AdfmfJavaUtilities.getELValue("#{applicationScope.loginBuyer}");
+                    notificationUserType = "SUPPLIER";
+                }
+                else if("SUPPLIER".equalsIgnoreCase(userType)){
+                    from =  (String)AdfmfJavaUtilities.getELValue("#{applicationScope.loginSuppier}");
+                    notificationUserType = "SUPPLIER";//temp it should be BUYER
+                }
+              
+              String to = "SUPP1123";
+              String appId =  (String)AdfmfJavaUtilities.getELValue("#{applicationScope.appId}");
+              String message = "Hello";  
+              String notificationUrl = RestURIs.getPushNotificationURL(notificationUserType
+                                                                       ,from
+                                                                       ,to
+                                                                       ,appId
+                                                                       ,message
+                                                                       );
+                strDebug = strDebug+":"+notificationUrl;
+              String notificationResponse =
+                  serviceManager.invokeNotification(notificationUrl);
+                strDebug = strDebug+":notificationResponse:"+notificationResponse;
+            }
 
             
         } catch (Exception ex) {
@@ -331,6 +364,7 @@ public class PurchaseOrderBean {
             service_msg = "Error while processing the request for Order#"+order_no;
         }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.message}", service_msg);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
         if(service_msg !=null){
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showMessage}", "Y");
         }else{

@@ -36,6 +36,9 @@
           <Item Value="poTotal"/>
           <Item Value="recordId"/>
           <Item Value="status"/>
+          <Item Value="notBeforeDate"/>
+          <Item Value="supplierName"/>
+          <Item Value="supplierSiteName"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

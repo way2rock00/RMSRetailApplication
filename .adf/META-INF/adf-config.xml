@@ -13,6 +13,7 @@
   </adf-adfm-config>
   <adf:adf-properties-child xmlns="http://xmlns.oracle.com/adf/config/properties">
     <adf-property name="adfAppUID" value="RMSRetailApplication.com.deloitte.rmsapp"/>
+     <adf-property name="gcmSenderId" value="1083668814587"/>
   </adf:adf-properties-child>
   <sec:adf-security-child xmlns="http://xmlns.oracle.com/adf/security/config">
     <CredentialStoreContext credentialStoreClass="oracle.adf.share.security.providers.jps.CSFCredentialStore"

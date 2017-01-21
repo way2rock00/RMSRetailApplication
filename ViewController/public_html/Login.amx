@@ -30,7 +30,7 @@
                                            inputType="text" maximumLength="16"
                                            valueChangeListener="#{pageControl.usernameChanged}"
                                            value="#{pageFlowScope.userName}"
-                                           inlineStyle="height:40px;font-size:large;"/>
+                                           inlineStyle="height:40px;font-size:large;" required="true"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -44,7 +44,7 @@
                                            inputType="text" secret="true"
                                            valueChangeListener="#{pageControl.passwordChanged}" maximumLength="16"
                                            value="#{pageFlowScope.password}"
-                                           inlineStyle="height:40px; font-size:large;"/>
+                                           inlineStyle="height:40px; font-size:large;" required="true"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -64,6 +64,14 @@
             -->
         </amx:panelFormLayout>
         <amx:tableLayout id="tl4" width="95%">
+            <amx:rowLayout id="rl6">
+                <amx:cellFormat id="cf7">
+                    <amx:selectOneChoice label="Login As" id="smc1" value="#{pageFlowScope.loginType}">
+                        <amx:selectItem id="buyer" label="Buyer" value="BUYER"/>
+                        <amx:selectItem id="supplier" label="Supplier" value="SUPPLIER"/>
+                    </amx:selectOneChoice>
+                </amx:cellFormat>
+            </amx:rowLayout>
             <amx:rowLayout id="rl3">
                 <amx:cellFormat styleClass="cell-border" id="cf3" halign="end">
                     <amx:selectBooleanCheckbox text="Remember Me" styleClass="remember_me_field" simple="true" id="sbc1"
@@ -83,5 +91,7 @@
                 <amx:cellFormat id="cf6" width="6%"/>
             </amx:rowLayout>
         </amx:tableLayout>
+        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot2"/>
+         <amx:outputText value="#{pageFlowScope.strDebug1}" id="ot3"/>-->
     </amx:panelPage>
 </amx:view>

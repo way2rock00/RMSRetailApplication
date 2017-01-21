@@ -28,6 +28,11 @@
           <Item Value="headerReason"/>
           <Item Value="edit_flag"/>
           <Item Value="approval_flag"/>
+          <Item Value="buyerNum"/>
+          <Item Value="notBeforeDate"/>
+          <Item Value="supplierName"/>
+          <Item Value="supplierNum"/>
+          <Item Value="supplierSiteName"/>
         </AttrNames>
         <Accessors>
           <Item Value="poLines"/>
@@ -40,6 +45,9 @@
           <Item Value="quantity"/>
           <Item Value="uom"/>
           <Item Value="item"/>
+          <Item Value="lineReason"/>
+          <Item Value="locationName"/>
+          <Item Value="locationNumber"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
